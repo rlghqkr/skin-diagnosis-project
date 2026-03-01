@@ -4,12 +4,13 @@ import os
 import argparse
 import yaml
 
-workspace_path = os.path.join(os.path.expanduser("~"), "dir/NIA")
+workspace_path = os.path.join(os.path.dirname(os.path.abspath(__file__)), "..")
 sys.path.insert(0, workspace_path)
 os.chdir(workspace_path)
 
 sys.stderr = open(sys.stderr.fileno(), mode="w", buffering=1)
 
+import torch
 from torch.utils.data import DataLoader
 from tool.utils import resume_checkpoint, fix_seed
 from tool.data_loader import CustomDataset
@@ -163,7 +164,7 @@ def main(args):
     )
 
     for key in model_list:
-        model = model_list[key].cuda()
+        model = model_list[key].to(torch.device("cuda" if torch.cuda.is_available() else "cpu"))
         for w_key in model_area_dict[key]:
             testset, _ = dataset.load_dataset(w_key)
             testset_loader = DataLoader(

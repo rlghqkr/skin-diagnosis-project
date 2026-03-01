@@ -38,3 +38,5 @@ cam.py
 wandb
 
 NIA.tar
+checkpoint.zip
+node_modules/
