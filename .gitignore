@@ -13,8 +13,6 @@
 *.out
 GradCAM.py
 .env
-requirements.txt
-Dockerfile
 
 img/
 label/

@@ -10,6 +10,7 @@ Usage:
 """
 
 import logging
+import os
 from contextlib import asynccontextmanager
 from pathlib import Path
 from typing import Literal
@@ -32,8 +33,11 @@ logger = logging.getLogger("api_server")
 # Paths
 # ---------------------------------------------------------------------------
 BASE_DIR = Path(__file__).resolve().parent.parent
-CHECKPOINT_DIR = BASE_DIR / "checkpoint"
-LANDMARKER_MODEL_PATH = str(Path(__file__).resolve().parent / "face_landmarker.task")
+CHECKPOINT_DIR = Path(os.environ.get("CHECKPOINT_DIR", str(BASE_DIR / "checkpoint")))
+LANDMARKER_MODEL_PATH = os.environ.get(
+    "LANDMARKER_MODEL_PATH",
+    str(Path(__file__).resolve().parent / "face_landmarker.task"),
+)
 
 # ---------------------------------------------------------------------------
 # Model configs (test.py:98-108)
@@ -336,7 +340,11 @@ app = FastAPI(title="NIA Skin Condition API", lifespan=lifespan)
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173", "http://127.0.0.1:5173"],
+    allow_origins=[
+        "http://localhost:5173",
+        "http://127.0.0.1:5173",
+        "https://skin-diagnosis-project.pages.dev",
+    ],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
