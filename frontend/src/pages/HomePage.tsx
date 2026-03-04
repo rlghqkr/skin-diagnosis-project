@@ -53,26 +53,24 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
         {/* Daily Skin Score */}
         {latestRecord && (
           <div className="px-4 pb-6">
-            <div className="flex min-h-[140px] items-center gap-5 rounded-[20px] bg-white p-5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+            <div className="flex min-h-[140px] flex-col items-center justify-center rounded-[20px] bg-white p-5 text-center shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
               <SkinScoreCircle score={latestRecord.score} size="sm" />
-              <div className="flex-1">
-                <h3 className="text-[13px] font-bold text-[#191F28]">피부 점수</h3>
-                <span className="text-[11px] text-[#8B95A1]">
-                  마지막 분석: {formatRelativeDate(latestRecord.timestamp)}
-                </span>
-                {scoreDelta !== null && (
-                  <p className={`mt-1 text-sm font-semibold ${scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"}`}>
-                    {scoreDelta >= 0 ? `+${scoreDelta}` : scoreDelta}점 {scoreDelta >= 0 ? "개선" : "변화"}
-                  </p>
-                )}
-                <button
-                  type="button"
-                  onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult } })}
-                  className="mt-2 text-[13px] font-medium text-[#5B8CFF]"
-                >
-                  결과 보기 →
-                </button>
-              </div>
+              <h3 className="mt-3 text-[13px] font-bold text-[#191F28]">피부 점수</h3>
+              <span className="mt-1 text-[11px] text-[#8B95A1]">
+                마지막 분석: {formatRelativeDate(latestRecord.timestamp)}
+              </span>
+              {scoreDelta !== null && (
+                <p className={`mt-1 text-sm font-semibold ${scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"}`}>
+                  {scoreDelta >= 0 ? `+${scoreDelta}` : scoreDelta}점 {scoreDelta >= 0 ? "개선" : "변화"}
+                </p>
+              )}
+              <button
+                type="button"
+                onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult } })}
+                className="mt-2 text-[13px] font-medium text-[#5B8CFF]"
+              >
+                결과 보기 →
+              </button>
             </div>
           </div>
         )}
