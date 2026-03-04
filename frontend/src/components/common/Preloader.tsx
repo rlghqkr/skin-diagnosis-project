@@ -1,7 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
-import { lazy } from "react";
-
-const Spline = lazy(() => import("@splinetool/react-spline"));
+import { useEffect, useState } from "react";
 
 interface Props {
   onComplete: () => void;
@@ -9,26 +6,15 @@ interface Props {
 
 export default function Preloader({ onComplete }: Props) {
   const [phase, setPhase] = useState<"enter" | "exit">("enter");
-  const [splineLoaded, setSplineLoaded] = useState(false);
 
   useEffect(() => {
-    // Wait for Spline to load, then show for a bit before transitioning out
-    if (splineLoaded) {
-      const t1 = setTimeout(() => setPhase("exit"), 2000);
-      const t2 = setTimeout(onComplete, 2500);
-      return () => {
-        clearTimeout(t1);
-        clearTimeout(t2);
-      };
-    }
-
-    // Fallback: if Spline takes too long, proceed anyway
-    const fallback = setTimeout(() => {
-      setPhase("exit");
-      setTimeout(onComplete, 500);
-    }, 6000);
-    return () => clearTimeout(fallback);
-  }, [splineLoaded, onComplete]);
+    const t1 = setTimeout(() => setPhase("exit"), 1500);
+    const t2 = setTimeout(onComplete, 2000);
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
+  }, [onComplete]);
 
   return (
     <div
@@ -36,20 +22,23 @@ export default function Preloader({ onComplete }: Props) {
         phase === "exit" ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      {/* 3D Spline Scene */}
-      <div className="relative h-64 w-64 sm:h-80 sm:w-80">
-        <Suspense
-          fallback={
-            <div className="flex h-full w-full items-center justify-center">
-              <div className="h-10 w-10 rounded-full border-2 border-[#E5E8EB] border-t-[#3182F6] animate-spin" />
-            </div>
-          }
-        >
-          <Spline
-            scene="https://prod.spline.design/pkIqLkcy-rGNnCU2/scene.splinecode"
-            onLoad={() => setSplineLoaded(true)}
-          />
-        </Suspense>
+      {/* 3D Orb Scene */}
+      <div className="relative h-64 w-64 sm:h-80 sm:w-80" style={{ perspective: "800px" }}>
+        {/* Main gradient orb */}
+        <div className="orb-main">
+          <div className="orb-inner" />
+        </div>
+
+        {/* Floating orbit particles */}
+        <div className="orbit-ring orbit-ring-1">
+          <div className="orbit-particle orbit-particle-1" />
+        </div>
+        <div className="orbit-ring orbit-ring-2">
+          <div className="orbit-particle orbit-particle-2" />
+        </div>
+        <div className="orbit-ring orbit-ring-3">
+          <div className="orbit-particle orbit-particle-3" />
+        </div>
       </div>
 
       {/* Brand text */}
