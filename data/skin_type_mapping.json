@@ -1,0 +1,193 @@
+{
+  "_description": "피부 측정값 → 피부타입 및 고민 수준 매핑 테이블. API 모델 출력값을 피부타입/고민으로 변환한다.",
+
+  "skin_type_classification": {
+    "_description": "수분(moisture) 수치 기반 피부타입 판단. 복합성은 부위별 차이가 클 때 판단.",
+    "moisture": {
+      "건성": { "min": 0, "max": 35, "description": "수분 부족, 당김 느낌" },
+      "중성": { "min": 35, "max": 55, "description": "적정 수분, 유수분 밸런스" },
+      "지성": { "min": 55, "max": 100, "description": "피지 과다, 번들거림" }
+    },
+    "combination_rule": {
+      "_description": "부위별 수분 편차(max-min)가 threshold 이상이면 복합성",
+      "threshold": 20
+    }
+  },
+
+  "classification_grade_mapping": {
+    "_description": "분류 모델 등급 → 고민 수준 매핑 (양호/주의/심각)",
+
+    "dryness": {
+      "grades": [0, 1, 2, 3, 4],
+      "concern": "건조",
+      "levels": {
+        "양호": [0, 1],
+        "주의": [2],
+        "심각": [3, 4]
+      },
+      "effects_needed": {
+        "주의": ["보습"],
+        "심각": ["보습", "장벽강화"]
+      }
+    },
+
+    "pigmentation": {
+      "grades": [0, 1, 2, 3, 4, 5],
+      "concern": "색소침착",
+      "levels": {
+        "양호": [0, 1],
+        "주의": [2, 3],
+        "심각": [4, 5]
+      },
+      "effects_needed": {
+        "주의": ["미백"],
+        "심각": ["미백", "항산화"]
+      }
+    },
+
+    "pore": {
+      "grades": [0, 1, 2, 3, 4, 5],
+      "concern": "모공",
+      "levels": {
+        "양호": [0, 1],
+        "주의": [2, 3],
+        "심각": [4, 5]
+      },
+      "effects_needed": {
+        "주의": ["모공관리"],
+        "심각": ["모공관리", "피지조절"]
+      }
+    },
+
+    "sagging": {
+      "grades": [0, 1, 2, 3, 4, 5],
+      "concern": "탄력저하",
+      "levels": {
+        "양호": [0, 1],
+        "주의": [2, 3],
+        "심각": [4, 5]
+      },
+      "effects_needed": {
+        "주의": ["탄력"],
+        "심각": ["탄력", "주름개선"]
+      }
+    },
+
+    "wrinkle": {
+      "grades": [0, 1, 2, 3, 4, 5, 6],
+      "concern": "주름",
+      "levels": {
+        "양호": [0, 1, 2],
+        "주의": [3, 4],
+        "심각": [5, 6]
+      },
+      "effects_needed": {
+        "주의": ["주름개선"],
+        "심각": ["주름개선", "탄력"]
+      }
+    }
+  },
+
+  "regression_value_mapping": {
+    "_description": "회귀 모델 수치 → 고민 수준 매핑",
+
+    "pigmentation": {
+      "unit": "ITA°",
+      "range": [0, 350],
+      "concern": "색소침착",
+      "_note": "ITA°가 낮을수록 색소침착 심함",
+      "levels": {
+        "양호": { "min": 200, "max": 350 },
+        "주의": { "min": 100, "max": 200 },
+        "심각": { "min": 0, "max": 100 }
+      },
+      "effects_needed": {
+        "주의": ["미백"],
+        "심각": ["미백", "항산화"]
+      }
+    },
+
+    "moisture": {
+      "unit": "%",
+      "range": [0, 100],
+      "concern": "건조",
+      "_note": "낮을수록 건조",
+      "levels": {
+        "양호": { "min": 50, "max": 100 },
+        "주의": { "min": 30, "max": 50 },
+        "심각": { "min": 0, "max": 30 }
+      },
+      "effects_needed": {
+        "주의": ["보습"],
+        "심각": ["보습", "장벽강화"]
+      }
+    },
+
+    "elasticity_R2": {
+      "unit": "R2",
+      "range": [0, 1],
+      "concern": "탄력저하",
+      "_note": "낮을수록 탄력 부족",
+      "levels": {
+        "양호": { "min": 0.7, "max": 1.0 },
+        "주의": { "min": 0.4, "max": 0.7 },
+        "심각": { "min": 0.0, "max": 0.4 }
+      },
+      "effects_needed": {
+        "주의": ["탄력"],
+        "심각": ["탄력", "주름개선"]
+      }
+    },
+
+    "wrinkle_Ra": {
+      "unit": "Ra",
+      "range": [0, 50],
+      "concern": "주름",
+      "_note": "높을수록 주름 심함",
+      "levels": {
+        "양호": { "min": 0, "max": 15 },
+        "주의": { "min": 15, "max": 30 },
+        "심각": { "min": 30, "max": 50 }
+      },
+      "effects_needed": {
+        "주의": ["주름개선"],
+        "심각": ["주름개선", "탄력"]
+      }
+    },
+
+    "pore": {
+      "unit": "count",
+      "range": [0, 2600],
+      "concern": "모공",
+      "_note": "높을수록 모공 많음",
+      "levels": {
+        "양호": { "min": 0, "max": 800 },
+        "주의": { "min": 800, "max": 1600 },
+        "심각": { "min": 1600, "max": 2600 }
+      },
+      "effects_needed": {
+        "주의": ["모공관리"],
+        "심각": ["모공관리", "피지조절"]
+      }
+    }
+  },
+
+  "concern_priority_order": [
+    "건조",
+    "색소침착",
+    "주름",
+    "탄력저하",
+    "모공",
+    "피지과다",
+    "민감",
+    "칙칙함"
+  ],
+
+  "sensitivity_indicators": {
+    "_description": "민감성 피부 판단 기준 - 건조도 심각 + 다수 고민이 동시에 심각이면 민감성으로 분류",
+    "conditions": {
+      "dryness_grade_gte": 3,
+      "severe_concern_count_gte": 2
+    }
+  }
+}

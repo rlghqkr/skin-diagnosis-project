@@ -17,8 +17,9 @@ RUN pip install --no-cache-dir \
 COPY requirements.txt .
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy application code
+# Copy application code and data
 COPY tool/ ./tool/
+COPY data/ ./data/
 
 EXPOSE 8080
 

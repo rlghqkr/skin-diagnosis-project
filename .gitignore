@@ -6,6 +6,7 @@
 !frontend/tsconfig.json
 !frontend/tsconfig.app.json
 !frontend/tsconfig.node.json
+!data/*.json
 *.pyc
 *.xlsx
 *.ipynb

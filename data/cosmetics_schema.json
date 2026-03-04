@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "NIA 화장품 데이터 스키마",
+  "description": "한국 화장품 제품 데이터 구조 정의",
+  "type": "object",
+  "properties": {
+    "products": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "name", "brand", "category", "price_range", "description", "ingredients", "effects", "suitable_skin_types", "suitable_concerns"],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[A-Z]{3}-[0-9]{4}$",
+            "description": "고유 제품 ID (예: CLN-0001)"
+          },
+          "name": {
+            "type": "string",
+            "description": "제품명"
+          },
+          "brand": {
+            "type": "string",
+            "description": "브랜드명",
+            "enum": [
+              "이니스프리", "설화수", "라네즈", "COSRX", "닥터지",
+              "미샤", "에뛰드", "토니모리", "네이처리퍼블릭", "더페이스샵",
+              "아이오페", "헤라", "클리오", "스킨푸드", "바닐라코",
+              "일리윤", "마녀공장", "달바", "아누아", "라운드랩",
+              "넘버즈인", "메디힐", "VT", "CNP", "AHC"
+            ]
+          },
+          "category": {
+            "type": "string",
+            "description": "제품 카테고리",
+            "enum": ["클렌저", "토너", "세럼/에센스", "크림/로션", "선크림", "마스크팩", "아이크림"]
+          },
+          "price_range": {
+            "type": "string",
+            "description": "가격대",
+            "enum": ["저가(~1만원)", "중저가(1~2만원)", "중가(2~4만원)", "중고가(4~7만원)", "고가(7만원~)"]
+          },
+          "image_url": {
+            "type": "string",
+            "format": "uri",
+            "description": "제품 이미지 URL (선택)"
+          },
+          "description": {
+            "type": "string",
+            "description": "제품 설명"
+          },
+          "ingredients": {
+            "type": "array",
+            "items": { "type": "string" },
+            "minItems": 1,
+            "description": "주요 성분 리스트"
+          },
+          "effects": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["보습", "미백", "주름개선", "탄력", "모공관리", "각질관리", "진정", "항산화", "장벽강화", "피지조절"]
+            },
+            "minItems": 1,
+            "description": "주요 효능"
+          },
+          "suitable_skin_types": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["건성", "지성", "복합성", "민감성", "중성", "모든피부"]
+            },
+            "minItems": 1,
+            "description": "적합한 피부 타입"
+          },
+          "suitable_concerns": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "enum": ["건조", "색소침착", "모공", "탄력저하", "주름", "피지과다", "민감", "칙칙함"]
+            },
+            "description": "적합한 피부 고민"
+          },
+          "rating": {
+            "type": "number",
+            "minimum": 0,
+            "maximum": 5,
+            "description": "평점 (0~5)"
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": ["products"],
+  "additionalProperties": false
+}

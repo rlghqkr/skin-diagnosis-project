@@ -1,12 +1,9 @@
 import { Activity } from "lucide-react";
+import { Link } from "react-router-dom";
 import { useHealth } from "../../hooks/useHealth";
 import clsx from "clsx";
 
-interface Props {
-  onGoHome?: () => void;
-}
-
-export default function Header({ onGoHome }: Props) {
+export default function Header() {
   const { health, error } = useHealth();
   const online = !!health && !error;
 
@@ -14,10 +11,9 @@ export default function Header({ onGoHome }: Props) {
     <header className="safe-top sticky top-0 relative z-20 border-b border-white/[0.04] bg-dark-950/60 backdrop-blur-xl">
       <div className="flex items-center justify-between px-4 py-3">
         {/* Brand — clickable to go home */}
-        <button
-          type="button"
+        <Link
+          to="/"
           className="group flex items-center gap-3 transition-opacity hover:opacity-80"
-          onClick={onGoHome}
         >
           {/* Logo mark */}
           <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-500/15">
@@ -26,7 +22,7 @@ export default function Header({ onGoHome }: Props) {
           <h1 className="font-brand text-lg text-cream-200">
             Namju
           </h1>
-        </button>
+        </Link>
 
         {/* Server status */}
         <div className="flex items-center gap-2.5">

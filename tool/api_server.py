@@ -22,6 +22,11 @@ from PIL import Image
 from torchvision import models, transforms
 from fastapi import FastAPI, File, Form, HTTPException, UploadFile
 from fastapi.middleware.cors import CORSMiddleware
+from pydantic import BaseModel
+
+from tool.recommendation import RecommendationEngine
+from tool.schemas import AnalyzeResponse, RecommendResponse
+from tool.skin_score import SkinScoreCalculator
 
 # ---------------------------------------------------------------------------
 # Logging
@@ -196,6 +201,8 @@ eval_transform = transforms.Compose(
 loaded_models: dict[str, dict[str, torch.nn.Module]] = {}
 face_landmarker = None  # mp.tasks.vision.FaceLandmarker (loaded at startup)
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+recommendation_engine = RecommendationEngine()
+skin_score_calculator = SkinScoreCalculator()
 
 
 # ---------------------------------------------------------------------------
@@ -331,6 +338,9 @@ async def lifespan(app: FastAPI):
     loaded_models.update(load_all_models())
     total = sum(len(v) for v in loaded_models.values())
     logger.info("Total %d models loaded on %s", total, device)
+    # Load recommendation engine data
+    recommendation_engine.load_data()
+    logger.info("Recommendation engine data loaded")
     yield
     face_landmarker.close()
     loaded_models.clear()
@@ -344,6 +354,7 @@ app.add_middleware(
         "http://localhost:5173",
         "http://127.0.0.1:5173",
         "https://skin-diagnosis-project.pages.dev",
+        "https://nia-skin-api-1040477836656.asia-northeast3.run.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
@@ -428,4 +439,125 @@ async def predict(
     result: dict = {"mode": mode, "predictions": predictions}
     if warnings:
         result["warnings"] = warnings
+    return result
+
+
+# ---------------------------------------------------------------------------
+# Recommendation request model
+# ---------------------------------------------------------------------------
+class RecommendRequest(BaseModel):
+    classification: dict[str, dict[str, dict]] = {}
+    regression: dict[str, dict[str, dict]] = {}
+
+
+# ---------------------------------------------------------------------------
+# POST /recommend
+# ---------------------------------------------------------------------------
+@app.post("/recommend", response_model=RecommendResponse)
+async def recommend(req: RecommendRequest):
+    """피부 분석 결과를 받아 화장품 추천을 반환합니다."""
+    if not req.classification and not req.regression:
+        raise HTTPException(
+            status_code=400,
+            detail="classification 또는 regression 예측 결과가 필요합니다.",
+        )
+    return recommendation_engine.recommend(
+        classification=req.classification,
+        regression=req.regression,
+    )
+
+
+# ---------------------------------------------------------------------------
+# POST /analyze — 통합 엔드포인트 (분석 + 점수 + 추천)
+# ---------------------------------------------------------------------------
+@app.post("/analyze", response_model=AnalyzeResponse)
+async def analyze(file: UploadFile = File(...)):
+    """이미지 업로드 → 피부 분석 + 종합 점수 + 화장품 추천 원샷 처리."""
+    # 1. Decode image
+    contents = await file.read()
+    nparr = np.frombuffer(contents, np.uint8)
+    img_bgr = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
+    if img_bgr is None:
+        raise HTTPException(status_code=400, detail="이미지를 디코딩할 수 없습니다.")
+
+    img_rgb = cv2.cvtColor(img_bgr, cv2.COLOR_BGR2RGB)
+
+    # 2. Detect face landmarks
+    landmarks = detect_landmarks(img_rgb)
+    if landmarks is None:
+        raise HTTPException(
+            status_code=422,
+            detail="얼굴을 감지할 수 없습니다. 정면 얼굴 사진을 사용해 주세요.",
+        )
+
+    # 3. Crop all needed faceparts (union of class + regression)
+    all_fp_ids: set[int] = set()
+    for parts in CLASS_FACEPART_MAP.values():
+        for fp_id, _ in parts:
+            all_fp_ids.add(fp_id)
+    for parts in REGRESSION_FACEPART_MAP.values():
+        for fp_id, _ in parts:
+            all_fp_ids.add(fp_id)
+
+    crop_cache: dict[int, np.ndarray | None] = {}
+    for fp_id in all_fp_ids:
+        crop_cache[fp_id] = crop_facepart(img_rgb, landmarks, fp_id)
+
+    # 4. Run classification inference
+    warnings: list[str] = []
+    class_predictions: dict = {}
+    class_models = loaded_models.get("class", {})
+
+    for model_name, parts in CLASS_FACEPART_MAP.items():
+        model = class_models.get(model_name)
+        if model is None:
+            warnings.append(f"{model_name} 분류 모델이 로드되지 않았습니다.")
+            continue
+        part_results = {}
+        for fp_id, area_label in parts:
+            crop = crop_cache.get(fp_id)
+            if crop is None:
+                warnings.append(f"{model_name}/{area_label} 부위를 크롭할 수 없습니다.")
+                continue
+            tensor = preprocess(crop)
+            part_results[area_label] = classify(model, tensor)
+        if part_results:
+            class_predictions[model_name] = part_results
+
+    # 5. Run regression inference
+    reg_predictions: dict = {}
+    reg_models = loaded_models.get("regression", {})
+
+    for model_name, parts in REGRESSION_FACEPART_MAP.items():
+        model = reg_models.get(model_name)
+        if model is None:
+            warnings.append(f"{model_name} 회귀 모델이 로드되지 않았습니다.")
+            continue
+        part_results = {}
+        for fp_id, area_label in parts:
+            crop = crop_cache.get(fp_id)
+            if crop is None:
+                warnings.append(f"{model_name}/{area_label} 부위를 크롭할 수 없습니다.")
+                continue
+            tensor = preprocess(crop)
+            part_results[area_label] = regress(model, tensor, model_name)
+        if part_results:
+            reg_predictions[model_name] = part_results
+
+    # 6. Compute skin score
+    score = skin_score_calculator.calculate(class_predictions, reg_predictions)
+
+    # 7. Generate recommendations
+    recommendation = recommendation_engine.recommend(
+        classification=class_predictions,
+        regression=reg_predictions,
+    )
+
+    result = AnalyzeResponse(
+        score=score,
+        classification=class_predictions,
+        regression=reg_predictions,
+        recommendation=recommendation,
+        warnings=warnings if warnings else None,
+    )
     return result

@@ -1,0 +1,244 @@
+{
+  "_description": "성분-효능 매칭 매핑. 각 성분의 효능, 적합 피부타입, 주의사항 정의.",
+
+  "ingredients": {
+    "히알루론산": {
+      "name_en": "Hyaluronic Acid",
+      "effects": ["보습", "장벽강화"],
+      "suitable_skin_types": ["건성", "중성", "복합성", "민감성", "지성", "모든피부"],
+      "target_concerns": ["건조"],
+      "strength": "high",
+      "caution": null
+    },
+    "나이아신아마이드": {
+      "name_en": "Niacinamide",
+      "effects": ["미백", "모공관리", "피지조절"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["색소침착", "모공", "칙칙함"],
+      "strength": "high",
+      "caution": null
+    },
+    "레티놀": {
+      "name_en": "Retinol",
+      "effects": ["주름개선", "탄력", "각질관리"],
+      "suitable_skin_types": ["중성", "지성", "복합성"],
+      "target_concerns": ["주름", "탄력저하"],
+      "strength": "high",
+      "caution": "민감성 피부 주의, 자외선 차단 필수, 임산부 사용 금지"
+    },
+    "AHA": {
+      "name_en": "Alpha Hydroxy Acid",
+      "effects": ["각질관리", "모공관리"],
+      "suitable_skin_types": ["지성", "복합성", "중성"],
+      "target_concerns": ["모공", "칙칙함"],
+      "strength": "medium",
+      "caution": "민감성 피부 주의, 자외선 차단 필수"
+    },
+    "BHA": {
+      "name_en": "Beta Hydroxy Acid (Salicylic Acid)",
+      "effects": ["모공관리", "각질관리", "피지조절"],
+      "suitable_skin_types": ["지성", "복합성"],
+      "target_concerns": ["모공", "피지과다"],
+      "strength": "medium",
+      "caution": "건성/민감성 피부 주의"
+    },
+    "비타민C": {
+      "name_en": "Vitamin C (Ascorbic Acid)",
+      "effects": ["미백", "항산화"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["색소침착", "칙칙함"],
+      "strength": "high",
+      "caution": "고농도 시 민감성 피부 자극 가능"
+    },
+    "세라마이드": {
+      "name_en": "Ceramide",
+      "effects": ["보습", "장벽강화"],
+      "suitable_skin_types": ["건성", "민감성", "모든피부"],
+      "target_concerns": ["건조", "민감"],
+      "strength": "high",
+      "caution": null
+    },
+    "펩타이드": {
+      "name_en": "Peptide",
+      "effects": ["탄력", "주름개선"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["탄력저하", "주름"],
+      "strength": "high",
+      "caution": null
+    },
+    "콜라겐": {
+      "name_en": "Collagen",
+      "effects": ["탄력", "보습"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["탄력저하"],
+      "strength": "medium",
+      "caution": null
+    },
+    "알로에": {
+      "name_en": "Aloe Vera",
+      "effects": ["진정", "보습"],
+      "suitable_skin_types": ["민감성", "건성", "모든피부"],
+      "target_concerns": ["민감", "건조"],
+      "strength": "medium",
+      "caution": null
+    },
+    "티트리": {
+      "name_en": "Tea Tree",
+      "effects": ["진정", "모공관리", "피지조절"],
+      "suitable_skin_types": ["지성", "복합성", "민감성"],
+      "target_concerns": ["모공", "피지과다", "민감"],
+      "strength": "medium",
+      "caution": "고농도 시 건성 피부 자극 가능"
+    },
+    "스쿠알란": {
+      "name_en": "Squalane",
+      "effects": ["보습", "장벽강화"],
+      "suitable_skin_types": ["건성", "민감성", "모든피부"],
+      "target_concerns": ["건조"],
+      "strength": "medium",
+      "caution": null
+    },
+    "녹차추출물": {
+      "name_en": "Green Tea Extract",
+      "effects": ["항산화", "진정"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["민감", "칙칙함"],
+      "strength": "medium",
+      "caution": null
+    },
+    "아데노신": {
+      "name_en": "Adenosine",
+      "effects": ["주름개선"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["주름"],
+      "strength": "medium",
+      "caution": null
+    },
+    "알부틴": {
+      "name_en": "Arbutin",
+      "effects": ["미백"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["색소침착", "칙칙함"],
+      "strength": "medium",
+      "caution": null
+    },
+    "판테놀": {
+      "name_en": "Panthenol (Vitamin B5)",
+      "effects": ["진정", "보습", "장벽강화"],
+      "suitable_skin_types": ["민감성", "건성", "모든피부"],
+      "target_concerns": ["민감", "건조"],
+      "strength": "medium",
+      "caution": null
+    },
+    "프로폴리스": {
+      "name_en": "Propolis",
+      "effects": ["진정", "보습", "항산화"],
+      "suitable_skin_types": ["민감성", "건성", "모든피부"],
+      "target_concerns": ["민감", "건조"],
+      "strength": "medium",
+      "caution": "벌 알레르기 주의"
+    },
+    "센텔라아시아티카": {
+      "name_en": "Centella Asiatica (CICA)",
+      "effects": ["진정", "장벽강화"],
+      "suitable_skin_types": ["민감성", "모든피부"],
+      "target_concerns": ["민감"],
+      "strength": "high",
+      "caution": null
+    },
+    "글리세린": {
+      "name_en": "Glycerin",
+      "effects": ["보습"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["건조"],
+      "strength": "medium",
+      "caution": null
+    },
+    "어성초": {
+      "name_en": "Houttuynia Cordata",
+      "effects": ["진정", "피지조절"],
+      "suitable_skin_types": ["지성", "민감성"],
+      "target_concerns": ["민감", "피지과다"],
+      "strength": "medium",
+      "caution": null
+    },
+    "쌀추출물": {
+      "name_en": "Rice Extract",
+      "effects": ["미백", "보습"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["칙칙함"],
+      "strength": "low",
+      "caution": null
+    },
+    "달팽이뮤신": {
+      "name_en": "Snail Mucin",
+      "effects": ["보습", "탄력", "진정"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["건조", "탄력저하"],
+      "strength": "medium",
+      "caution": null
+    },
+    "마데카소사이드": {
+      "name_en": "Madecassoside",
+      "effects": ["진정", "장벽강화"],
+      "suitable_skin_types": ["민감성", "모든피부"],
+      "target_concerns": ["민감"],
+      "strength": "high",
+      "caution": null
+    },
+    "징크옥사이드": {
+      "name_en": "Zinc Oxide",
+      "effects": ["피지조절"],
+      "suitable_skin_types": ["지성", "복합성"],
+      "target_concerns": ["피지과다"],
+      "strength": "medium",
+      "caution": null
+    },
+    "트라넥삼산": {
+      "name_en": "Tranexamic Acid",
+      "effects": ["미백"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["색소침착"],
+      "strength": "high",
+      "caution": null
+    },
+    "카페인": {
+      "name_en": "Caffeine",
+      "effects": ["탄력"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["탄력저하"],
+      "strength": "low",
+      "caution": null
+    },
+    "시카": {
+      "name_en": "CICA (Centella Asiatica)",
+      "effects": ["진정", "장벽강화"],
+      "suitable_skin_types": ["민감성", "모든피부"],
+      "target_concerns": ["민감"],
+      "strength": "high",
+      "caution": null
+    },
+    "토코페롤": {
+      "name_en": "Tocopherol (Vitamin E)",
+      "effects": ["항산화", "보습"],
+      "suitable_skin_types": ["모든피부"],
+      "target_concerns": ["칙칙함"],
+      "strength": "medium",
+      "caution": null
+    }
+  },
+
+  "effect_to_ingredients": {
+    "_description": "효능별 추천 성분 (우선순위순)",
+    "보습": ["히알루론산", "세라마이드", "스쿠알란", "글리세린", "판테놀", "콜라겐"],
+    "미백": ["나이아신아마이드", "비타민C", "트라넥삼산", "알부틴", "쌀추출물"],
+    "주름개선": ["레티놀", "펩타이드", "아데노신"],
+    "탄력": ["펩타이드", "콜라겐", "레티놀", "카페인"],
+    "모공관리": ["나이아신아마이드", "BHA", "AHA", "티트리"],
+    "각질관리": ["AHA", "BHA", "레티놀"],
+    "진정": ["센텔라아시아티카", "알로에", "판테놀", "녹차추출물", "프로폴리스", "마데카소사이드"],
+    "항산화": ["비타민C", "녹차추출물", "토코페롤", "프로폴리스"],
+    "장벽강화": ["세라마이드", "판테놀", "센텔라아시아티카", "마데카소사이드", "스쿠알란"],
+    "피지조절": ["나이아신아마이드", "BHA", "티트리", "어성초", "징크옥사이드"]
+  }
+}
