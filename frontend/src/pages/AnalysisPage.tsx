@@ -51,7 +51,7 @@ export default function AnalysisPage() {
         <button
           type="button"
           onClick={handleGoHome}
-          className="rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white"
+          className="rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white"
         >
           홈으로 돌아가기
         </button>
@@ -79,7 +79,7 @@ export default function AnalysisPage() {
           type="button"
           onClick={handleAnalyze}
           disabled={!selectedFile || loading}
-          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#3182F6] py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] disabled:opacity-50 transition-all active:brightness-95"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#5B8CFF] py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] disabled:opacity-50 transition-all active:brightness-95"
         >
           {loading ? "분석 중..." : "AI 피부 분석 시작"}
         </button>

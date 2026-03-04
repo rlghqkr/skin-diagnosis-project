@@ -46,8 +46,8 @@ export default function SkinRadarChart({ categories }: Props) {
           <Radar
             name="피부 점수"
             dataKey="score"
-            stroke="#3182F6"
-            fill="#3182F6"
+            stroke="#5B8CFF"
+            fill="#5B8CFF"
             fillOpacity={0.15}
             strokeWidth={2}
           />

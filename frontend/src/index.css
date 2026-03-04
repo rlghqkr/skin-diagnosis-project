@@ -2,20 +2,22 @@
 @import "tailwindcss";
 
 @theme {
-  --color-toss-blue: #3182F6;
-  --color-toss-blue-light: #E8F3FF;
+  --color-primary: #5B8CFF;
+  --color-primary-dark: #4A75E0;
+  --color-primary-light: #EBF1FF;
+  --color-accent: #7ED7C1;
+  --color-bg: #F7F9FC;
   --color-toss-text: #191F28;
   --color-toss-text-secondary: #8B95A1;
   --color-toss-text-tertiary: #B0B8C1;
   --color-toss-text-disabled: #D1D6DB;
-  --color-toss-bg: #FFFFFF;
+  --color-toss-bg: #F7F9FC;
   --color-toss-surface: #F2F4F6;
   --color-toss-border: #E5E8EB;
   --color-toss-divider: #F2F4F6;
   --color-toss-error: #F04452;
   --color-toss-success: #30D158;
   --color-toss-warning: #FF9F0A;
-  --color-accent: #3182F6;
   --color-surface: #FFFFFF;
   --color-surface-elevated: #F2F4F6;
   --color-border: #E5E8EB;
@@ -34,7 +36,7 @@ html {
 }
 
 body {
-  background-color: #FFFFFF;
+  background-color: #F7F9FC;
   color: #191F28;
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -75,11 +77,11 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(49, 130, 246, 0.15);
+  background: rgba(91, 140, 255, 0.15);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(49, 130, 246, 0.3);
+  background: rgba(91, 140, 255, 0.3);
 }
 
 /* ── Brand Font ── */
@@ -118,6 +120,11 @@ body {
   100% { opacity: 1; transform: scale(1); }
 }
 
+@keyframes slide-up {
+  0% { transform: translateY(100%); }
+  100% { transform: translateY(0); }
+}
+
 /* ── Utility Animation Classes ── */
 .animate-float-in {
   animation: float-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
@@ -127,12 +134,16 @@ body {
   animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-/* ── Card System (Toss) ── */
+.animate-slide-up {
+  animation: slide-up 0.35s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+/* ── Card System ── */
 .card {
   background: #FFFFFF;
   border: 1px solid #F2F4F6;
   border-radius: 16px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
 }
 
 .card-hover {
@@ -145,19 +156,32 @@ body {
 
 /* ── Gradient Text ── */
 .gradient-text {
-  color: #3182F6;
+  background: linear-gradient(135deg, #5B8CFF, #7ED7C1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* ── Primary Button (Toss Blue) ── */
+/* ── Primary Button (Gradient) ── */
 .btn-primary {
-  background: #3182F6;
+  background: linear-gradient(135deg, #5B8CFF, #4A75E0);
   color: #FFFFFF;
   border-radius: 16px;
-  transition: background-color 0.2s, box-shadow 0.2s;
+  transition: box-shadow 0.2s, transform 0.2s;
 }
 .btn-primary:hover {
-  background: #1B6AE0;
-  box-shadow: 0 4px 16px rgba(49, 130, 246, 0.3);
+  box-shadow: 0 4px 16px rgba(91, 140, 255, 0.3);
+}
+
+/* ── Gradient Button (Blue → Mint) ── */
+.btn-gradient {
+  background: linear-gradient(135deg, #5B8CFF, #7ED7C1);
+  color: #FFFFFF;
+  border-radius: 16px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.btn-gradient:hover {
+  box-shadow: 0 4px 16px rgba(91, 140, 255, 0.3);
 }
 
 /* ── Staggered children animation ── */

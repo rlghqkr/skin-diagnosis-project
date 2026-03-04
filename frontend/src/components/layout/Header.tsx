@@ -15,8 +15,8 @@ export default function Header() {
           to="/"
           className="group flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E8F3FF]">
-            <div className="h-2.5 w-2.5 rounded-full bg-[#3182F6]" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EBF1FF]">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#5B8CFF]" />
           </div>
           <h1 className="font-brand text-lg text-[#191F28]">
             SkinNerd AI

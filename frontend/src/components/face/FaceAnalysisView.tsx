@@ -77,7 +77,7 @@ function getRegionColor(result: PredictResponse, region: string): string {
     const val = firstMetric?.[region] as ClassificationResult | undefined;
     if (val) return gradeColor(val.grade);
   }
-  return "#3182F6";
+  return "#5B8CFF";
 }
 
 export default function FaceAnalysisView({ previewUrl, result, selectedRegion, onSelectRegion }: Props) {
@@ -105,7 +105,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
             const isSelected = selectedRegion === region;
             const isActive = isHovered || isSelected;
             const hasResult = result !== null;
-            const color = hasResult ? getRegionColor(result, region) : "#3182F6";
+            const color = hasResult ? getRegionColor(result, region) : "#5B8CFF";
             const summary = hasResult ? getSummary(result, region) : [];
             const dots = hasResult ? getMetricDots(result, region) : [];
 
@@ -207,7 +207,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
             {Object.entries(FACE_REGION_POSITIONS).map(([region]) => {
               const isSelected = selectedRegion === region;
               const hasResult = result !== null;
-              const color = hasResult ? getRegionColor(result, region) : "#3182F6";
+              const color = hasResult ? getRegionColor(result, region) : "#5B8CFF";
               const dots = hasResult ? getMetricDots(result, region) : [];
 
               return (

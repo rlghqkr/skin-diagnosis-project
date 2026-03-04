@@ -7,8 +7,8 @@ export default function ResultsPage() {
   return (
     <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
       <div className="animate-float-in flex flex-col items-center text-center">
-        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E8F3FF]">
-          <BarChart3 size={28} className="text-[#3182F6]" />
+        <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
+          <BarChart3 size={28} className="text-[#5B8CFF]" />
         </div>
 
         <h2 className="mb-2 text-xl font-bold text-[#191F28]">
@@ -22,7 +22,7 @@ export default function ResultsPage() {
         <button
           type="button"
           onClick={() => navigate("/")}
-          className="flex items-center gap-2.5 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
+          className="flex items-center gap-2.5 rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
         >
           <RotateCcw size={16} />
           분석 시작하기

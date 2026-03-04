@@ -21,7 +21,7 @@ const SEVERITY_LABELS: Record<string, string> = {
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
-  low: "text-[#3182F6] bg-[#E8F3FF]",
+  low: "text-[#5B8CFF] bg-[#EBF1FF]",
   moderate: "text-[#FF9F0A] bg-[#FFF8E1]",
   high: "text-[#F04452] bg-[#FFF0F0]",
 };
@@ -55,8 +55,8 @@ export default function RecommendationsPage() {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E8F3FF]">
-            <ShoppingBag size={28} className="text-[#3182F6]" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
+            <ShoppingBag size={28} className="text-[#5B8CFF]" />
           </div>
           <h2 className="mb-2 text-xl font-bold text-[#191F28]">
             맞춤 추천
@@ -68,7 +68,7 @@ export default function RecommendationsPage() {
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="flex items-center gap-2.5 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
+            className="flex items-center gap-2.5 rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
           >
             <Sparkles size={16} />
             분석 시작하기
@@ -92,8 +92,8 @@ export default function RecommendationsPage() {
 
       {/* Skin type badge */}
       <div className="mb-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E8F3FF]">
-          <Sparkles size={14} className="text-[#3182F6]" />
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EBF1FF]">
+          <Sparkles size={14} className="text-[#5B8CFF]" />
         </div>
         <div>
           <p className="text-xs text-[#8B95A1]">피부 타입</p>
@@ -145,7 +145,7 @@ export default function RecommendationsPage() {
                   {concern.recommended_ingredients.map((ing) => (
                     <span
                       key={ing.name_ko}
-                      className="rounded-full bg-[#E8F3FF] px-2.5 py-1 text-[10px] font-medium text-[#3182F6]"
+                      className="rounded-full bg-[#EBF1FF] px-2.5 py-1 text-[10px] font-medium text-[#5B8CFF]"
                       title={ing.benefit}
                     >
                       {ing.name_ko}

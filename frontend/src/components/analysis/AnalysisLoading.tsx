@@ -43,25 +43,25 @@ export default function AnalysisLoading({ imageUrl }: Props) {
         {/* Face scan animation */}
         <div className="relative mb-8">
           {imageUrl ? (
-            <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-[#3182F6]/30">
+            <div className="relative h-32 w-32 overflow-hidden rounded-full border-2 border-[#5B8CFF]/30">
               <img
                 src={imageUrl}
                 alt="분석 중"
                 className="h-full w-full object-cover"
               />
               <div
-                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#3182F6] to-transparent"
+                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#5B8CFF] to-transparent"
                 style={{
                   animation: "scan-line 2s ease-in-out infinite",
                 }}
               />
             </div>
           ) : (
-            <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-2 border-[#3182F6]/30 bg-[#E8F3FF]">
-              <div className="absolute inset-0 rounded-full border-2 border-[#3182F6]/20 animate-ping" />
-              <div className="h-16 w-16 rounded-full border border-[#3182F6]/20 bg-[#3182F6]/5" />
+            <div className="relative flex h-32 w-32 items-center justify-center rounded-full border-2 border-[#5B8CFF]/30 bg-[#EBF1FF]">
+              <div className="absolute inset-0 rounded-full border-2 border-[#5B8CFF]/20 animate-ping" />
+              <div className="h-16 w-16 rounded-full border border-[#5B8CFF]/20 bg-[#5B8CFF]/5" />
               <div
-                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#3182F6] to-transparent"
+                className="absolute left-0 right-0 h-0.5 bg-gradient-to-r from-transparent via-[#5B8CFF] to-transparent"
                 style={{
                   animation: "scan-line 2s ease-in-out infinite",
                 }}
@@ -78,7 +78,7 @@ export default function AnalysisLoading({ imageUrl }: Props) {
         {/* Progress bar */}
         <div className="mb-3 h-1.5 w-full overflow-hidden rounded-full bg-[#F2F4F6]">
           <div
-            className="h-full rounded-full bg-[#3182F6] transition-all duration-300 ease-out"
+            className="h-full rounded-full bg-[#5B8CFF] transition-all duration-300 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>
@@ -94,7 +94,7 @@ export default function AnalysisLoading({ imageUrl }: Props) {
             <div
               key={i}
               className={`h-1 w-6 rounded-full transition-all duration-500 ${
-                i <= currentStep ? "bg-[#3182F6]" : "bg-[#E5E8EB]"
+                i <= currentStep ? "bg-[#5B8CFF]" : "bg-[#E5E8EB]"
               }`}
             />
           ))}

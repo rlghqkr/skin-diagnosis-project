@@ -68,8 +68,8 @@ export default function ProductDetailModal({ product, onClose }: Props) {
           {/* Score & Price */}
           <div className="mb-6 flex items-center gap-4">
             <div className="flex items-center gap-1.5">
-              <Star size={16} className="text-[#3182F6]" fill="currentColor" />
-              <span className="text-sm font-bold text-[#3182F6]">
+              <Star size={16} className="text-[#5B8CFF]" fill="currentColor" />
+              <span className="text-sm font-bold text-[#5B8CFF]">
                 적합도 {Math.round(product.match_score)}%
               </span>
             </div>
@@ -87,7 +87,7 @@ export default function ProductDetailModal({ product, onClose }: Props) {
               <div className="space-y-2.5">
                 {product.match_reasons.map((reason, i) => (
                   <div key={i} className="flex gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#E8F3FF] text-[10px] font-bold text-[#3182F6]">
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#EBF1FF] text-[10px] font-bold text-[#5B8CFF]">
                       {i + 1}
                     </span>
                     <p className="text-sm leading-relaxed text-[#4E5968]">

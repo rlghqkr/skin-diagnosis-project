@@ -150,7 +150,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
             <button
               type="button"
               onClick={() => startCamera(facingMode)}
-              className="flex items-center justify-center gap-2 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
             >
               <RefreshCw size={16} />
               다시 시도
@@ -207,7 +207,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
           <button
             type="button"
             onClick={handleConfirm}
-            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#3182F6] py-4 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#5B8CFF] py-4 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
           >
             <Check size={16} />
             이 사진으로 분석
@@ -239,7 +239,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
         {state === "initializing" && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/60">
             <div className="flex flex-col items-center gap-3">
-              <div className="h-8 w-8 rounded-full border-2 border-[#E5E8EB] border-t-[#3182F6] animate-spin" />
+              <div className="h-8 w-8 rounded-full border-2 border-[#E5E8EB] border-t-[#5B8CFF] animate-spin" />
               <p className="text-sm text-white/60">카메라 준비 중...</p>
             </div>
           </div>
@@ -260,9 +260,9 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
           type="button"
           onClick={handleCapture}
           disabled={state !== "ready"}
-          className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#3182F6] bg-white transition-transform active:scale-90 disabled:border-[#E5E8EB] disabled:bg-[#F2F4F6]"
+          className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#5B8CFF] bg-white transition-transform active:scale-90 disabled:border-[#E5E8EB] disabled:bg-[#F2F4F6]"
         >
-          <div className="h-12 w-12 rounded-full bg-[#3182F6] disabled:bg-[#E5E8EB]" />
+          <div className="h-12 w-12 rounded-full bg-[#5B8CFF] disabled:bg-[#E5E8EB]" />
         </button>
 
         <button

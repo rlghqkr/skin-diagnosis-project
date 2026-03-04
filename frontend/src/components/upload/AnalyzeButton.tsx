@@ -17,7 +17,7 @@ export default function AnalyzeButton({ onClick, loading, disabled }: Props) {
         "flex w-full items-center justify-center gap-2.5 rounded-2xl px-14 py-4 min-h-[52px] text-base font-semibold transition-all",
         disabled || loading
           ? "bg-[#F2F4F6] cursor-not-allowed text-[#8B95A1]"
-          : "bg-[#3182F6] text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] active:brightness-95",
+          : "bg-[#5B8CFF] text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] active:brightness-95",
       )}
     >
       {loading ? (

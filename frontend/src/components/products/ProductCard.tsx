@@ -56,8 +56,8 @@ export default function ProductCard({ product, onSelect }: Props) {
           )}
 
           <div className="flex items-center gap-1">
-            <Star size={12} className="text-[#3182F6]" fill="currentColor" />
-            <span className="text-xs font-semibold text-[#3182F6]">
+            <Star size={12} className="text-[#5B8CFF]" fill="currentColor" />
+            <span className="text-xs font-semibold text-[#5B8CFF]">
               {Math.round(product.match_score)}%
             </span>
           </div>

@@ -24,7 +24,7 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
       <div
         className={clsx(
           "group relative flex w-full min-h-[48px] cursor-pointer items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all",
-          dragging && "!bg-[#E8F3FF]",
+          dragging && "!bg-[#EBF1FF]",
         )}
         onClick={() => inputRef.current?.click()}
         onDragOver={(e) => {
@@ -45,7 +45,7 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
           className="hidden"
           onChange={(e) => handleFile(e.target.files?.[0])}
         />
-        <Upload size={16} className="text-[#8B95A1] transition-colors group-hover:text-[#3182F6]" />
+        <Upload size={16} className="text-[#8B95A1] transition-colors group-hover:text-[#5B8CFF]" />
         <span className="text-xs font-medium text-[#8B95A1] transition-colors group-hover:text-[#4E5968]">
           다른 이미지로 교체
         </span>
@@ -59,8 +59,8 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
       className={clsx(
         "group relative flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#E5E8EB] bg-[#F2F4F6] p-8 transition-all duration-300",
         dragging
-          ? "!border-[#3182F6] !bg-[#E8F3FF] scale-[1.01]"
-          : "hover:!border-[#3182F6] hover:!bg-[#E8F3FF]/50",
+          ? "!border-[#5B8CFF] !bg-[#EBF1FF] scale-[1.01]"
+          : "hover:!border-[#5B8CFF] hover:!bg-[#EBF1FF]/50",
       )}
       onClick={() => inputRef.current?.click()}
       onDragOver={(e) => {
@@ -83,10 +83,10 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
       />
 
       <div className="relative mb-6">
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E8F3FF]">
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
           <ImagePlus
             size={28}
-            className="text-[#3182F6]/50 transition-colors duration-300 group-hover:text-[#3182F6]"
+            className="text-[#5B8CFF]/50 transition-colors duration-300 group-hover:text-[#5B8CFF]"
           />
         </div>
       </div>

@@ -85,8 +85,8 @@ export default function OnboardingPage() {
       <div className="flex flex-1 flex-col items-center justify-center px-8">
         <div key={currentSlide} className="animate-float-in flex flex-col items-center text-center">
           {/* Icon */}
-          <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-[#E8F3FF]">
-            <Icon size={36} className="text-[#3182F6]" />
+          <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-[#EBF1FF]">
+            <Icon size={36} className="text-[#5B8CFF]" />
           </div>
 
           {/* Title */}
@@ -111,7 +111,7 @@ export default function OnboardingPage() {
               className={clsx(
                 "h-1.5 rounded-full transition-all duration-300",
                 i === currentSlide
-                  ? "w-6 bg-[#3182F6]"
+                  ? "w-6 bg-[#5B8CFF]"
                   : "w-1.5 bg-[#E5E8EB]",
               )}
             />
@@ -132,7 +132,7 @@ export default function OnboardingPage() {
           <button
             type="button"
             onClick={handleNext}
-            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-[#3182F6] text-base font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] active:brightness-95 transition-all"
+            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-[#5B8CFF] text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] active:brightness-95 transition-all"
           >
             {isLast ? (
               <>
