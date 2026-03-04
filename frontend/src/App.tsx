@@ -45,7 +45,7 @@ function OnboardingGuard() {
 
 function AppShell() {
   return (
-    <div className="relative flex min-h-[100dvh] flex-col bg-dark-950 pb-16">
+    <div className="relative flex min-h-[100dvh] flex-col bg-white pb-16">
       <Header />
 
       <main className="relative z-10 w-full flex-1">

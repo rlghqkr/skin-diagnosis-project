@@ -77,7 +77,7 @@ function getRegionColor(result: PredictResponse, region: string): string {
     const val = firstMetric?.[region] as ClassificationResult | undefined;
     if (val) return gradeColor(val.grade);
   }
-  return "#e89ab5";
+  return "#3182F6";
 }
 
 export default function FaceAnalysisView({ previewUrl, result, selectedRegion, onSelectRegion }: Props) {
@@ -91,27 +91,26 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
     <div className="flex justify-center">
       <div className="relative w-full">
           {/* Image with frame */}
-          <div className="glass-card overflow-hidden rounded-2xl p-0.5">
+          <div className="overflow-hidden rounded-2xl border border-[#E5E8EB] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
             <img
               src={previewUrl}
               alt="얼굴 분석"
-              className="w-full rounded-[10px] object-contain"
+              className="w-full object-contain"
             />
           </div>
 
-          {/* Region overlays — positioned as % of the image container */}
+          {/* Region overlays */}
           {Object.entries(FACE_REGION_POSITIONS).map(([region, pos]) => {
             const isHovered = hoveredRegion === region;
             const isSelected = selectedRegion === region;
             const isActive = isHovered || isSelected;
             const hasResult = result !== null;
-            const color = hasResult ? getRegionColor(result, region) : "#e89ab5";
+            const color = hasResult ? getRegionColor(result, region) : "#3182F6";
             const summary = hasResult ? getSummary(result, region) : [];
             const dots = hasResult ? getMetricDots(result, region) : [];
 
             return (
               <div key={region}>
-                {/* Overlay rectangle */}
                 <div
                   className="absolute cursor-pointer transition-all duration-300 ease-out"
                   style={{
@@ -147,19 +146,18 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                     className="whitespace-nowrap rounded-xl px-3.5 py-2 text-xs transition-all duration-300"
                     style={{
                       backgroundColor: isActive
-                        ? "rgba(10, 10, 16, 0.95)"
-                        : "rgba(10, 10, 16, 0.7)",
-                      border: `1px solid ${isActive ? `${color}50` : "rgba(255,255,255,0.06)"}`,
+                        ? "rgba(255, 255, 255, 0.98)"
+                        : "rgba(255, 255, 255, 0.9)",
+                      border: `1px solid ${isActive ? `${color}50` : "#E5E8EB"}`,
                       boxShadow: isActive
-                        ? `0 4px 20px rgba(0,0,0,0.4), 0 0 15px ${color}15`
-                        : "none",
-                      backdropFilter: "blur(20px)",
+                        ? `0 4px 20px rgba(0,0,0,0.1), 0 0 15px ${color}15`
+                        : "0 2px 8px rgba(0,0,0,0.06)",
                     }}
                   >
                     <div className="flex items-center gap-2">
                       <span
-                        className="font-medium tracking-wide"
-                        style={{ color: isActive ? color : "#e8d0a8" }}
+                        className="font-semibold"
+                        style={{ color: isActive ? color : "#191F28" }}
                       >
                         {FACEPART_LABELS[region] ?? region}
                       </span>
@@ -180,9 +178,9 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                       )}
                     </div>
                     {hasResult && isActive && summary.length > 0 && (
-                      <div className="mt-1.5 space-y-0.5 border-t border-white/5 pt-1.5">
+                      <div className="mt-1.5 space-y-0.5 border-t border-[#E5E8EB] pt-1.5">
                         {summary.map((line, i) => (
-                          <div key={i} className="text-[11px] font-light text-white/50">
+                          <div key={i} className="text-[11px] text-[#4E5968]">
                             {line}
                           </div>
                         ))}
@@ -193,7 +191,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                   <div
                     className="absolute top-1/2 h-px w-4 transition-colors duration-300"
                     style={{
-                      backgroundColor: isActive ? `${color}60` : "rgba(255,255,255,0.08)",
+                      backgroundColor: isActive ? `${color}60` : "#E5E8EB",
                       ...(pos.labelSide === "left"
                         ? { right: "-16px" }
                         : { left: "-16px" }),
@@ -209,7 +207,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
             {Object.entries(FACE_REGION_POSITIONS).map(([region]) => {
               const isSelected = selectedRegion === region;
               const hasResult = result !== null;
-              const color = hasResult ? getRegionColor(result, region) : "#e89ab5";
+              const color = hasResult ? getRegionColor(result, region) : "#3182F6";
               const dots = hasResult ? getMetricDots(result, region) : [];
 
               return (
@@ -218,12 +216,12 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                   type="button"
                   className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition-all"
                   style={{
-                    backgroundColor: isSelected ? `${color}15` : "rgba(255,255,255,0.03)",
-                    border: `1px solid ${isSelected ? `${color}50` : "rgba(255,255,255,0.06)"}`,
+                    backgroundColor: isSelected ? `${color}15` : "#F2F4F6",
+                    border: `1px solid ${isSelected ? `${color}50` : "#E5E8EB"}`,
                   }}
                   onClick={() => handleRegionClick(region)}
                 >
-                  <span style={{ color: isSelected ? color : "#e8d0a8" }} className="font-medium">
+                  <span style={{ color: isSelected ? color : "#191F28" }} className="font-medium">
                     {FACEPART_LABELS[region] ?? region}
                   </span>
                   {hasResult && dots.length > 0 && (
@@ -243,9 +241,9 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
           </div>
           {/* Mobile selected region detail */}
           {selectedRegion && result && (
-            <div className="mt-2 rounded-xl border border-white/[0.06] bg-dark-900/80 p-3 sm:hidden">
+            <div className="mt-2 rounded-xl border border-[#E5E8EB] bg-white p-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)] sm:hidden">
               {getSummary(result, selectedRegion).map((line, i) => (
-                <div key={i} className="text-[11px] font-light text-white/50">
+                <div key={i} className="text-[11px] text-[#4E5968]">
                   {line}
                 </div>
               ))}

@@ -1,29 +1,24 @@
+@import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css');
 @import "tailwindcss";
 
 @theme {
-  --color-dark-950: #06060a;
-  --color-dark-900: #0a0a10;
-  --color-dark-800: #111118;
-  --color-dark-700: #1a1a28;
-  --color-dark-600: #252538;
-  --color-dark-500: #2e2e48;
-  --color-rose-300: #f0b8cc;
-  --color-rose-400: #e89ab5;
-  --color-rose-500: #d4789a;
-  --color-rose-600: #b85a7e;
-  --color-cream-100: #faf5ef;
-  --color-cream-200: #f0e6d8;
-  --color-cream-300: #e0d0be;
-  --color-gold-300: #e8d0a8;
-  --color-gold-400: #d4b078;
-  --color-gold-500: #c49860;
-  --color-gold-600: #a87d48;
-  --color-accent: #d4789a;
-  --color-accent-light: #f0b8cc;
-  --color-surface: #111118;
-  --color-surface-elevated: #1a1a28;
-  --color-border: rgba(255, 255, 255, 0.06);
-  --color-border-accent: rgba(212, 120, 154, 0.2);
+  --color-toss-blue: #3182F6;
+  --color-toss-blue-light: #E8F3FF;
+  --color-toss-text: #191F28;
+  --color-toss-text-secondary: #8B95A1;
+  --color-toss-text-tertiary: #B0B8C1;
+  --color-toss-text-disabled: #D1D6DB;
+  --color-toss-bg: #FFFFFF;
+  --color-toss-surface: #F2F4F6;
+  --color-toss-border: #E5E8EB;
+  --color-toss-divider: #F2F4F6;
+  --color-toss-error: #F04452;
+  --color-toss-success: #30D158;
+  --color-toss-warning: #FF9F0A;
+  --color-accent: #3182F6;
+  --color-surface: #FFFFFF;
+  --color-surface-elevated: #F2F4F6;
+  --color-border: #E5E8EB;
 }
 
 /* ── Base ── */
@@ -39,8 +34,8 @@ html {
 }
 
 body {
-  background-color: var(--color-dark-950);
-  color: #e8e4de;
+  background-color: #FFFFFF;
+  color: #191F28;
   font-family: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -59,20 +54,6 @@ body {
 @media (max-width: 640px) {
   ::-webkit-scrollbar { display: none; }
   * { scrollbar-width: none; }
-}
-
-/* ── Disable hover effects on touch devices ── */
-@media (hover: none) {
-  .card-hover:hover {
-    border-color: var(--color-border);
-    background: var(--color-surface);
-    transform: none;
-    box-shadow: none;
-  }
-  .btn-primary:hover {
-    transform: none;
-    box-shadow: none;
-  }
 }
 
 /* ── Horizontal scroll snap ── */
@@ -94,38 +75,23 @@ body {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(212, 120, 154, 0.2);
+  background: rgba(49, 130, 246, 0.15);
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(212, 120, 154, 0.4);
+  background: rgba(49, 130, 246, 0.3);
 }
 
 /* ── Brand Font ── */
 .font-brand {
-  font-weight: 200;
-  letter-spacing: 0.1em;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 /* ── Preloader Animations ── */
-@keyframes preloader-reveal {
-  0% { clip-path: inset(0 100% 0 0); }
-  100% { clip-path: inset(0 0% 0 0); }
-}
-
-@keyframes preloader-line-grow {
-  0% { transform: scaleX(0); }
-  100% { transform: scaleX(1); }
-}
-
 @keyframes preloader-fade-up {
   0% { opacity: 0; transform: translateY(30px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes preloader-exit {
-  0% { opacity: 1; }
-  100% { opacity: 0; transform: scale(1.05); }
 }
 
 @keyframes scan-line {
@@ -154,50 +120,37 @@ body {
   animation: scale-in 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
-.animate-preloader-exit {
-  animation: preloader-exit 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-}
-
-/* ── Card System ── */
+/* ── Card System (Toss) ── */
 .card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  border-radius: 12px;
+  background: #FFFFFF;
+  border: 1px solid #F2F4F6;
+  border-radius: 16px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
 }
 
 .card-hover {
-  transition: border-color 0.2s, background-color 0.2s;
+  transition: box-shadow 0.2s, border-color 0.2s;
 }
 .card-hover:hover {
-  border-color: var(--color-border-accent);
-  background: var(--color-surface-elevated);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  border-color: #E5E8EB;
 }
 
-/* ── Glass Card (limited use: upload hero + face frame) ── */
-.glass-card {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.04) 0%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-  border: 1px solid rgba(255, 255, 255, 0.06);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-}
-
-/* ── Gradient Text (solid) ── */
+/* ── Gradient Text ── */
 .gradient-text {
-  color: var(--color-accent);
+  color: #3182F6;
 }
 
-/* ── Primary Button (solid) ── */
+/* ── Primary Button (Toss Blue) ── */
 .btn-primary {
-  background: var(--color-rose-500);
+  background: #3182F6;
+  color: #FFFFFF;
+  border-radius: 16px;
   transition: background-color 0.2s, box-shadow 0.2s;
 }
 .btn-primary:hover {
-  background: var(--color-rose-600);
-  box-shadow: 0 4px 12px rgba(212, 120, 154, 0.15);
+  background: #1B6AE0;
+  box-shadow: 0 4px 16px rgba(49, 130, 246, 0.3);
 }
 
 /* ── Staggered children animation ── */

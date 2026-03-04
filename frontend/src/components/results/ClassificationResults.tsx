@@ -26,7 +26,7 @@ export default function ClassificationResults({ predictions }: Props) {
                     <GradeBadge grade={result.grade} />
                   </div>
                   <GradeBar probabilities={result.probabilities} />
-                  <div className="mt-1 flex justify-between text-[9px] font-light text-white/20">
+                  <div className="mt-1 flex justify-between text-[9px] text-[#8B95A1]">
                     {result.probabilities.map((p, i) => (
                       <span key={i}>{(p * 100).toFixed(0)}%</span>
                     ))}

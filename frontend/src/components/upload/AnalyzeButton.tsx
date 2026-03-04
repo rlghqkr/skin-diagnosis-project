@@ -14,15 +14,15 @@ export default function AnalyzeButton({ onClick, loading, disabled }: Props) {
       disabled={disabled || loading}
       onClick={onClick}
       className={clsx(
-        "btn-primary group flex w-full items-center justify-center gap-2.5 rounded-xl px-14 py-4 min-h-[52px] text-base font-medium tracking-wide transition-all",
+        "flex w-full items-center justify-center gap-2.5 rounded-2xl px-14 py-4 min-h-[52px] text-base font-semibold transition-all",
         disabled || loading
-          ? "!bg-white/5 !shadow-none cursor-not-allowed text-white/20"
-          : "text-white shadow-lg shadow-rose-500/15",
+          ? "bg-[#F2F4F6] cursor-not-allowed text-[#8B95A1]"
+          : "bg-[#3182F6] text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] active:brightness-95",
       )}
     >
       {loading ? (
         <>
-          <div className="h-4 w-4 rounded-full border border-white/30 border-t-transparent animate-spin" />
+          <div className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
           분석 중...
         </>
       ) : (

@@ -18,23 +18,23 @@ export default function ProductDetailModal({ product, onClose }: Props) {
     <div className="fixed inset-0 z-50 flex items-end justify-center sm:items-center">
       {/* Backdrop */}
       <div
-        className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+        className="absolute inset-0 bg-black/40"
         onClick={onClose}
       />
 
       {/* Modal */}
-      <div className="relative z-10 w-full max-w-lg animate-float-in rounded-t-3xl bg-dark-900 sm:rounded-3xl sm:mx-4 max-h-[85dvh] overflow-y-auto">
+      <div className="relative z-10 w-full max-w-lg animate-float-in rounded-t-3xl bg-white sm:rounded-3xl sm:mx-4 max-h-[85dvh] overflow-y-auto">
         {/* Close button */}
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-white/5 text-white/40 transition-colors hover:bg-white/10"
+          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F2F4F6] text-[#4E5968] transition-colors hover:bg-[#E5E8EB]"
         >
           <X size={18} />
         </button>
 
         {/* Product image */}
-        <div className="aspect-square w-full overflow-hidden rounded-t-3xl bg-dark-800 sm:rounded-t-3xl">
+        <div className="aspect-square w-full overflow-hidden rounded-t-3xl bg-[#F2F4F6] sm:rounded-t-3xl">
           {product.image_url && !imgError ? (
             <img
               src={product.image_url}
@@ -43,7 +43,7 @@ export default function ProductDetailModal({ product, onClose }: Props) {
               onError={() => setImgError(true)}
             />
           ) : (
-            <div className="flex h-full w-full items-center justify-center text-sm text-white/20">
+            <div className="flex h-full w-full items-center justify-center text-sm text-[#8B95A1]">
               이미지를 불러올 수 없습니다
             </div>
           )}
@@ -53,28 +53,28 @@ export default function ProductDetailModal({ product, onClose }: Props) {
         <div className="p-6">
           {/* Brand & category */}
           <div className="mb-1 flex items-center gap-2">
-            <span className="text-xs font-medium tracking-wide text-white/30">
+            <span className="text-xs font-medium text-[#8B95A1]">
               {product.brand}
             </span>
-            <span className="text-white/10">|</span>
-            <span className="text-xs text-white/25">{product.category}</span>
+            <span className="text-[#E5E8EB]">|</span>
+            <span className="text-xs text-[#8B95A1]">{product.category}</span>
           </div>
 
           {/* Name */}
-          <h3 className="mb-3 text-lg font-semibold text-cream-200">
+          <h3 className="mb-3 text-lg font-bold text-[#191F28]">
             {product.name}
           </h3>
 
           {/* Score & Price */}
           <div className="mb-6 flex items-center gap-4">
             <div className="flex items-center gap-1.5">
-              <Star size={16} className="text-gold-400" fill="currentColor" />
-              <span className="text-sm font-semibold text-gold-400">
+              <Star size={16} className="text-[#3182F6]" fill="currentColor" />
+              <span className="text-sm font-bold text-[#3182F6]">
                 적합도 {Math.round(product.match_score)}%
               </span>
             </div>
             {product.price != null && (
-              <span className="text-sm font-semibold text-cream-200/80">
+              <span className="text-sm font-bold text-[#191F28]">
                 {formatPrice(product.price)}
               </span>
             )}
@@ -83,14 +83,14 @@ export default function ProductDetailModal({ product, onClose }: Props) {
           {/* Match reasons */}
           {product.match_reasons.length > 0 && (
             <div className="mb-6">
-              <h4 className="mb-3 text-sm font-medium text-white/50">추천 이유</h4>
+              <h4 className="mb-3 text-sm font-semibold text-[#191F28]">추천 이유</h4>
               <div className="space-y-2.5">
                 {product.match_reasons.map((reason, i) => (
                   <div key={i} className="flex gap-2.5">
-                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-rose-500/10 text-[10px] font-semibold text-rose-400/80">
+                    <span className="mt-0.5 flex h-5 w-5 flex-shrink-0 items-center justify-center rounded-full bg-[#E8F3FF] text-[10px] font-bold text-[#3182F6]">
                       {i + 1}
                     </span>
-                    <p className="text-sm font-light leading-relaxed text-white/50">
+                    <p className="text-sm leading-relaxed text-[#4E5968]">
                       {reason}
                     </p>
                   </div>
@@ -102,14 +102,14 @@ export default function ProductDetailModal({ product, onClose }: Props) {
           {/* Key ingredients */}
           {product.key_ingredients.length > 0 && (
             <div className="mb-6">
-              <h4 className="mb-3 text-sm font-medium text-white/50">주요 성분</h4>
+              <h4 className="mb-3 text-sm font-semibold text-[#191F28]">주요 성분</h4>
               <div className="flex flex-wrap gap-2">
                 {product.key_ingredients.map((ingredient) => (
                   <span
                     key={ingredient}
-                    className="flex items-center gap-1.5 rounded-full bg-white/[0.04] px-3 py-1.5 text-xs text-white/50"
+                    className="flex items-center gap-1.5 rounded-full bg-[#F2F4F6] px-3 py-1.5 text-xs text-[#4E5968]"
                   >
-                    <Check size={10} className="text-emerald-400/60" />
+                    <Check size={10} className="text-[#34C759]" />
                     {ingredient}
                   </span>
                 ))}

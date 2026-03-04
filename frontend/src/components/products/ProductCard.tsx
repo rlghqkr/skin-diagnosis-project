@@ -18,10 +18,10 @@ export default function ProductCard({ product, onSelect }: Props) {
     <button
       type="button"
       onClick={() => onSelect(product)}
-      className="card card-hover flex w-full gap-4 rounded-2xl p-4 text-left transition-all"
+      className="flex w-full gap-4 rounded-2xl bg-white p-4 text-left shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all active:scale-[0.98]"
     >
       {/* Product image */}
-      <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-dark-800">
+      <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-[#F2F4F6]">
         {product.image_url && !imgError ? (
           <img
             src={product.image_url}
@@ -30,7 +30,7 @@ export default function ProductCard({ product, onSelect }: Props) {
             onError={() => setImgError(true)}
           />
         ) : (
-          <div className="flex h-full w-full items-center justify-center text-xs text-white/20">
+          <div className="flex h-full w-full items-center justify-center text-xs text-[#8B95A1]">
             이미지 없음
           </div>
         )}
@@ -39,27 +39,25 @@ export default function ProductCard({ product, onSelect }: Props) {
       {/* Info */}
       <div className="flex flex-1 flex-col justify-between">
         <div>
-          <p className="text-[10px] font-medium tracking-wide text-white/30">
+          <p className="text-[10px] font-medium text-[#8B95A1]">
             {product.brand}
           </p>
-          <p className="mt-0.5 text-sm font-medium leading-tight text-cream-200">
+          <p className="mt-0.5 text-sm font-semibold leading-tight text-[#191F28]">
             {product.name}
           </p>
-          <p className="mt-1 text-xs text-white/25">{product.category}</p>
+          <p className="mt-1 text-xs text-[#8B95A1]">{product.category}</p>
         </div>
 
         <div className="mt-2 flex items-center justify-between">
-          {/* Price */}
           {product.price != null && (
-            <span className="text-sm font-semibold text-cream-200/80">
+            <span className="text-sm font-bold text-[#191F28]">
               {formatPrice(product.price)}
             </span>
           )}
 
-          {/* Match score */}
           <div className="flex items-center gap-1">
-            <Star size={12} className="text-gold-400" fill="currentColor" />
-            <span className="text-xs font-medium text-gold-400">
+            <Star size={12} className="text-[#3182F6]" fill="currentColor" />
+            <span className="text-xs font-semibold text-[#3182F6]">
               {Math.round(product.match_score)}%
             </span>
           </div>

@@ -13,20 +13,20 @@ const OPTIONS: { value: PredictMode; label: string }[] = [
 
 export default function ModeSelector({ mode, onChange }: Props) {
   return (
-    <div className="card flex w-full gap-1 rounded-xl p-1">
+    <div className="flex w-full gap-1 rounded-2xl bg-[#F2F4F6] p-1">
       {OPTIONS.map((opt) => (
         <button
           key={opt.value}
           type="button"
           className={clsx(
-            "relative flex flex-1 min-h-[48px] items-center justify-center rounded-lg px-5 py-2.5 text-sm transition-all duration-200",
+            "relative flex flex-1 min-h-[44px] items-center justify-center rounded-xl px-5 py-2.5 text-sm transition-all duration-200",
             mode === opt.value
-              ? "bg-rose-500/10 text-cream-200"
-              : "text-white/35 hover:text-white/55",
+              ? "bg-white text-[#191F28] shadow-[0_1px_4px_rgba(0,0,0,0.08)]"
+              : "text-[#8B95A1] hover:text-[#4E5968]",
           )}
           onClick={() => onChange(opt.value)}
         >
-          <span className="font-medium tracking-wide">{opt.label}</span>
+          <span className="font-medium">{opt.label}</span>
         </button>
       ))}
     </div>

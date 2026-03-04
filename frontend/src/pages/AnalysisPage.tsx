@@ -46,12 +46,12 @@ export default function AnalysisPage() {
 
   if (!previewUrl) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center px-4">
-        <p className="mb-4 text-sm text-white/40">분석할 이미지를 선택해주세요</p>
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-5">
+        <p className="mb-4 text-sm text-[#8B95A1]">분석할 이미지를 선택해주세요</p>
         <button
           type="button"
           onClick={handleGoHome}
-          className="btn-primary rounded-xl px-6 py-3 text-sm font-medium text-white"
+          className="rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white"
         >
           홈으로 돌아가기
         </button>
@@ -60,7 +60,7 @@ export default function AnalysisPage() {
   }
 
   return (
-    <div className="animate-float-in flex flex-col items-center px-4 py-4 pb-24">
+    <div className="flex flex-col items-center px-5 py-4 pb-24">
       {/* Face image preview */}
       <div className="w-full">
         <FaceAnalysisView
@@ -79,7 +79,7 @@ export default function AnalysisPage() {
           type="button"
           onClick={handleAnalyze}
           disabled={!selectedFile || loading}
-          className="btn-primary flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-sm font-medium text-white shadow-lg shadow-rose-500/15 disabled:opacity-50"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#3182F6] py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] disabled:opacity-50 transition-all active:brightness-95"
         >
           {loading ? "분석 중..." : "AI 피부 분석 시작"}
         </button>
@@ -97,7 +97,7 @@ export default function AnalysisPage() {
         <button
           type="button"
           onClick={handleGoHome}
-          className="group flex items-center gap-2.5 rounded-xl border border-white/[0.06] bg-white/[0.03] px-8 py-3.5 text-sm font-light tracking-wide text-white/50 transition-all duration-200 hover:border-rose-400/20 hover:bg-rose-400/[0.04] hover:text-rose-300/80"
+          className="flex items-center gap-2.5 rounded-2xl bg-[#F2F4F6] px-8 py-3.5 text-sm font-medium text-[#4E5968] transition-all active:brightness-95"
         >
           <RotateCcw size={15} />
           홈으로 돌아가기

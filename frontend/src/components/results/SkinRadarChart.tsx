@@ -29,45 +29,44 @@ export default function SkinRadarChart({ categories }: Props) {
   }));
 
   return (
-    <div className="card rounded-2xl p-4">
-      <h3 className="mb-2 text-center text-sm font-medium text-cream-200/80">
+    <div className="rounded-2xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      <h3 className="mb-2 text-center text-sm font-semibold text-[#191F28]">
         카테고리별 점수
       </h3>
       <ResponsiveContainer width="100%" height={240}>
         <RadarChart data={data} cx="50%" cy="50%" outerRadius="70%">
           <PolarGrid
-            stroke="rgba(255,255,255,0.06)"
+            stroke="#E5E8EB"
             strokeDasharray="3 3"
           />
           <PolarAngleAxis
             dataKey="subject"
-            tick={{ fill: "rgba(255,255,255,0.5)", fontSize: 12 }}
+            tick={{ fill: "#4E5968", fontSize: 12 }}
           />
           <Radar
             name="피부 점수"
             dataKey="score"
-            stroke="#d4789a"
-            fill="#d4789a"
+            stroke="#3182F6"
+            fill="#3182F6"
             fillOpacity={0.15}
             strokeWidth={2}
           />
         </RadarChart>
       </ResponsiveContainer>
 
-      {/* Category scores as pills */}
       <div className="mt-2 flex flex-wrap justify-center gap-2">
         {categories.map((cat) => (
           <div
             key={cat.category}
-            className="flex items-center gap-1.5 rounded-full bg-white/[0.03] px-3 py-1.5"
+            className="flex items-center gap-1.5 rounded-full bg-[#F2F4F6] px-3 py-1.5"
           >
-            <span className="text-xs text-white/50">
+            <span className="text-xs text-[#8B95A1]">
               {CATEGORY_LABELS[cat.category] ?? cat.category}
             </span>
-            <span className="text-xs font-medium text-cream-200">
+            <span className="text-xs font-semibold text-[#191F28]">
               {Math.round(cat.score)}
             </span>
-            <span className="text-[10px] text-white/30">{cat.label}</span>
+            <span className="text-[10px] text-[#8B95A1]">{cat.label}</span>
           </div>
         ))}
       </div>

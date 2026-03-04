@@ -18,21 +18,21 @@ export default function ResultsDashboardPage() {
 
   if (!analyzeResult) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-8">
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-500/10 border border-rose-500/20">
-            <BarChart3 size={28} className="text-rose-400" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E8F3FF]">
+            <BarChart3 size={28} className="text-[#3182F6]" />
           </div>
-          <h2 className="mb-2 text-xl font-semibold text-cream-200">
+          <h2 className="mb-2 text-xl font-bold text-[#191F28]">
             분석 결과
           </h2>
-          <p className="mb-8 max-w-xs text-sm text-white/40">
+          <p className="mb-8 max-w-xs text-sm text-[#8B95A1]">
             사진을 촬영하거나 업로드하여 피부 분석을 시작하세요.
           </p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="btn-primary flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-rose-500/15"
+            className="flex items-center gap-2.5 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
           >
             <RotateCcw size={16} />
             분석 시작하기
@@ -45,11 +45,11 @@ export default function ResultsDashboardPage() {
   const { score, classification, regression, warnings } = analyzeResult;
 
   return (
-    <div className="animate-float-in px-4 py-6 pb-24">
+    <div className="animate-float-in px-5 py-6 pb-24">
       {/* Header */}
       <div className="mb-6 text-center">
-        <h2 className="text-xl font-semibold text-cream-200">피부 분석 결과</h2>
-        <p className="mt-1 text-xs text-white/30">AI가 분석한 종합 피부 진단 리포트</p>
+        <h2 className="text-xl font-bold text-[#191F28]">피부 분석 결과</h2>
+        <p className="mt-1 text-xs text-[#8B95A1]">AI가 분석한 종합 피부 진단 리포트</p>
       </div>
 
       {/* Warnings */}
@@ -60,8 +60,8 @@ export default function ResultsDashboardPage() {
       )}
 
       {/* Overall score */}
-      <div className="card mb-6 flex flex-col items-center rounded-2xl py-8">
-        <p className="mb-4 text-xs font-medium tracking-wide text-white/40">종합 피부 점수</p>
+      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+        <p className="mb-4 text-xs font-medium text-[#8B95A1]">종합 피부 점수</p>
         <SkinScoreCircle score={score.overall} />
       </div>
 
@@ -74,8 +74,8 @@ export default function ResultsDashboardPage() {
 
       {/* Detailed results tabs */}
       <div className="mb-4">
-        <h3 className="mb-3 text-sm font-medium text-cream-200/80">상세 분석</h3>
-        <div className="card flex gap-1 rounded-xl p-1">
+        <h3 className="mb-3 text-sm font-bold text-[#191F28]">상세 분석</h3>
+        <div className="flex gap-1 rounded-2xl bg-[#F2F4F6] p-1">
           <TabButton active={detailTab === "classification"} onClick={() => setDetailTab("classification")}>
             등급 진단
           </TabButton>
@@ -98,14 +98,14 @@ export default function ResultsDashboardPage() {
         <button
           type="button"
           onClick={() => navigate("/recommendations", { state: { analyzeResult } })}
-          className="btn-primary flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-sm font-medium text-white shadow-lg shadow-rose-500/15"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#3182F6] py-4 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] active:brightness-95 transition-all"
         >
           맞춤 화장품 추천 보기
         </button>
         <button
           type="button"
           onClick={() => navigate("/")}
-          className="card card-hover flex w-full items-center justify-center gap-2.5 rounded-xl py-4 text-sm font-medium text-white/50"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#F2F4F6] py-4 text-sm font-medium text-[#4E5968] active:brightness-95 transition-all"
         >
           <RotateCcw size={15} />
           새로 분석하기
@@ -127,10 +127,10 @@ function TabButton({
   return (
     <button
       type="button"
-      className={`flex-1 min-h-[44px] rounded-lg px-4 py-2.5 text-sm font-medium tracking-wide transition-all duration-200 ${
+      className={`flex-1 min-h-[44px] rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
         active
-          ? "bg-rose-500/10 text-cream-200 shadow-sm"
-          : "text-white/30 hover:text-white/50"
+          ? "bg-white text-[#191F28] shadow-[0_1px_4px_rgba(0,0,0,0.08)]"
+          : "text-[#8B95A1] hover:text-[#4E5968]"
       }`}
       onClick={onClick}
     >

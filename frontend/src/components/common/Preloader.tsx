@@ -18,13 +18,12 @@ export default function Preloader({ onComplete }: Props) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-dark-950 transition-opacity duration-400 ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white transition-opacity duration-400 ${
         phase === "exit" ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
-      {/* Brand name */}
       <h1
-        className="font-brand text-4xl text-cream-200 sm:text-5xl"
+        className="font-brand text-4xl text-[#191F28] sm:text-5xl"
         style={{
           animation: "preloader-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
         }}
@@ -32,9 +31,8 @@ export default function Preloader({ onComplete }: Props) {
         Namju
       </h1>
 
-      {/* Tagline */}
       <p
-        className="mt-4 text-sm font-light tracking-[0.15em] text-white/30"
+        className="mt-4 text-sm font-medium tracking-[0.1em] text-[#8B95A1]"
         style={{
           animation: "preloader-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards",
           opacity: 0,

@@ -9,10 +9,9 @@ export default function GradeBadge({ grade }: Props) {
   const color = gradeColor(grade);
   return (
     <span
-      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium text-white/90"
+      className="inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium"
       style={{
-        backgroundColor: `${color}18`,
-        border: `1px solid ${color}30`,
+        backgroundColor: `${color}15`,
         color,
       }}
     >

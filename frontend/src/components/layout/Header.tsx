@@ -8,18 +8,17 @@ export default function Header() {
   const online = !!health && !error;
 
   return (
-    <header className="safe-top sticky top-0 relative z-20 border-b border-white/[0.04] bg-dark-950/60 backdrop-blur-xl">
-      <div className="flex items-center justify-between px-4 py-3">
-        {/* Brand — clickable to go home */}
+    <header className="safe-top sticky top-0 relative z-20 border-b border-[#E5E8EB] bg-white">
+      <div className="flex items-center justify-between px-5 py-3">
+        {/* Brand */}
         <Link
           to="/"
           className="group flex items-center gap-3 transition-opacity hover:opacity-80"
         >
-          {/* Logo mark */}
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-500/15">
-            <div className="h-2.5 w-2.5 rounded-full bg-rose-500" />
+          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E8F3FF]">
+            <div className="h-2.5 w-2.5 rounded-full bg-[#3182F6]" />
           </div>
-          <h1 className="font-brand text-lg text-cream-200">
+          <h1 className="font-brand text-lg text-[#191F28]">
             Namju
           </h1>
         </Link>
@@ -31,17 +30,17 @@ export default function Header() {
               size={14}
               className={clsx(
                 "transition-colors duration-300",
-                online ? "text-emerald-400/70" : "text-red-400/70",
+                online ? "text-[#30D158]" : "text-[#F04452]",
               )}
             />
             {online && (
-              <div className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-emerald-400" />
+              <div className="absolute -right-0.5 -top-0.5 h-1.5 w-1.5 rounded-full bg-[#30D158]" />
             )}
           </div>
           <span
             className={clsx(
-              "text-xs font-light tracking-wide transition-colors duration-300",
-              online ? "text-white/40" : "text-red-400/60",
+              "text-xs tracking-wide transition-colors duration-300",
+              online ? "text-[#8B95A1]" : "text-[#F04452]",
             )}
           >
             {online ? "서버 연결됨" : "연결 끊김"}

@@ -12,7 +12,6 @@ export default function FaceGuideOverlay() {
           aspectRatio: "3/4",
         }}
       >
-        {/* Oval mask - removes dark overlay in this area */}
         <div
           className="absolute inset-0 rounded-[50%] border-2 border-white/30"
           style={{
@@ -20,11 +19,11 @@ export default function FaceGuideOverlay() {
           }}
         />
 
-        {/* Corner guides */}
-        <div className="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-rose-400/60 rounded-tl-xl" />
-        <div className="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-rose-400/60 rounded-tr-xl" />
-        <div className="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-rose-400/60 rounded-bl-xl" />
-        <div className="absolute -bottom-1 -right-1 h-6 w-6 border-b-2 border-r-2 border-rose-400/60 rounded-br-xl" />
+        {/* Corner guides — Toss blue */}
+        <div className="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-[#3182F6] rounded-tl-xl" />
+        <div className="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-[#3182F6] rounded-tr-xl" />
+        <div className="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-[#3182F6] rounded-bl-xl" />
+        <div className="absolute -bottom-1 -right-1 h-6 w-6 border-b-2 border-r-2 border-[#3182F6] rounded-br-xl" />
       </div>
 
       {/* Guide text */}

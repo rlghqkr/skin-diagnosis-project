@@ -10,25 +10,16 @@ const SLIDES = [
     icon: Sparkles,
     title: "AI 피부 분석",
     description: "딥러닝 기반 AI가 당신의 피부를 정밀하게 분석합니다.\n5개 항목, 9개 부위를 한 번에 측정하세요.",
-    color: "text-rose-400",
-    bgColor: "bg-rose-500/10",
-    borderColor: "border-rose-500/20",
   },
   {
     icon: Camera,
     title: "간편한 촬영",
     description: "카메라로 셀피를 촬영하거나\n갤러리에서 사진을 선택하세요.\n정면 얼굴 사진 한 장이면 충분합니다.",
-    color: "text-gold-400",
-    bgColor: "bg-gold-400/10",
-    borderColor: "border-gold-400/20",
   },
   {
     icon: ShoppingBag,
     title: "맞춤 화장품 추천",
     description: "분석 결과를 바탕으로\n당신의 피부에 맞는 화장품을\n추천해드립니다.",
-    color: "text-cream-200",
-    bgColor: "bg-cream-200/10",
-    borderColor: "border-cream-200/20",
   },
 ] as const;
 
@@ -78,13 +69,13 @@ export default function OnboardingPage() {
   const Icon = slide.icon;
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-dark-950">
+    <div className="flex min-h-[100dvh] flex-col bg-white">
       {/* Skip button */}
-      <div className="flex justify-end px-4 py-4">
+      <div className="flex justify-end px-5 py-4">
         <button
           type="button"
           onClick={handleSkip}
-          className="text-xs font-light tracking-wide text-white/30 transition-colors hover:text-white/50 min-h-[44px] px-3 flex items-center"
+          className="min-h-[44px] px-3 flex items-center text-sm text-[#8B95A1] transition-colors active:text-[#4E5968]"
         >
           건너뛰기
         </button>
@@ -94,21 +85,17 @@ export default function OnboardingPage() {
       <div className="flex flex-1 flex-col items-center justify-center px-8">
         <div key={currentSlide} className="animate-float-in flex flex-col items-center text-center">
           {/* Icon */}
-          <div className={clsx(
-            "mb-8 flex h-20 w-20 items-center justify-center rounded-3xl border",
-            slide.bgColor,
-            slide.borderColor,
-          )}>
-            <Icon size={36} className={slide.color} />
+          <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-[#E8F3FF]">
+            <Icon size={36} className="text-[#3182F6]" />
           </div>
 
           {/* Title */}
-          <h2 className="mb-4 text-2xl font-semibold tracking-tight text-cream-200">
+          <h2 className="mb-4 text-2xl font-bold tracking-tight text-[#191F28]">
             {slide.title}
           </h2>
 
           {/* Description */}
-          <p className="max-w-xs whitespace-pre-line text-sm leading-relaxed text-white/40">
+          <p className="max-w-xs whitespace-pre-line text-sm leading-relaxed text-[#8B95A1]">
             {slide.description}
           </p>
         </div>
@@ -124,8 +111,8 @@ export default function OnboardingPage() {
               className={clsx(
                 "h-1.5 rounded-full transition-all duration-300",
                 i === currentSlide
-                  ? "w-6 bg-rose-400"
-                  : "w-1.5 bg-white/15",
+                  ? "w-6 bg-[#3182F6]"
+                  : "w-1.5 bg-[#E5E8EB]",
               )}
             />
           ))}
@@ -137,7 +124,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handlePrev}
-              className="card flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-xl text-white/40"
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#F2F4F6] text-[#8B95A1] active:brightness-95 transition-all"
             >
               <ChevronLeft size={20} />
             </button>
@@ -145,7 +132,7 @@ export default function OnboardingPage() {
           <button
             type="button"
             onClick={handleNext}
-            className="btn-primary flex h-14 flex-1 items-center justify-center gap-2 rounded-xl text-base font-medium text-white shadow-lg shadow-rose-500/15"
+            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-[#3182F6] text-base font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)] active:brightness-95 transition-all"
           >
             {isLast ? (
               <>

@@ -7,8 +7,8 @@ interface Props {
 
 export default function MetricCard({ title, children }: Props) {
   return (
-    <div className="card rounded-xl p-4">
-      <h3 className="mb-4 text-center text-sm font-semibold tracking-wide text-cream-200">
+    <div className="rounded-2xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      <h3 className="mb-4 text-center text-sm font-semibold text-[#191F28]">
         {title}
       </h3>
       {children}

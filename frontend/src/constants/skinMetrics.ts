@@ -55,15 +55,15 @@ export const FACE_REGION_POSITIONS: Record<string, FaceRegionPosition> = {
   chin:            { top: 76, left: 32, width: 36, height: 12, labelSide: "left" },
 };
 
-/** 등급별 색상 (0=양호 → 높은 등급=심각) */
+/** 등급별 색상 (0=양호 → 높은 등급=심각) — Toss palette */
 export const GRADE_COLORS = [
-  "#22c55e", // 0 - green
-  "#84cc16", // 1 - lime
-  "#eab308", // 2 - yellow
-  "#f97316", // 3 - orange
-  "#ef4444", // 4 - red
-  "#dc2626", // 5 - deeper red
-  "#991b1b", // 6 - darkest red
+  "#34C759", // 0 - green (양호)
+  "#34C759", // 1 - green (경미)
+  "#FF9F0A", // 2 - amber (보통)
+  "#FF9F0A", // 3 - amber (주의)
+  "#F04452", // 4 - red (나쁨)
+  "#F04452", // 5 - red (심각)
+  "#D91B2C", // 6 - deep red (매우 심각)
 ];
 
 /** 등급별 한국어 상태 설명 */
@@ -82,11 +82,11 @@ export function getGradeDescription(grade: number): string {
   return GRADE_DESCRIPTIONS[Math.min(grade, GRADE_DESCRIPTIONS.length - 1)];
 }
 
-/** 회귀 수치 비율 → 상태 텍스트 + 색상 */
+/** 회귀 수치 비율 → 상태 텍스트 + 색상 — Toss palette */
 export function getValueStatus(ratio: number, higherIsBetter: boolean): { label: string; color: string } {
   const effective = higherIsBetter ? 1 - ratio : ratio;
-  if (effective < 0.25) return { label: "양호", color: "#22c55e" };
-  if (effective < 0.5) return { label: "보통", color: "#eab308" };
-  if (effective < 0.75) return { label: "주의", color: "#f97316" };
-  return { label: "나쁨", color: "#ef4444" };
+  if (effective < 0.25) return { label: "양호", color: "#34C759" };
+  if (effective < 0.5) return { label: "보통", color: "#FF9F0A" };
+  if (effective < 0.75) return { label: "주의", color: "#F04452" };
+  return { label: "나쁨", color: "#D91B2C" };
 }

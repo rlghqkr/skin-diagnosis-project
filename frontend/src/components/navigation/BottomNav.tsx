@@ -11,7 +11,7 @@ const NAV_ITEMS = [
 
 export default function BottomNav() {
   return (
-    <nav className="safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-white/[0.06] bg-dark-950/90 backdrop-blur-xl">
+    <nav className="safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white">
       <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-1">
         {NAV_ITEMS.map(({ to, icon: Icon, label }) => (
           <NavLink
@@ -22,8 +22,8 @@ export default function BottomNav() {
               clsx(
                 "flex min-h-[48px] min-w-[48px] flex-col items-center justify-center gap-1 rounded-xl px-3 py-2 transition-colors duration-200",
                 isActive
-                  ? "text-rose-400"
-                  : "text-white/30 active:text-white/50",
+                  ? "text-[#3182F6]"
+                  : "text-[#8B95A1] active:text-[#4E5968]",
               )
             }
           >
@@ -32,7 +32,7 @@ export default function BottomNav() {
                 <Icon size={20} strokeWidth={isActive ? 2 : 1.5} />
                 <span className={clsx(
                   "text-[10px] tracking-wide",
-                  isActive ? "font-medium" : "font-light"
+                  isActive ? "font-semibold" : "font-normal"
                 )}>
                   {label}
                 </span>

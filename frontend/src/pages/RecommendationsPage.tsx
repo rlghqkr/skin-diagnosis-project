@@ -21,9 +21,16 @@ const SEVERITY_LABELS: Record<string, string> = {
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
-  low: "text-emerald-400/70 bg-emerald-400/10",
-  moderate: "text-gold-400/70 bg-gold-400/10",
-  high: "text-red-400/70 bg-red-400/10",
+  low: "text-[#3182F6] bg-[#E8F3FF]",
+  moderate: "text-[#FF9F0A] bg-[#FFF8E1]",
+  high: "text-[#F04452] bg-[#FFF0F0]",
+};
+
+const SKIN_TYPE_LABELS: Record<string, string> = {
+  dry: "건성",
+  oily: "지성",
+  combination: "복합성",
+  sensitive: "민감성",
 };
 
 export default function RecommendationsPage() {
@@ -34,7 +41,6 @@ export default function RecommendationsPage() {
   const [selectedProduct, setSelectedProduct] = useState<CosmeticProduct | null>(null);
   const [categoryFilter, setCategoryFilter] = useState<string | null>(null);
 
-  // Extract all unique product categories
   const allProducts = useMemo(() => {
     if (!analyzeResult) return [];
     return analyzeResult.recommendation.recommendations.flatMap((r) => r.products);
@@ -45,25 +51,24 @@ export default function RecommendationsPage() {
     return Array.from(cats);
   }, [allProducts]);
 
-  // No analysis result
   if (!analyzeResult) {
     return (
-      <div className="flex min-h-[60vh] flex-col items-center justify-center px-4 py-8">
+      <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-rose-500/10 border border-rose-500/20">
-            <ShoppingBag size={28} className="text-rose-400" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#E8F3FF]">
+            <ShoppingBag size={28} className="text-[#3182F6]" />
           </div>
-          <h2 className="mb-2 text-xl font-semibold text-cream-200">
+          <h2 className="mb-2 text-xl font-bold text-[#191F28]">
             맞춤 추천
           </h2>
-          <p className="mb-8 max-w-xs text-sm text-white/40">
+          <p className="mb-8 max-w-xs text-sm text-[#8B95A1]">
             피부 분석을 완료하면 분석 결과에 맞는
             화장품을 추천해드립니다.
           </p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="btn-primary flex items-center gap-2.5 rounded-xl px-6 py-3.5 text-sm font-medium text-white shadow-lg shadow-rose-500/15"
+            className="flex items-center gap-2.5 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
           >
             <Sparkles size={16} />
             분석 시작하기
@@ -76,27 +81,24 @@ export default function RecommendationsPage() {
   const { recommendation } = analyzeResult;
 
   return (
-    <div className="animate-float-in px-4 py-6 pb-24">
+    <div className="animate-float-in px-5 py-6 pb-24">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-xl font-semibold text-cream-200">맞춤 화장품 추천</h2>
-        <p className="mt-1 text-xs text-white/30">
+        <h2 className="text-xl font-bold text-[#191F28]">맞춤 화장품 추천</h2>
+        <p className="mt-1 text-xs text-[#8B95A1]">
           분석 결과를 바탕으로 추천하는 제품입니다
         </p>
       </div>
 
       {/* Skin type badge */}
-      <div className="card mb-6 flex items-center gap-3 rounded-xl px-4 py-3">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-rose-500/10">
-          <Sparkles size={14} className="text-rose-400" />
+      <div className="mb-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#E8F3FF]">
+          <Sparkles size={14} className="text-[#3182F6]" />
         </div>
         <div>
-          <p className="text-xs text-white/30">피부 타입</p>
-          <p className="text-sm font-medium text-cream-200">
-            {recommendation.skin_type === "dry" && "건성"}
-            {recommendation.skin_type === "oily" && "지성"}
-            {recommendation.skin_type === "combination" && "복합성"}
-            {recommendation.skin_type === "sensitive" && "민감성"}
+          <p className="text-xs text-[#8B95A1]">피부 타입</p>
+          <p className="text-sm font-semibold text-[#191F28]">
+            {SKIN_TYPE_LABELS[recommendation.skin_type] ?? recommendation.skin_type}
           </p>
         </div>
       </div>
@@ -125,11 +127,11 @@ export default function RecommendationsPage() {
             <div key={concern.concern}>
               {/* Concern header */}
               <div className="mb-3 flex items-center gap-2">
-                <h3 className="text-sm font-medium text-cream-200/80">
+                <h3 className="text-sm font-bold text-[#191F28]">
                   {CONCERN_LABELS[concern.concern] ?? concern.concern}
                 </h3>
                 <span
-                  className={`rounded-full px-2 py-0.5 text-[10px] font-medium ${
+                  className={`rounded-full px-2.5 py-0.5 text-[10px] font-semibold ${
                     SEVERITY_COLORS[concern.severity] ?? ""
                   }`}
                 >
@@ -143,7 +145,7 @@ export default function RecommendationsPage() {
                   {concern.recommended_ingredients.map((ing) => (
                     <span
                       key={ing.name_ko}
-                      className="rounded-full bg-rose-500/10 px-2.5 py-1 text-[10px] font-medium text-rose-300/70"
+                      className="rounded-full bg-[#E8F3FF] px-2.5 py-1 text-[10px] font-medium text-[#3182F6]"
                       title={ing.benefit}
                     >
                       {ing.name_ko}

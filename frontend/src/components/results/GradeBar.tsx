@@ -6,7 +6,7 @@ interface Props {
 
 export default function GradeBar({ probabilities }: Props) {
   return (
-    <div className="flex h-4 w-full overflow-hidden rounded-full bg-white/[0.04]">
+    <div className="flex h-4 w-full overflow-hidden rounded-full bg-[#F2F4F6]">
       {probabilities.map((prob, i) => (
         <div
           key={i}
@@ -15,15 +15,10 @@ export default function GradeBar({ probabilities }: Props) {
             width: `${prob * 100}%`,
             backgroundColor: gradeColor(i),
             minWidth: prob > 0 ? "2px" : 0,
-            opacity: 0.8,
+            opacity: 0.85,
           }}
           title={`${i}등급: ${(prob * 100).toFixed(1)}%`}
-        >
-          {/* Inner shimmer */}
-          <div
-            className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent"
-          />
-        </div>
+        />
       ))}
     </div>
   );

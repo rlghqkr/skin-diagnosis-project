@@ -20,7 +20,6 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
   const [facingMode, setFacingMode] = useState<"user" | "environment">("user");
 
   const startCamera = useCallback(async (facing: "user" | "environment") => {
-    // Stop existing stream
     if (streamRef.current) {
       streamRef.current.getTracks().forEach((t) => t.stop());
     }
@@ -84,7 +83,6 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    // Mirror for front camera
     if (facingMode === "user") {
       ctx.translate(canvas.width, 0);
       ctx.scale(-1, 1);
@@ -102,7 +100,6 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
         setPreviewUrl(URL.createObjectURL(blob));
         setState("preview");
 
-        // Stop stream while previewing
         if (streamRef.current) {
           streamRef.current.getTracks().forEach((t) => t.stop());
         }
@@ -143,17 +140,17 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-6">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-red-500/10 border border-red-500/20">
-            <Camera size={28} className="text-red-400" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#FFF0F0]">
+            <Camera size={28} className="text-[#F04452]" />
           </div>
-          <p className="mb-6 max-w-xs text-sm leading-relaxed text-white/50">
+          <p className="mb-6 max-w-xs text-sm leading-relaxed text-[#4E5968]">
             {errorMsg}
           </p>
           <div className="flex flex-col gap-3 w-full max-w-xs">
             <button
               type="button"
               onClick={() => startCamera(facingMode)}
-              className="btn-primary flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-medium text-white"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-[#3182F6] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
             >
               <RefreshCw size={16} />
               다시 시도
@@ -161,7 +158,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
             <button
               type="button"
               onClick={() => fileInputRef.current?.click()}
-              className="card card-hover flex items-center justify-center gap-2 rounded-xl px-6 py-3.5 text-sm font-medium text-white/50"
+              className="flex items-center justify-center gap-2 rounded-2xl bg-[#F2F4F6] px-6 py-3.5 text-sm font-medium text-[#4E5968]"
             >
               <ImagePlus size={16} />
               갤러리에서 선택
@@ -176,7 +173,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
             <button
               type="button"
               onClick={onCancel}
-              className="text-sm text-white/30 py-2"
+              className="text-sm text-[#8B95A1] py-2"
             >
               취소
             </button>
@@ -190,7 +187,6 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
   if (state === "preview" && previewUrl) {
     return (
       <div className="flex flex-col items-center px-4 py-4">
-        {/* Preview image */}
         <div className="relative w-full overflow-hidden rounded-2xl">
           <img
             src={previewUrl}
@@ -199,12 +195,11 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
           />
         </div>
 
-        {/* Action buttons */}
         <div className="mt-6 flex w-full gap-3">
           <button
             type="button"
             onClick={handleRetake}
-            className="card card-hover flex flex-1 items-center justify-center gap-2 rounded-xl py-4 text-sm font-medium text-white/50"
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#F2F4F6] py-4 text-sm font-medium text-[#4E5968]"
           >
             <RefreshCw size={16} />
             재촬영
@@ -212,7 +207,7 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
           <button
             type="button"
             onClick={handleConfirm}
-            className="btn-primary flex flex-1 items-center justify-center gap-2 rounded-xl py-4 text-sm font-medium text-white shadow-lg shadow-rose-500/15"
+            className="flex flex-1 items-center justify-center gap-2 rounded-2xl bg-[#3182F6] py-4 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(49,130,246,0.3)]"
           >
             <Check size={16} />
             이 사진으로 분석
@@ -225,7 +220,6 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
   // Camera viewfinder
   return (
     <div className="relative flex flex-col items-center">
-      {/* Camera viewport */}
       <div className="relative w-full overflow-hidden rounded-2xl bg-black">
         <video
           ref={videoRef}
@@ -240,15 +234,13 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
         />
         <canvas ref={canvasRef} className="hidden" />
 
-        {/* Face guide overlay */}
         {state === "ready" && <FaceGuideOverlay />}
 
-        {/* Loading overlay */}
         {state === "initializing" && (
-          <div className="absolute inset-0 flex items-center justify-center bg-dark-950/80">
+          <div className="absolute inset-0 flex items-center justify-center bg-black/60">
             <div className="flex flex-col items-center gap-3">
-              <div className="h-8 w-8 rounded-full border-2 border-white/10 border-t-rose-400 animate-spin" />
-              <p className="text-sm text-white/40">카메라 준비 중...</p>
+              <div className="h-8 w-8 rounded-full border-2 border-[#E5E8EB] border-t-[#3182F6] animate-spin" />
+              <p className="text-sm text-white/60">카메라 준비 중...</p>
             </div>
           </div>
         )}
@@ -256,40 +248,36 @@ export default function CameraCapture({ onCapture, onCancel }: Props) {
 
       {/* Controls */}
       <div className="mt-6 flex w-full items-center justify-between px-4">
-        {/* Cancel */}
         <button
           type="button"
           onClick={onCancel}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F2F4F6] text-[#4E5968]"
         >
           <X size={20} />
         </button>
 
-        {/* Capture */}
         <button
           type="button"
           onClick={handleCapture}
           disabled={state !== "ready"}
-          className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-white/80 bg-white transition-transform active:scale-90 disabled:border-white/20 disabled:bg-white/20"
+          className="flex h-16 w-16 items-center justify-center rounded-full border-4 border-[#3182F6] bg-white transition-transform active:scale-90 disabled:border-[#E5E8EB] disabled:bg-[#F2F4F6]"
         >
-          <div className="h-12 w-12 rounded-full bg-white" />
+          <div className="h-12 w-12 rounded-full bg-[#3182F6] disabled:bg-[#E5E8EB]" />
         </button>
 
-        {/* Switch camera */}
         <button
           type="button"
           onClick={handleSwitchCamera}
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/50"
+          className="flex h-12 w-12 items-center justify-center rounded-full bg-[#F2F4F6] text-[#4E5968]"
         >
           <SwitchCamera size={20} />
         </button>
       </div>
 
-      {/* File upload fallback */}
       <button
         type="button"
         onClick={() => fileInputRef.current?.click()}
-        className="mt-4 flex items-center gap-2 text-sm text-white/30"
+        className="mt-4 flex items-center gap-2 text-sm text-[#8B95A1]"
       >
         <ImagePlus size={14} />
         갤러리에서 선택

@@ -6,10 +6,10 @@ interface Props {
 }
 
 function getScoreColor(score: number): string {
-  if (score >= 80) return "#4ade80"; // green
-  if (score >= 60) return "#e89ab5"; // rose
-  if (score >= 40) return "#e8d0a8"; // gold
-  return "#f87171"; // red
+  if (score >= 80) return "#34C759";
+  if (score >= 60) return "#3182F6";
+  if (score >= 40) return "#FF9F0A";
+  return "#F04452";
 }
 
 function getScoreLabel(score: number): string {
@@ -25,7 +25,6 @@ export default function SkinScoreCircle({ score, label }: Props) {
   const color = getScoreColor(score);
   const displayLabel = label ?? getScoreLabel(score);
 
-  // Animate score on mount
   useEffect(() => {
     let frame: number;
     const start = performance.now();
@@ -34,7 +33,6 @@ export default function SkinScoreCircle({ score, label }: Props) {
     const animate = (now: number) => {
       const elapsed = now - start;
       const progress = Math.min(elapsed / duration, 1);
-      // Ease out cubic
       const eased = 1 - Math.pow(1 - progress, 3);
       setAnimatedScore(Math.round(eased * score));
       if (progress < 1) {
@@ -52,16 +50,14 @@ export default function SkinScoreCircle({ score, label }: Props) {
     <div className="flex flex-col items-center">
       <div className="relative flex h-36 w-36 items-center justify-center">
         <svg className="h-full w-full -rotate-90" viewBox="0 0 128 128">
-          {/* Background circle */}
           <circle
             cx="64"
             cy="64"
             r="56"
             fill="none"
-            stroke="rgba(255,255,255,0.05)"
+            stroke="#F2F4F6"
             strokeWidth="6"
           />
-          {/* Progress circle */}
           <circle
             cx="64"
             cy="64"
@@ -73,10 +69,8 @@ export default function SkinScoreCircle({ score, label }: Props) {
             strokeDasharray={circumference}
             strokeDashoffset={offset}
             className="transition-all duration-300"
-            style={{ filter: `drop-shadow(0 0 8px ${color}40)` }}
           />
         </svg>
-        {/* Score text */}
         <div className="absolute flex flex-col items-center">
           <span
             className="text-3xl font-bold tabular-nums"
@@ -84,10 +78,10 @@ export default function SkinScoreCircle({ score, label }: Props) {
           >
             {animatedScore}
           </span>
-          <span className="text-xs text-white/30">/ 100</span>
+          <span className="text-xs text-[#8B95A1]">/ 100</span>
         </div>
       </div>
-      <p className="mt-2 text-sm font-medium" style={{ color }}>
+      <p className="mt-2 text-sm font-semibold" style={{ color }}>
         {displayLabel}
       </p>
     </div>

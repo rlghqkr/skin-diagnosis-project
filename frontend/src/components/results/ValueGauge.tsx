@@ -24,7 +24,7 @@ export default function ValueGauge({ value, min, max, unit, higherIsBetter }: Pr
             {formatValue(value)}
           </span>
           <span
-            className="rounded-full px-2 py-0.5 text-[10px] font-medium"
+            className="rounded-full px-2 py-0.5 text-[10px] font-semibold"
             style={{
               color: status.color,
               backgroundColor: `${status.color}15`,
@@ -33,17 +33,15 @@ export default function ValueGauge({ value, min, max, unit, higherIsBetter }: Pr
             {status.label}
           </span>
         </div>
-        <span className="text-[10px] font-light text-white/25">{unit}</span>
+        <span className="text-[10px] text-[#8B95A1]">{unit}</span>
       </div>
-      <div className="h-2.5 w-full overflow-hidden rounded-full bg-white/[0.04]">
+      <div className="h-2.5 w-full overflow-hidden rounded-full bg-[#F2F4F6]">
         <div
           className="relative h-full rounded-full transition-all duration-700 ease-out"
           style={{ width: `${ratio * 100}%`, backgroundColor: color }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-white/15 to-transparent" />
-        </div>
+        />
       </div>
-      <div className="mt-1 flex justify-between text-[9px] font-light text-white/15">
+      <div className="mt-1 flex justify-between text-[9px] text-[#8B95A1]">
         <span>{min}</span>
         <span>{max}</span>
       </div>
