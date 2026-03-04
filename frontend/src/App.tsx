@@ -27,19 +27,20 @@ export default function App() {
         element={<OnboardingPage />}
       />
 
-      {/* Main app shell */}
+      {/* Main app shell - guard checks onboarding at render time */}
       <Route
         path="*"
-        element={
-          isOnboardingDone() ? (
-            <AppShell />
-          ) : (
-            <Navigate to="/onboarding" replace />
-          )
-        }
+        element={<OnboardingGuard />}
       />
     </Routes>
   );
+}
+
+function OnboardingGuard() {
+  if (!isOnboardingDone()) {
+    return <Navigate to="/onboarding" replace />;
+  }
+  return <AppShell />;
 }
 
 function AppShell() {
