@@ -28,12 +28,12 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
             AI 피부 분석
           </h2>
 
-          <p className="mx-auto max-w-xs text-sm leading-[1.4] text-[#8B95A1]">
+          <p className="text-sm leading-[1.4] text-[#8B95A1]">
             사진 한 장으로 피부 상태를 정밀하게 분석하고
             <br />
             맞춤 화장품을 추천받으세요
           </p>
-          <p className="mx-auto mt-1 text-xs text-[#B0B8C1]">
+          <p className="mt-1 text-xs text-[#B0B8C1]">
             5개 항목 · 9개 부위 · 무료
           </p>
 
