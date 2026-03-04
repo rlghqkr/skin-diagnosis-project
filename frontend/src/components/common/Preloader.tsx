@@ -73,7 +73,7 @@ export default function Preloader({ onComplete }: Props) {
                 "preloader-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
-            Namju
+            SkinNerd AI
           </h1>
           <p
             className="mt-3 text-sm font-medium tracking-[0.1em] text-[#8B95A1]"

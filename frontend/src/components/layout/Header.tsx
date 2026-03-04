@@ -19,7 +19,7 @@ export default function Header() {
             <div className="h-2.5 w-2.5 rounded-full bg-[#3182F6]" />
           </div>
           <h1 className="font-brand text-lg text-[#191F28]">
-            Namju
+            SkinNerd AI
           </h1>
         </Link>
 
