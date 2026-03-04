@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Home, BarChart3, ShoppingBag, User, Camera } from "lucide-react";
 import clsx from "clsx";
@@ -16,9 +17,37 @@ const RIGHT_TABS = [
   { to: "/profile", icon: User, label: "프로필" },
 ] as const;
 
+const SCROLL_THRESHOLD = 8;
+
 export default function BottomNav({ onOpenPhotoSheet }: Props) {
+  const [visible, setVisible] = useState(true);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const y = window.scrollY;
+      const delta = y - lastY.current;
+
+      if (delta > SCROLL_THRESHOLD) {
+        setVisible(false);       // scrolling down → hide
+      } else if (delta < -SCROLL_THRESHOLD) {
+        setVisible(true);        // scrolling up → show
+      }
+
+      lastY.current = y;
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <nav className="safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white">
+    <nav
+      className={clsx(
+        "safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white transition-transform duration-300",
+        visible ? "translate-y-0" : "translate-y-full",
+      )}
+    >
       <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-2.5">
         {LEFT_TABS.map(({ to, icon: Icon, label }) => (
           <TabLink key={to} to={to} icon={Icon} label={label} />
