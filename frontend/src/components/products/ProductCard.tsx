@@ -18,7 +18,7 @@ export default function ProductCard({ product, onSelect }: Props) {
     <button
       type="button"
       onClick={() => onSelect(product)}
-      className="flex w-full gap-4 rounded-2xl bg-white p-4 text-left shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all active:scale-[0.98]"
+      className="flex w-full gap-4 rounded-2xl bg-white p-4 text-left shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all active:scale-[0.98]"
     >
       {/* Product image */}
       <div className="h-20 w-20 flex-shrink-0 overflow-hidden rounded-xl bg-[#F2F4F6]">

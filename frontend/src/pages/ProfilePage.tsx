@@ -36,7 +36,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div className="px-5 py-6 pb-24">
+    <div className="px-4 py-6 pb-24">
       {/* Profile Header */}
       <div className="mb-6 flex flex-col items-center">
         <div
@@ -51,7 +51,7 @@ export default function ProfilePage() {
 
       {/* Score Trend Chart */}
       {chartData.length >= 2 && (
-        <div className="mb-6 rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div className="mb-6 rounded-2xl bg-white p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
           <h3 className="mb-3 text-sm font-bold text-[#191F28]">점수 변화 추이</h3>
           <ResponsiveContainer width="100%" height={180}>
             <LineChart data={chartData}>
@@ -103,7 +103,7 @@ export default function ProfilePage() {
                     state: { analyzeResult: record.fullResult },
                   })
                 }
-                className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] active:brightness-95 transition-all text-left"
+                className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] active:brightness-95 transition-all text-left"
               >
                 <div
                   className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full text-sm font-bold text-white"
@@ -128,7 +128,7 @@ export default function ProfilePage() {
           </div>
         </div>
       ) : (
-        <div className="mb-6 rounded-2xl bg-white p-8 text-center shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div className="mb-6 rounded-2xl bg-white p-8 text-center shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
           <p className="text-sm text-[#8B95A1]">아직 분석 기록이 없습니다</p>
           <button
             type="button"
@@ -146,13 +146,13 @@ export default function ProfilePage() {
         <button
           type="button"
           onClick={handleClear}
-          className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.04)] active:brightness-95 transition-all text-left"
+          className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)] active:brightness-95 transition-all text-left"
         >
           <Trash2 size={16} className="text-[#F04452]" />
           <span className="flex-1 text-sm text-[#191F28]">데이터 초기화</span>
           <ChevronRight size={14} className="text-[#D1D6DB]" />
         </button>
-        <div className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+        <div className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-3.5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
           <Info size={16} className="text-[#8B95A1]" />
           <span className="flex-1 text-sm text-[#191F28]">앱 정보</span>
           <span className="text-xs text-[#8B95A1]">SkinNerd AI v1.0</span>

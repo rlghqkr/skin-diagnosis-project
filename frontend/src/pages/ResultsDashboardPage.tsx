@@ -61,7 +61,7 @@ export default function ResultsDashboardPage() {
   const { score, classification, regression, warnings } = analyzeResult;
 
   return (
-    <div className="animate-float-in px-5 py-6 pb-24">
+    <div className="animate-float-in px-4 py-6 pb-24">
       {/* Header */}
       <div className="mb-6 text-center">
         <h2 className="text-xl font-bold text-[#191F28]">피부 분석 결과</h2>
@@ -76,7 +76,7 @@ export default function ResultsDashboardPage() {
       )}
 
       {/* Overall score */}
-      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
         <p className="mb-4 text-xs font-medium text-[#8B95A1]">종합 피부 점수</p>
         <SkinScoreCircle score={score.overall} />
       </div>

@@ -19,20 +19,20 @@ const RIGHT_TABS = [
 export default function BottomNav({ onOpenPhotoSheet }: Props) {
   return (
     <nav className="safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white">
-      <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-1">
+      <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-2.5">
         {LEFT_TABS.map(({ to, icon: Icon, label }) => (
           <TabLink key={to} to={to} icon={Icon} label={label} />
         ))}
 
-        {/* Center analyze button */}
+        {/* Center analyze button — 64px, lifted */}
         <div className="relative flex flex-col items-center justify-center">
           <button
             type="button"
             onClick={onOpenPhotoSheet}
-            className="relative -mt-5 flex h-12 w-12 items-center justify-center rounded-full shadow-[0_4px_12px_rgba(91,140,255,0.35)]"
+            className="relative -mt-7 flex h-16 w-16 items-center justify-center rounded-full shadow-[0_4px_16px_rgba(91,140,255,0.35)]"
             style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
           >
-            <Camera size={22} className="text-white" />
+            <Camera size={28} className="text-white" />
           </button>
           <span className="mt-0.5 text-[10px] font-medium text-[#5B8CFF]">분석</span>
         </div>

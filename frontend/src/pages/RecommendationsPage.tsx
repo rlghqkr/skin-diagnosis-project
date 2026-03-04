@@ -91,7 +91,7 @@ export default function RecommendationsPage() {
       </div>
 
       {/* Skin type badge */}
-      <div className="mb-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+      <div className="mb-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
         <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EBF1FF]">
           <Sparkles size={14} className="text-[#5B8CFF]" />
         </div>

@@ -19,7 +19,7 @@ export default function ImprovementPrediction({ currentScore }: Props) {
   const delta = projected - currentScore;
 
   return (
-    <div className="rounded-2xl bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.04)]">
+    <div className="rounded-2xl bg-white p-5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
       <div className="mb-4 flex items-center gap-2">
         <TrendingUp size={16} className="text-[#5B8CFF]" />
         <h3 className="text-sm font-bold text-[#191F28]">4주 개선 예측</h3>

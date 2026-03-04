@@ -29,7 +29,7 @@ export default function SkinRadarChart({ categories }: Props) {
   }));
 
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+    <div className="rounded-2xl bg-white p-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
       <h3 className="mb-2 text-center text-sm font-semibold text-[#191F28]">
         카테고리별 점수
       </h3>

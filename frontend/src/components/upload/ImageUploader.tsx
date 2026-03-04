@@ -23,7 +23,7 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
     return (
       <div
         className={clsx(
-          "group relative flex w-full min-h-[48px] cursor-pointer items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-[0_2px_8px_rgba(0,0,0,0.06)] transition-all",
+          "group relative flex w-full min-h-[48px] cursor-pointer items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all",
           dragging && "!bg-[#EBF1FF]",
         )}
         onClick={() => inputRef.current?.click()}

@@ -91,7 +91,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
     <div className="flex justify-center">
       <div className="relative w-full">
           {/* Image with frame */}
-          <div className="overflow-hidden rounded-2xl border border-[#E5E8EB] shadow-[0_2px_8px_rgba(0,0,0,0.06)]">
+          <div className="overflow-hidden rounded-2xl border border-[#E5E8EB] shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
             <img
               src={previewUrl}
               alt="얼굴 분석"
@@ -241,7 +241,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
           </div>
           {/* Mobile selected region detail */}
           {selectedRegion && result && (
-            <div className="mt-2 rounded-xl border border-[#E5E8EB] bg-white p-3 shadow-[0_2px_8px_rgba(0,0,0,0.06)] sm:hidden">
+            <div className="mt-2 rounded-xl border border-[#E5E8EB] bg-white p-3 shadow-[0_4px_16px_rgba(0,0,0,0.06)] sm:hidden">
               {getSummary(result, selectedRegion).map((line, i) => (
                 <div key={i} className="text-[11px] text-[#4E5968]">
                   {line}
