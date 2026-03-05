@@ -135,9 +135,6 @@ export default function FaceGuideOverlay() {
           <circle cx="100" cy="236" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
           <circle cx="100" cy="252" r="3" fill="#FF6B5A" fillOpacity="0.65" />
 
-          {/* Labels */}
-          <text x="112" y="240" fill="white" fillOpacity="0.65" fontSize="11" fontWeight="500" fontFamily="Pretendard Variable, sans-serif">Vi</text>
-          <text x="112" y="256" fill="white" fillOpacity="0.5" fontSize="11" fontWeight="500" fontFamily="Pretendard Variable, sans-serif">Va</text>
         </svg>
 
         {/* Corner guides */}
