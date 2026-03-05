@@ -19,7 +19,65 @@ export default function FaceGuideOverlay() {
           }}
         />
 
-        {/* Corner guides — Toss blue */}
+        {/* SVG face landmark guides */}
+        <svg
+          className="absolute inset-0 h-full w-full"
+          viewBox="0 0 200 260"
+          fill="none"
+          preserveAspectRatio="xMidYMid meet"
+        >
+          {/* Horizontal grid lines */}
+          <line x1="30" y1="80" x2="170" y2="80" stroke="white" strokeOpacity="0.15" strokeWidth="0.8" />
+          <line x1="25" y1="110" x2="175" y2="110" stroke="white" strokeOpacity="0.15" strokeWidth="0.8" />
+          <line x1="30" y1="145" x2="170" y2="145" stroke="white" strokeOpacity="0.15" strokeWidth="0.8" />
+          <line x1="45" y1="175" x2="155" y2="175" stroke="white" strokeOpacity="0.15" strokeWidth="0.8" />
+
+          {/* Vertical center line */}
+          <line x1="100" y1="30" x2="100" y2="230" stroke="white" strokeOpacity="0.15" strokeWidth="0.8" />
+
+          {/* Eye level guide lines */}
+          <line x1="45" y1="100" x2="82" y2="100" stroke="rgba(91,140,255,0.5)" strokeWidth="1" />
+          <line x1="118" y1="100" x2="155" y2="100" stroke="rgba(91,140,255,0.5)" strokeWidth="1" />
+
+          {/* Nose bridge vertical */}
+          <line x1="100" y1="90" x2="100" y2="155" stroke="rgba(91,140,255,0.3)" strokeWidth="0.8" strokeDasharray="4 3" />
+
+          {/* V-line: ears to chin (Vi) */}
+          <line x1="18" y1="115" x2="100" y2="230" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
+          <line x1="182" y1="115" x2="100" y2="230" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
+
+          {/* Jaw line (Va) */}
+          <line x1="30" y1="175" x2="100" y2="245" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
+          <line x1="170" y1="175" x2="100" y2="245" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
+
+          {/* Landmark dots — eyes outer corners */}
+          <circle cx="45" cy="100" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+          <circle cx="155" cy="100" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+
+          {/* Landmark dots — eyes inner corners */}
+          <circle cx="82" cy="100" r="2.5" fill="#FF6B5A" fillOpacity="0.6" />
+          <circle cx="118" cy="100" r="2.5" fill="#FF6B5A" fillOpacity="0.6" />
+
+          {/* Landmark dots — ear points */}
+          <circle cx="18" cy="115" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+          <circle cx="182" cy="115" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+
+          {/* Landmark dots — jaw points */}
+          <circle cx="30" cy="175" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+          <circle cx="170" cy="175" r="3" fill="#FF6B5A" fillOpacity="0.8" />
+
+          {/* Landmark dot — chin */}
+          <circle cx="100" cy="230" r="3.5" fill="#FF6B5A" fillOpacity="0.8" />
+
+          {/* Landmark dot — chin bottom (Va) */}
+          <circle cx="100" cy="245" r="3" fill="#FF6B5A" fillOpacity="0.6" />
+
+          {/* Labels */}
+          <text x="112" y="233" fill="white" fillOpacity="0.6" fontSize="10" fontFamily="Pretendard Variable, sans-serif">Vi</text>
+          <text x="112" y="250" fill="white" fillOpacity="0.5" fontSize="10" fontFamily="Pretendard Variable, sans-serif">Va</text>
+        </svg>
+
+        {/* Corner guides */}
         <div className="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-[#5B8CFF] rounded-tl-xl" />
         <div className="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-[#5B8CFF] rounded-tr-xl" />
         <div className="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-[#5B8CFF] rounded-bl-xl" />
