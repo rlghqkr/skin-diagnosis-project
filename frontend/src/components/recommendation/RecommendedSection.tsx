@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { useRecommendationStore } from "../../stores/useRecommendationStore";
 import type { CategoryScoreInput } from "../../api/recommendation";
 import PlatformProductCard from "./PlatformProductCard";
@@ -21,17 +21,37 @@ function SkeletonCard() {
 }
 
 export default function RecommendedSection({ categories }: Props) {
-  const { recommendation, isLoading, error, fetchRecommendations } =
+  const { recommendation, isLoading, error, hasFetched, fetchRecommendations } =
     useRecommendationStore();
+  const fetchedRef = useRef(false);
 
   useEffect(() => {
-    if (categories.length > 0) {
+    if (categories.length > 0 && !fetchedRef.current) {
+      fetchedRef.current = true;
       fetchRecommendations(categories);
     }
   }, [categories, fetchRecommendations]);
 
-  // Silent fail — don't block the home page
-  if (error || (!isLoading && !recommendation)) return null;
+  // Haven't tried fetching yet — show skeletons
+  if (!hasFetched && !isLoading) {
+    return (
+      <div>
+        <div className="mb-3">
+          <h3 className="text-[13px] font-bold text-[#8B95A1] tracking-wide">
+            맞춤 화장품 추천
+          </h3>
+        </div>
+        <div className="-mx-5 flex gap-3 overflow-x-auto scroll-smooth px-5 pb-2 snap-x snap-mandatory scrollbar-hide">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <SkeletonCard key={i} />
+          ))}
+        </div>
+      </div>
+    );
+  }
+
+  // API failed — hide silently after attempted fetch
+  if (error && hasFetched && !recommendation) return null;
 
   return (
     <div>
