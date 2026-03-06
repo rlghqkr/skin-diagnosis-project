@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { createPortal } from "react-dom";
 import { X, Mail, Lock, User, Loader2 } from "lucide-react";
 import clsx from "clsx";
 import { useAuthStore } from "../../stores/useAuthStore";
+import { useOverlayStore } from "../../stores/useOverlayStore";
 
 interface Props {
   open: boolean;
@@ -14,6 +16,14 @@ export default function AuthModal({ open, onClose }: Props) {
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
   const { login, register, isLoading, error, clearError } = useAuthStore();
+  const { pushOverlay, popOverlay } = useOverlayStore();
+
+  useEffect(() => {
+    if (open) {
+      pushOverlay();
+      return () => popOverlay();
+    }
+  }, [open, pushOverlay, popOverlay]);
 
   if (!open) return null;
 
@@ -36,15 +46,27 @@ export default function AuthModal({ open, onClose }: Props) {
     clearError();
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/40">
-      <div className="w-full max-w-lg rounded-t-3xl bg-white px-6 pt-6 pb-8 animate-in slide-in-from-bottom">
+  // Portal to document.body — escapes any stacking context
+  return createPortal(
+    <div className="fixed inset-0 z-50 flex items-end justify-center">
+      {/* Backdrop */}
+      <div className="absolute inset-0 bg-black/40" onClick={onClose} />
+
+      {/* Sheet */}
+      <div className="animate-slide-up relative w-full max-w-lg rounded-t-3xl bg-white px-6 pt-4 pb-8 safe-bottom">
+        {/* Drag handle */}
+        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-[#D1D6DB]" />
+
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
           <h2 className="text-lg font-bold text-[#191F28]">
             {mode === "login" ? "로그인" : "회원가입"}
           </h2>
-          <button type="button" onClick={onClose} className="text-[#8B95A1]">
+          <button
+            type="button"
+            onClick={onClose}
+            className="flex h-11 w-11 items-center justify-center rounded-full text-[#8B95A1] active:bg-[#F2F4F6]"
+          >
             <X size={22} />
           </button>
         </div>
@@ -127,6 +149,7 @@ export default function AuthModal({ open, onClose }: Props) {
           )}
         </button>
       </div>
-    </div>
+    </div>,
+    document.body,
   );
 }

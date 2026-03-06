@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { Home, Droplets, User, Camera, TrendingUp } from "lucide-react";
 import clsx from "clsx";
+import { useOverlayStore } from "../../stores/useOverlayStore";
 
 interface Props {
   onOpenPhotoSheet?: () => void;
@@ -22,6 +23,8 @@ const SCROLL_THRESHOLD = 8;
 export default function BottomNav({ onOpenPhotoSheet }: Props) {
   const [visible, setVisible] = useState(true);
   const lastY = useRef(0);
+  const overlayCount = useOverlayStore((s) => s.overlayCount);
+  const hasOverlay = overlayCount > 0;
 
   useEffect(() => {
     const onScroll = () => {
@@ -45,7 +48,7 @@ export default function BottomNav({ onOpenPhotoSheet }: Props) {
     <nav
       className={clsx(
         "safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white transition-transform duration-300",
-        visible ? "translate-y-0" : "translate-y-full",
+        visible && !hasOverlay ? "translate-y-0" : "translate-y-full",
       )}
     >
       <div className="mx-auto flex max-w-lg items-center justify-around px-2 py-2.5">
