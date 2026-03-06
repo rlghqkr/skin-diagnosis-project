@@ -94,7 +94,7 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
                 { icon: Droplets, label: "피부 상태 분석", desc: "건조·색소·모공·주름·탄력", color: "#5B8CFF" },
                 { icon: Search, label: "부위별 정밀 분석", desc: "이마·볼·눈가 등 9개 영역", color: "#7ED7C1" },
                 { icon: FlaskConical, label: "맞춤 성분 추천", desc: "피부 타입 기반 AI 매칭", color: "#F59E0B" },
-                { icon: TrendingUp, label: "변화 추적", desc: "일별·주별 피부 트렌드", color: "#A78BFA" },
+                { icon: TrendingUp, label: "변화 추적", desc: "일별·주별 피부 리포트", color: "#A78BFA" },
               ].map((item) => (
                 <div
                   key={item.label}

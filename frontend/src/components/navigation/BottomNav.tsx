@@ -14,7 +14,7 @@ const LEFT_TABS = [
 ] as const;
 
 const RIGHT_TABS = [
-  { to: "/tracking", icon: TrendingUp, label: "트렌드" },
+  { to: "/tracking", icon: TrendingUp, label: "리포트" },
   { to: "/profile", icon: User, label: "프로필" },
 ] as const;
 

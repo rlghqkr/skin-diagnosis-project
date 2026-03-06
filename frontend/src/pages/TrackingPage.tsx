@@ -44,7 +44,7 @@ export default function TrackingPage() {
             <TrendingUp size={20} className="text-[#5B8CFF]" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-[#191F28]">피부 트렌드</h1>
+            <h1 className="text-lg font-bold text-[#191F28]">피부 리포트</h1>
             <p className="text-[12px] text-[#8B95A1]">피부 변화를 한눈에 확인하세요</p>
           </div>
         </div>
