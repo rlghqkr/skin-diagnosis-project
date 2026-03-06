@@ -139,24 +139,24 @@ export default function RoutineForm() {
           ))}
         </div>
 
-        {/* Add product button */}
+        {/* Add product button — 48px height, clear tap affordance */}
         <button
           type="button"
           onClick={() => setSearchOpen(true)}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#D1D6DB] py-3.5 text-[13px] font-medium text-[#8B95A1] transition-colors active:border-[#5B8CFF] active:text-[#5B8CFF]"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#D1D6DB] h-[52px] text-[14px] font-medium text-[#8B95A1] transition-all active:border-[#5B8CFF] active:text-[#5B8CFF] active:scale-[0.98]"
         >
-          <Plus size={16} />
+          <Plus size={18} />
           제품 추가하기
         </button>
 
-        {/* Save button */}
+        {/* Save button — 56px height, primary CTA prominence */}
         {steps.length > 0 && (
           <button
             type="button"
             onClick={handleSave}
             disabled={isLoading}
             className={clsx(
-              "mt-4 flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-[14px] font-semibold text-white transition-all active:brightness-95",
+              "mt-4 flex w-full items-center justify-center gap-2 rounded-2xl h-[56px] text-[15px] font-semibold text-white transition-all active:scale-[0.98]",
               saveSuccess
                 ? "bg-[#30D158]"
                 : "shadow-[0_4px_16px_rgba(91,140,255,0.25)]",
@@ -168,12 +168,12 @@ export default function RoutineForm() {
             }
           >
             {isLoading ? (
-              <Loader2 size={18} className="animate-spin" />
+              <Loader2 size={20} className="animate-spin" />
             ) : saveSuccess ? (
               "저장 완료!"
             ) : (
               <>
-                <Save size={16} />
+                <Save size={18} />
                 루틴 저장하기
               </>
             )}
