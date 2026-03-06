@@ -55,7 +55,7 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
           {latestRecord && (
             <button
               type="button"
-              onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult } })}
+              onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult, viewOnly: true } })}
               className="flex w-full items-center gap-4 rounded-2xl bg-white p-5 text-left shadow-[0_2px_12px_rgba(0,0,0,0.06)] active:scale-[0.99] transition-all"
             >
               <SkinScoreCircle score={latestRecord.score} size="sm" />

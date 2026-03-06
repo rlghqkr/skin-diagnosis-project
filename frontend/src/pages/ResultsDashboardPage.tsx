@@ -18,18 +18,20 @@ export default function ResultsDashboardPage() {
   const { addRecord } = useAnalysisHistory();
   const savedRef = useRef(false);
 
-  const stateResult = (location.state as { analyzeResult?: AnalyzeResponse } | null)?.analyzeResult;
+  const navState = location.state as { analyzeResult?: AnalyzeResponse; viewOnly?: boolean } | null;
+  const stateResult = navState?.analyzeResult;
+  const viewOnly = navState?.viewOnly ?? false;
   const analyzeResult = stateResult ?? getLatestAnalysis()?.fullResult ?? null;
 
   const [detailTab, setDetailTab] = useState<DetailTab>("classification");
 
-  // Save to history once when arriving with a new result from analysis
+  // Save to history only for new analysis results, not when viewing existing records
   useEffect(() => {
-    if (stateResult && !savedRef.current) {
+    if (stateResult && !savedRef.current && !viewOnly) {
       savedRef.current = true;
       addRecord(stateResult);
     }
-  }, [stateResult, addRecord]);
+  }, [stateResult, viewOnly, addRecord]);
 
   if (!analyzeResult) {
     return (

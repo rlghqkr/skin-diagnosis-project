@@ -107,7 +107,7 @@ export default function ProfilePage() {
                     type="button"
                     onClick={() =>
                       navigate("/results/dashboard", {
-                        state: { analyzeResult: record.fullResult },
+                        state: { analyzeResult: record.fullResult, viewOnly: true },
                       })
                     }
                     className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)] active:scale-[0.99] transition-all text-left"
