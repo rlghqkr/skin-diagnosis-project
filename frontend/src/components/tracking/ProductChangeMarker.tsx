@@ -14,8 +14,8 @@ export default function ProductChangeMarker({ changes }: Props) {
   if (changes.length === 0) return null;
 
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <h3 className="mb-3 text-sm font-semibold text-[#191F28]">
+    <div className="rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+      <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">
         제품 변경 이력
       </h3>
       <div className="space-y-3">

@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { Sparkles, Droplets, Search, FlaskConical, ChevronRight } from "lucide-react";
+import { Sparkles, Droplets, Search, FlaskConical, TrendingUp, ArrowRight } from "lucide-react";
 import SkinScoreCircle from "../components/results/SkinScoreCircle";
 import { useAnalysisHistory } from "../hooks/useAnalysisHistory";
 import { formatRelativeDate } from "../utils/formatDate";
@@ -14,112 +14,116 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
 
   return (
     <div className="flex min-h-[calc(100dvh-120px)] flex-col">
-      {/* Hero Section — white background, visually separated */}
-      <div className="bg-white px-4 pt-6 pb-8">
-        <div className="w-full max-w-md mx-auto text-center">
-          <div
-            className="mx-auto mb-4 flex h-14 w-14 items-center justify-center rounded-2xl"
-            style={{ background: "linear-gradient(135deg, #EBF1FF, #E0F5EE)" }}
-          >
-            <Sparkles size={26} className="text-[#5B8CFF]" />
-          </div>
-
-          <h2 className="mb-2 text-2xl font-bold leading-[1.4] tracking-tight text-[#191F28]">
-            AI 피부 분석
-          </h2>
-
-          <p className="text-sm leading-[1.4] text-[#8B95A1]">
-            사진 한 장으로 피부 상태를 정밀하게 분석하고
+      {/* ── Hero Section ── */}
+      <div className="bg-white px-5 pt-8 pb-10">
+        <div className="mx-auto w-full max-w-md">
+          {/* Headline — 1초 안에 핵심 가치 전달 */}
+          <h2 className="text-[26px] font-bold leading-[1.35] tracking-tight text-[#191F28]">
+            사진 한 장으로
             <br />
-            맞춤 화장품을 추천받으세요
-          </p>
-          <p className="mt-1 text-xs text-[#B0B8C1]">
-            5개 항목 · 9개 부위 · 무료
+            <span className="gradient-text">피부를 읽다</span>
+          </h2>
+          <p className="mt-3 text-[15px] leading-[1.5] text-[#6B7684]">
+            AI가 5개 지표 · 9개 부위를 정밀 분석하고
+            <br />
+            나에게 맞는 화장품을 추천합니다
           </p>
 
+          {/* Primary CTA */}
           <button
             type="button"
             onClick={onOpenPhotoSheet}
-            className="mt-6 flex w-full items-center justify-center rounded-2xl px-5 h-[52px] text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.25)] active:brightness-95 transition-all"
+            className="mt-7 flex w-full items-center justify-center gap-2 rounded-2xl h-[56px] text-[16px] font-semibold text-white shadow-[0_4px_20px_rgba(91,140,255,0.3)] active:scale-[0.98] transition-all"
             style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
           >
+            <Sparkles size={20} />
             피부 분석 시작하기
           </button>
+
+          {/* Trust signal */}
+          <p className="mt-3 text-center text-[12px] text-[#B0B8C1]">
+            무료 · 회원가입 없이 바로 분석
+          </p>
         </div>
       </div>
 
-      {/* Content area — #F7F9FC background */}
-      <div className="flex-1 bg-[#F7F9FC] pt-6">
-        {/* Daily Skin Score */}
-        {latestRecord && (
-          <div className="px-4 pb-6">
-            <div className="flex min-h-[140px] flex-col items-center justify-center rounded-[20px] bg-white p-5 text-center shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+      {/* ── Content Area ── */}
+      <div className="flex-1 bg-[#F7F9FC] px-5 pt-6 pb-8">
+        <div className="mx-auto w-full max-w-md space-y-5">
+          {/* Daily Skin Score — 가장 중요한 정보를 최상단에 */}
+          {latestRecord && (
+            <button
+              type="button"
+              onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult } })}
+              className="flex w-full items-center gap-4 rounded-2xl bg-white p-5 text-left shadow-[0_2px_12px_rgba(0,0,0,0.06)] active:scale-[0.99] transition-all"
+            >
               <SkinScoreCircle score={latestRecord.score} size="sm" />
-              <h3 className="mt-3 text-[13px] font-bold text-[#191F28]">피부 점수</h3>
-              <span className="mt-1 text-[11px] text-[#8B95A1]">
-                마지막 분석: {formatRelativeDate(latestRecord.timestamp)}
-              </span>
-              {scoreDelta !== null && (
-                <p className={`mt-1 text-sm font-semibold ${scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"}`}>
-                  {scoreDelta >= 0 ? `+${scoreDelta}` : scoreDelta}점 {scoreDelta >= 0 ? "개선" : "변화"}
-                </p>
-              )}
-              <button
-                type="button"
-                onClick={() => navigate("/results/dashboard", { state: { analyzeResult: latestRecord.fullResult } })}
-                className="mt-2 text-[13px] font-medium text-[#5B8CFF]"
-              >
-                결과 보기 →
-              </button>
+              <div className="flex-1 min-w-0">
+                <p className="text-[11px] font-medium text-[#8B95A1]">최근 피부 점수</p>
+                <div className="mt-1 flex items-baseline gap-2">
+                  <span className="text-2xl font-bold text-[#191F28]">{latestRecord.score}</span>
+                  <span className="text-xs text-[#B0B8C1]">/ 100</span>
+                </div>
+                {scoreDelta !== null && (
+                  <div className="mt-1 flex items-center gap-1">
+                    <TrendingUp size={12} className={scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"} />
+                    <span className={`text-xs font-semibold ${scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"}`}>
+                      {scoreDelta >= 0 ? `+${scoreDelta}` : scoreDelta}점
+                    </span>
+                    <span className="text-[11px] text-[#B0B8C1]">
+                      · {formatRelativeDate(latestRecord.timestamp)}
+                    </span>
+                  </div>
+                )}
+              </div>
+              <ArrowRight size={18} className="text-[#D1D6DB]" />
+            </button>
+          )}
+
+          {/* Feature Cards — 2×2 그리드로 가독성 향상 */}
+          <div>
+            <h3 className="mb-3 text-[13px] font-bold text-[#8B95A1] tracking-wide">분석 항목</h3>
+            <div className="grid grid-cols-2 gap-3">
+              {[
+                { icon: Droplets, label: "피부 상태 분석", desc: "건조·색소·모공·주름·탄력", color: "#5B8CFF" },
+                { icon: Search, label: "부위별 정밀 분석", desc: "이마·볼·눈가 등 9개 영역", color: "#7ED7C1" },
+                { icon: FlaskConical, label: "맞춤 성분 추천", desc: "피부 타입 기반 AI 매칭", color: "#F59E0B" },
+                { icon: TrendingUp, label: "변화 추적", desc: "일별·주별 피부 트렌드", color: "#A78BFA" },
+              ].map((item) => (
+                <div
+                  key={item.label}
+                  className="rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]"
+                >
+                  <div
+                    className="flex h-10 w-10 items-center justify-center rounded-xl"
+                    style={{ backgroundColor: `${item.color}15` }}
+                  >
+                    <item.icon size={20} style={{ color: item.color }} />
+                  </div>
+                  <p className="mt-3 text-[14px] font-semibold leading-[1.3] text-[#191F28]">{item.label}</p>
+                  <p className="mt-1 text-[12px] leading-[1.4] text-[#8B95A1]">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
-        )}
 
-        {/* Feature Preview Cards — 24px from score card */}
-        <div className="px-4 pb-6">
-          <div className="grid grid-cols-3 gap-4">
-            {[
-              { icon: Droplets, label: "피부 상태 분석", desc: "5가지 지표" },
-              { icon: Search, label: "부위별 정밀 분석", desc: "9개 얼굴 영역" },
-              { icon: FlaskConical, label: "맞춤 성분 추천", desc: "AI 성분 매칭" },
-            ].map((item) => (
-              <div
-                key={item.label}
-                className="flex flex-col items-center rounded-[18px] bg-white p-4 text-center shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
-              >
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#EBF1FF]">
-                  <item.icon size={20} className="text-[#5B8CFF]" />
+          {/* How it Works — 간결한 스텝 */}
+          <div>
+            <h3 className="mb-3 text-[13px] font-bold text-[#8B95A1] tracking-wide">이용 방법</h3>
+            <div className="flex items-start gap-4 rounded-2xl bg-white px-5 py-5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+              {[
+                { num: "1", label: "촬영" },
+                { num: "2", label: "AI 분석" },
+                { num: "3", label: "결과 확인" },
+              ].map((item) => (
+                <div key={item.num} className="flex flex-1 flex-col items-center text-center">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-full bg-[#5B8CFF] text-sm font-bold text-white">
+                    {item.num}
+                  </div>
+                  <p className="mt-2 text-[13px] font-medium text-[#191F28]">{item.label}</p>
                 </div>
-                <span className="mt-3 text-[13px] font-medium leading-[1.4] text-[#191F28]">{item.label}</span>
-                <span className="mt-1.5 text-[11px] leading-[1.4] text-[#8B95A1]">{item.desc}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* How it works */}
-        <div className="px-4 pb-8">
-          <h3 className="mb-4 text-base font-bold text-[#191F28]">이용 방법</h3>
-          <div className="space-y-4">
-            {[
-              { step: "1", title: "사진 촬영", desc: "정면 얼굴 사진을 촬영하거나 업로드하세요" },
-              { step: "2", title: "AI 분석", desc: "딥러닝 모델이 피부 상태를 정밀 분석합니다" },
-              { step: "3", title: "결과 확인", desc: "분석 결과와 맞춤 화장품 추천을 확인하세요" },
-            ].map((item) => (
-              <div
-                key={item.step}
-                className="flex items-center gap-4 rounded-[18px] bg-white px-4 py-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)]"
-              >
-                <div className="flex h-9 w-9 flex-shrink-0 items-center justify-center rounded-full bg-[#5B8CFF] text-sm font-bold text-white">
-                  {item.step}
-                </div>
-                <div className="flex-1">
-                  <p className="text-base font-medium leading-[1.4] text-[#191F28]">{item.title}</p>
-                  <p className="mt-1 text-[13px] leading-[1.4] text-[#8B95A1]">{item.desc}</p>
-                </div>
-                <ChevronRight size={16} className="text-[#D1D6DB]" />
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

@@ -64,8 +64,8 @@ export default function ResultsDashboardPage() {
     <div className="animate-float-in px-4 py-6 pb-24">
       {/* Header */}
       <div className="mb-6 text-center">
-        <h2 className="text-xl font-bold text-[#191F28]">피부 분석 결과</h2>
-        <p className="mt-1 text-xs text-[#8B95A1]">AI가 분석한 종합 피부 진단 리포트</p>
+        <h2 className="text-[20px] font-bold text-[#191F28]">피부 분석 결과</h2>
+        <p className="mt-1.5 text-[13px] text-[#8B95A1]">AI가 분석한 종합 피부 진단 리포트</p>
       </div>
 
       {/* Warnings */}
@@ -76,8 +76,8 @@ export default function ResultsDashboardPage() {
       )}
 
       {/* Overall score */}
-      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-        <p className="mb-4 text-xs font-medium text-[#8B95A1]">종합 피부 점수</p>
+      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+        <p className="mb-4 text-[13px] font-bold tracking-wide text-[#8B95A1]">종합 피부 점수</p>
         <SkinScoreCircle score={score.overall} />
       </div>
 
@@ -95,7 +95,7 @@ export default function ResultsDashboardPage() {
 
       {/* Detailed results tabs */}
       <div className="mb-4">
-        <h3 className="mb-3 text-sm font-bold text-[#191F28]">상세 분석</h3>
+        <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">상세 분석</h3>
         <div className="flex gap-1 rounded-2xl bg-[#F2F4F6] p-1">
           <TabButton active={detailTab === "classification"} onClick={() => setDetailTab("classification")}>
             등급 진단

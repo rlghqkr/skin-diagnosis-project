@@ -55,23 +55,23 @@ export default function MetricDetailChart({ data }: Props) {
       : 0;
 
   return (
-    <div className="rounded-2xl bg-white p-4 shadow-sm">
-      <h3 className="mb-3 text-sm font-semibold text-[#191F28]">
+    <div className="rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
+      <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">
         항목별 상세
       </h3>
 
       {/* Metric tabs */}
-      <div className="mb-4 flex gap-1 overflow-x-auto">
+      <div className="mb-4 flex gap-1.5 overflow-x-auto">
         {METRICS.map((m) => (
           <button
             key={m.key}
             type="button"
             onClick={() => setActive(m.key)}
             className={clsx(
-              "shrink-0 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+              "shrink-0 rounded-xl px-3.5 min-h-[36px] text-[12px] font-medium transition-all",
               active === m.key
-                ? "bg-[#3B82F6] text-white"
-                : "bg-[#F2F4F6] text-[#8B95A1]",
+                ? "bg-[#5B8CFF] text-white shadow-sm"
+                : "bg-[#F2F4F6] text-[#8B95A1] active:bg-[#E5E8EB]",
             )}
           >
             {m.icon} {m.label}
