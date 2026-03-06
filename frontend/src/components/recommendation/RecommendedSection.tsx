@@ -21,7 +21,7 @@ function SkeletonCard() {
 }
 
 export default function RecommendedSection({ categories }: Props) {
-  const { recommendation, isLoading, error, hasFetched, fetchRecommendations } =
+  const { recommendation, isLoading, fetchRecommendations } =
     useRecommendationStore();
   const fetchedRef = useRef(false);
 
@@ -31,27 +31,6 @@ export default function RecommendedSection({ categories }: Props) {
       fetchRecommendations(categories);
     }
   }, [categories, fetchRecommendations]);
-
-  // Haven't tried fetching yet — show skeletons
-  if (!hasFetched && !isLoading) {
-    return (
-      <div>
-        <div className="mb-3">
-          <h3 className="text-[13px] font-bold text-[#8B95A1] tracking-wide">
-            맞춤 화장품 추천
-          </h3>
-        </div>
-        <div className="-mx-5 flex gap-3 overflow-x-auto scroll-smooth px-5 pb-2 snap-x snap-mandatory scrollbar-hide">
-          {Array.from({ length: 4 }).map((_, i) => (
-            <SkeletonCard key={i} />
-          ))}
-        </div>
-      </div>
-    );
-  }
-
-  // API failed — hide silently after attempted fetch
-  if (error && hasFetched && !recommendation) return null;
 
   return (
     <div>
@@ -67,9 +46,9 @@ export default function RecommendedSection({ categories }: Props) {
       </div>
 
       <div className="-mx-5 flex gap-3 overflow-x-auto scroll-smooth px-5 pb-2 snap-x snap-mandatory scrollbar-hide">
-        {isLoading
+        {isLoading || !recommendation
           ? Array.from({ length: 4 }).map((_, i) => <SkeletonCard key={i} />)
-          : recommendation?.products.map((product) => (
+          : recommendation.products.map((product) => (
               <PlatformProductCard key={product.platform} product={product} />
             ))}
       </div>
