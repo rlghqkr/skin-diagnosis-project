@@ -40,7 +40,7 @@ export default function RoutineTimeline() {
         <button
           type="button"
           onClick={handlePrev}
-          className="flex h-8 w-8 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
+          className="flex h-11 w-11 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
         >
           <ChevronLeft size={18} />
         </button>
@@ -66,7 +66,7 @@ export default function RoutineTimeline() {
                 onClick={() => !isFuture && setCurrentDate(date)}
                 disabled={isFuture}
                 className={clsx(
-                  "flex flex-col items-center gap-0.5 rounded-xl px-2.5 py-1.5 transition-all",
+                  "flex flex-col items-center gap-0.5 rounded-xl px-2.5 py-2.5 transition-all",
                   isSelected
                     ? "bg-[#5B8CFF] text-white"
                     : isFuture
@@ -97,7 +97,7 @@ export default function RoutineTimeline() {
           onClick={handleNext}
           disabled={currentDate >= todayStr}
           className={clsx(
-            "flex h-8 w-8 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
+            "flex h-11 w-11 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
             currentDate >= todayStr ? "text-[#D1D6DB]" : "text-[#8B95A1]",
           )}
         >

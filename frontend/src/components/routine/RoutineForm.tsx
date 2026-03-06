@@ -65,7 +65,7 @@ export default function RoutineForm() {
           type="button"
           onClick={() => setActiveTab("morning")}
           className={clsx(
-            "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2.5 text-[13px] font-semibold transition-all",
+            "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-[13px] font-semibold transition-all",
             activeTab === "morning"
               ? "bg-white text-[#191F28] shadow-sm"
               : "text-[#8B95A1]",
@@ -78,7 +78,7 @@ export default function RoutineForm() {
           type="button"
           onClick={() => setActiveTab("night")}
           className={clsx(
-            "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-2.5 text-[13px] font-semibold transition-all",
+            "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-[13px] font-semibold transition-all",
             activeTab === "night"
               ? "bg-white text-[#191F28] shadow-sm"
               : "text-[#8B95A1]",

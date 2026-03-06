@@ -32,7 +32,7 @@ export default function RoutineStepCard({ step, onToggle, onRemove }: Props) {
         type="button"
         onClick={onToggle}
         className={clsx(
-          "flex h-7 w-7 flex-shrink-0 items-center justify-center rounded-full border-2 transition-colors",
+          "flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 transition-colors",
           step.completed
             ? "border-[#5B8CFF] bg-[#5B8CFF]"
             : "border-[#D1D6DB] bg-white",
@@ -64,7 +64,7 @@ export default function RoutineStepCard({ step, onToggle, onRemove }: Props) {
       <button
         type="button"
         onClick={onRemove}
-        className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg text-[#D1D6DB] transition-colors hover:text-[#F04452]"
+        className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-[#D1D6DB] transition-colors hover:text-[#F04452]"
       >
         <Trash2 size={16} />
       </button>

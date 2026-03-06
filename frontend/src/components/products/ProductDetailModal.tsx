@@ -28,7 +28,7 @@ export default function ProductDetailModal({ product, onClose }: Props) {
         <button
           type="button"
           onClick={onClose}
-          className="absolute right-4 top-4 z-10 flex h-10 w-10 items-center justify-center rounded-full bg-[#F2F4F6] text-[#4E5968] transition-colors hover:bg-[#E5E8EB]"
+          className="absolute right-4 top-4 z-10 flex h-11 w-11 items-center justify-center rounded-full bg-[#F2F4F6] text-[#4E5968] transition-colors hover:bg-[#E5E8EB]"
         >
           <X size={18} />
         </button>

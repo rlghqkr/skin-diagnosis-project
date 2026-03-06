@@ -17,7 +17,7 @@ export default function PeriodFilter({ selected, onChange }: Props) {
           type="button"
           onClick={() => onChange(p)}
           className={clsx(
-            "flex-1 rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+            "flex-1 rounded-lg px-3 py-3 text-xs font-medium transition-colors",
             selected === p
               ? "bg-white text-[#191F28] shadow-sm"
               : "text-[#8B95A1]",

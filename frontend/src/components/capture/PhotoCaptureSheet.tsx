@@ -38,7 +38,7 @@ export default function PhotoCaptureSheet({ open, onClose }: Props) {
 
         <div className="mb-5 flex items-center justify-between">
           <h3 className="text-lg font-bold text-[#191F28]">사진 선택</h3>
-          <button type="button" onClick={onClose} className="rounded-full p-1.5 text-[#8B95A1] active:bg-[#F2F4F6]">
+          <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-full text-[#8B95A1] active:bg-[#F2F4F6]">
             <X size={20} />
           </button>
         </div>

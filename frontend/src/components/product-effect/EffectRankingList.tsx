@@ -37,7 +37,7 @@ export default function EffectRankingList({ ranking, onSelect }: Props) {
             <button
               key={item.product_id}
               onClick={() => onSelect(item.product_id)}
-              className="flex w-full items-center gap-3 px-4 py-3 text-left transition-colors hover:bg-[#F9FAFB] active:bg-[#F3F4F6]"
+              className="flex w-full items-center gap-3 px-4 py-4 text-left transition-colors hover:bg-[#F9FAFB] active:bg-[#F3F4F6]"
             >
               {/* Rank */}
               <div className="flex h-8 w-8 shrink-0 items-center justify-center">

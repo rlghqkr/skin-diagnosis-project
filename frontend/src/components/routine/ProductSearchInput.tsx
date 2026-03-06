@@ -117,7 +117,7 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
     <div className="fixed inset-0 z-50 flex flex-col bg-white">
       {/* Header */}
       <div className="flex items-center gap-3 border-b border-[#E5E8EB] px-4 py-3">
-        <button type="button" onClick={onClose} className="text-[#8B95A1]">
+        <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]">
           <X size={22} />
         </button>
         <h2 className="flex-1 text-base font-bold text-[#191F28]">
@@ -142,7 +142,7 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
             autoFocus
           />
           {query && (
-            <button type="button" onClick={() => setQuery("")} className="text-[#B0B8C1]">
+            <button type="button" onClick={() => setQuery("")} className="flex h-8 w-8 items-center justify-center text-[#B0B8C1]">
               <X size={16} />
             </button>
           )}
@@ -158,7 +158,7 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
               type="button"
               onClick={() => setSelectedCategory(cat)}
               className={clsx(
-                "flex-shrink-0 rounded-full px-3 py-1.5 text-[12px] font-medium transition-colors",
+                "flex-shrink-0 rounded-full px-4 py-2.5 text-[12px] font-medium transition-colors",
                 selectedCategory === cat
                   ? "bg-[#5B8CFF] text-white"
                   : "bg-[#F2F4F6] text-[#6B7684]",
@@ -194,7 +194,7 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
                   });
                   onClose();
                 }}
-                className="flex w-full items-center gap-3 rounded-2xl bg-[#F7F9FC] px-4 py-3 text-left transition-colors active:bg-[#EBF1FF]"
+                className="flex w-full items-center gap-3 rounded-2xl bg-[#F7F9FC] px-4 py-4 text-left transition-colors active:bg-[#EBF1FF]"
               >
                 <div className="flex-1 min-w-0">
                   <p className="text-[13px] font-medium text-[#191F28] truncate">

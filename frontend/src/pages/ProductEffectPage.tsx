@@ -41,7 +41,7 @@ export default function ProductEffectPage() {
       <div className="mb-4 flex items-center gap-3">
         <button
           onClick={handleBack}
-          className="flex h-9 w-9 items-center justify-center rounded-full transition-colors hover:bg-[#F3F4F6]"
+          className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-[#F3F4F6]"
         >
           <ArrowLeft size={20} className="text-[#191F28]" />
         </button>
@@ -63,7 +63,7 @@ export default function ProductEffectPage() {
           {error}
           <button
             onClick={clearError}
-            className="ml-2 underline"
+            className="ml-2 min-h-[44px] underline"
           >
             닫기
           </button>

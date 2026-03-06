@@ -13,7 +13,7 @@ export default function CategoryFilter({ categories, selected, onSelect }: Props
         type="button"
         onClick={() => onSelect(null)}
         className={clsx(
-          "min-h-[36px] whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all",
+          "min-h-[44px] whitespace-nowrap rounded-full px-4 py-3 text-xs font-medium transition-all",
           selected === null
             ? "bg-[#5B8CFF] text-white"
             : "bg-[#F2F4F6] text-[#8B95A1]",
@@ -28,7 +28,7 @@ export default function CategoryFilter({ categories, selected, onSelect }: Props
           type="button"
           onClick={() => onSelect(cat === selected ? null : cat)}
           className={clsx(
-            "min-h-[36px] whitespace-nowrap rounded-full px-4 py-2 text-xs font-medium transition-all",
+            "min-h-[44px] whitespace-nowrap rounded-full px-4 py-3 text-xs font-medium transition-all",
             cat === selected
               ? "bg-[#5B8CFF] text-white"
               : "bg-[#F2F4F6] text-[#8B95A1]",
