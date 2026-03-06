@@ -55,7 +55,7 @@ export default function ScoreTrendLine({ data, productChanges }: Props) {
 
   return (
     <div className="rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-      <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">
+      <h3 className="mb-4 text-[15px] font-bold text-[#191F28]">
         종합 피부 점수
       </h3>
       <ResponsiveContainer width="100%" height={220}>

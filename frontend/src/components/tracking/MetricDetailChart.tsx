@@ -15,12 +15,12 @@ interface Props {
   data: DailyScore[];
 }
 
-const METRICS: { key: MetricKey; label: string; icon: string }[] = [
-  { key: "moisture_norm", label: "수분", icon: "💧" },
-  { key: "elasticity_norm", label: "탄력", icon: "🫧" },
-  { key: "pore_norm", label: "모공", icon: "⭕" },
-  { key: "wrinkle_norm", label: "주름", icon: "〰" },
-  { key: "pigmentation_norm", label: "색소", icon: "🎨" },
+const METRICS: { key: MetricKey; label: string; color: string }[] = [
+  { key: "moisture_norm", label: "수분", color: "#3B82F6" },
+  { key: "elasticity_norm", label: "탄력", color: "#8B5CF6" },
+  { key: "pore_norm", label: "모공", color: "#F59E0B" },
+  { key: "wrinkle_norm", label: "주름", color: "#EF4444" },
+  { key: "pigmentation_norm", label: "색소", color: "#EC4899" },
 ];
 
 function formatDate(dateStr: string): string {
@@ -56,25 +56,33 @@ export default function MetricDetailChart({ data }: Props) {
 
   return (
     <div className="rounded-2xl bg-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-      <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">
+      <h3 className="mb-4 text-[15px] font-bold text-[#191F28]">
         항목별 상세
       </h3>
 
       {/* Metric tabs */}
-      <div className="mb-4 flex gap-1.5 overflow-x-auto">
+      <div className="mb-4 flex gap-2 overflow-x-auto scrollbar-hide">
         {METRICS.map((m) => (
           <button
             key={m.key}
             type="button"
             onClick={() => setActive(m.key)}
             className={clsx(
-              "shrink-0 rounded-xl px-3.5 min-h-[36px] text-[12px] font-medium transition-all",
+              "flex shrink-0 items-center gap-1.5 rounded-full px-4 min-h-[44px] text-[13px] font-semibold transition-all active:scale-[0.96]",
               active === m.key
-                ? "bg-[#5B8CFF] text-white shadow-sm"
-                : "bg-[#F2F4F6] text-[#8B95A1] active:bg-[#E5E8EB]",
+                ? "text-white shadow-sm"
+                : "bg-[#F2F4F6] text-[#4E5968] active:bg-[#E5E8EB]",
             )}
+            style={active === m.key ? { backgroundColor: m.color } : undefined}
           >
-            {m.icon} {m.label}
+            <span
+              className={clsx(
+                "h-2 w-2 rounded-full shrink-0",
+                active === m.key && "bg-white/60",
+              )}
+              style={active !== m.key ? { backgroundColor: m.color } : undefined}
+            />
+            {m.label}
           </button>
         ))}
       </div>
@@ -82,14 +90,14 @@ export default function MetricDetailChart({ data }: Props) {
       {/* Current stats */}
       <div className="mb-3 flex items-center gap-4">
         <div>
-          <p className="text-xs text-[#8B95A1]">
-            {activeMetric.icon} {activeMetric.label}
+          <p className="text-[12px] font-medium text-[#8B95A1]">
+            {activeMetric.label}
           </p>
           <p className="text-2xl font-bold text-[#191F28]">
             {Math.round(currentVal * 100)}
           </p>
         </div>
-        <div className="text-xs text-[#8B95A1]">
+        <div className="text-[12px] text-[#8B95A1]">
           <p>
             평균:{" "}
             <strong className="text-[#191F28]">
@@ -131,10 +139,10 @@ export default function MetricDetailChart({ data }: Props) {
           <Line
             type="monotone"
             dataKey={active}
-            stroke="#3B82F6"
+            stroke={activeMetric.color}
             strokeWidth={2}
             dot={false}
-            activeDot={{ r: 4, fill: "#3B82F6" }}
+            activeDot={{ r: 4, fill: activeMetric.color }}
           />
         </LineChart>
       </ResponsiveContainer>
