@@ -6,6 +6,7 @@ from app.models.product import Product
 from app.models.product_usage import ProductUsageHistory
 from app.models.daily_skin_score import DailySkinScore
 from app.models.product_effect import ProductEffectAnalysis
+from app.models.product_recommendation import ProductRecommendation
 
 __all__ = [
     "Base",
@@ -16,4 +17,5 @@ __all__ = [
     "ProductUsageHistory",
     "DailySkinScore",
     "ProductEffectAnalysis",
+    "ProductRecommendation",
 ]

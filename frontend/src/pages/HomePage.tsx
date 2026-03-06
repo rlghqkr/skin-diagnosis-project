@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { Sparkles, Droplets, Search, FlaskConical, TrendingUp, ArrowRight } from "lucide-react";
 import SkinScoreCircle from "../components/results/SkinScoreCircle";
+import RecommendedSection from "../components/recommendation/RecommendedSection";
 import { useAnalysisHistory } from "../hooks/useAnalysisHistory";
 import { formatRelativeDate } from "../utils/formatDate";
 
@@ -78,6 +79,11 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
               </div>
               <ArrowRight size={18} className="text-[#D1D6DB]" />
             </button>
+          )}
+
+          {/* 맞춤 화장품 추천 */}
+          {latestRecord && latestRecord.categories.length > 0 && (
+            <RecommendedSection categories={latestRecord.categories} />
           )}
 
           {/* Feature Cards — 2×2 그리드로 가독성 향상 */}

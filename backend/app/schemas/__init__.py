@@ -23,6 +23,11 @@ from app.schemas.tracking import (
     ProductEffectAnalysisCreate,
     ProductEffectAnalysisRead,
 )
+from app.schemas.recommendation import (
+    CategoryScoreInput,
+    RecommendedProduct,
+    PlatformRecommendationResponse,
+)
 
 __all__ = [
     "UserCreate",
@@ -44,4 +49,7 @@ __all__ = [
     "DailySkinScoreRead",
     "ProductEffectAnalysisCreate",
     "ProductEffectAnalysisRead",
+    "CategoryScoreInput",
+    "RecommendedProduct",
+    "PlatformRecommendationResponse",
 ]

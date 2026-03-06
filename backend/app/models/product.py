@@ -32,6 +32,9 @@ class Product(Base):
     price: Mapped[float | None] = mapped_column(Numeric(10, 0), nullable=True)
     volume: Mapped[str | None] = mapped_column(String(50), nullable=True)
     description: Mapped[str | None] = mapped_column(Text, nullable=True)
+    platform: Mapped[str | None] = mapped_column(String(20), nullable=True)
+    popularity_rank: Mapped[int | None] = mapped_column(nullable=True)
+    skin_targets: Mapped[list | None] = mapped_column(JSON, nullable=True)
     is_active: Mapped[bool] = mapped_column(Boolean, nullable=False, default=True)
     created_at: Mapped[datetime] = mapped_column(nullable=False, default=func.now())
     updated_at: Mapped[datetime] = mapped_column(
@@ -51,4 +54,6 @@ class Product(Base):
         Index("idx_products_brand_name", "brand", "product_name"),
         Index("idx_products_category", "category"),
         Index("idx_products_active", "is_active"),
+        Index("idx_products_platform_rank", "platform", "popularity_rank"),
+        Index("idx_products_platform_active", "platform", "is_active"),
     )

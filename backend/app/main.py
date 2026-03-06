@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from app.config import settings
 from app.database import Base, engine
-from app.routers import auth, routine, product, product_effect, skin, tracking
+from app.routers import auth, routine, product, product_effect, skin, tracking, recommendation
 
 
 @asynccontextmanager
@@ -45,6 +45,7 @@ app.include_router(product.router)
 app.include_router(skin.router)
 app.include_router(tracking.router)
 app.include_router(product_effect.router)
+app.include_router(recommendation.router)
 
 
 @app.get("/health")
