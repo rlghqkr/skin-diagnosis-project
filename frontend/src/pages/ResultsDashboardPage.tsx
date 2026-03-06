@@ -117,21 +117,14 @@ export default function ResultsDashboardPage() {
       </div>
 
       {/* Actions */}
-      <div className="mt-8 flex flex-col gap-3">
-        <button
-          type="button"
-          onClick={() => navigate("/recommendations", { state: { analyzeResult } })}
-          className="flex w-full items-center justify-center gap-2.5 rounded-2xl py-4 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] active:brightness-95 transition-all"
-          style={{ background: "linear-gradient(135deg, #5B8CFF, #4A75E0)" }}
-        >
-          맞춤 화장품 추천 보기
-        </button>
+      <div className="mt-8">
         <button
           type="button"
           onClick={() => navigate("/")}
-          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#F2F4F6] py-4 text-sm font-medium text-[#4E5968] active:brightness-95 transition-all"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl h-[56px] text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(91,140,255,0.3)] active:scale-[0.98] transition-all"
+          style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
         >
-          <RotateCcw size={15} />
+          <RotateCcw size={18} />
           새로 분석하기
         </button>
       </div>
