@@ -29,7 +29,7 @@ function getDates(centerDate: string) {
 function getMonthDates(year: number, month: number) {
   const firstDay = new Date(year, month, 1);
   const lastDay = new Date(year, month + 1, 0);
-  const startPad = firstDay.getDay(); // 0=Sun
+  const startPad = firstDay.getDay();
 
   const cells: (string | null)[] = [];
   for (let i = 0; i < startPad; i++) cells.push(null);
@@ -120,10 +120,10 @@ export default function RoutineTimeline() {
         <button
           type="button"
           onClick={handleToggleCalendar}
-          className="flex w-full items-center justify-center gap-2 px-4 py-3 transition-colors active:bg-[#F9FAFB]"
+          className="flex w-full items-center justify-center gap-2 px-4 min-h-[48px] transition-colors active:bg-[#F9FAFB]"
         >
           <CalendarDays size={16} className="text-[#5B8CFF]" />
-          <span className="text-[13px] font-bold text-[#191F28]">
+          <span className="text-[14px] font-bold text-[#191F28]">
             {current.getFullYear()}년 {current.getMonth() + 1}월
           </span>
           <ChevronRight
@@ -137,16 +137,16 @@ export default function RoutineTimeline() {
 
         {/* Weekly strip (default view) */}
         {!calendarOpen && (
-          <div className="flex items-center justify-between px-2 pb-3">
+          <div className="flex items-center px-1 pb-3">
             <button
               type="button"
               onClick={handlePrev}
-              className="flex h-11 w-11 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
+              className="flex h-11 w-9 shrink-0 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
             >
               <ChevronLeft size={18} />
             </button>
 
-            <div className="flex gap-1">
+            <div className="flex flex-1 justify-between">
               {dates.map((date) => {
                 const d = new Date(date + "T00:00:00");
                 const dayNum = d.getDate();
@@ -163,25 +163,25 @@ export default function RoutineTimeline() {
                     onClick={() => !isFuture && setCurrentDate(date)}
                     disabled={isFuture}
                     className={clsx(
-                      "flex flex-col items-center gap-0.5 rounded-xl px-2.5 py-2.5 transition-all",
+                      "flex min-w-[44px] flex-1 flex-col items-center gap-0.5 rounded-2xl py-2 transition-all active:scale-[0.95]",
                       isSelected
-                        ? "bg-[#5B8CFF] text-white"
+                        ? "bg-[#5B8CFF] text-white shadow-sm"
                         : isFuture
                           ? "text-[#D1D6DB]"
                           : "text-[#6B7684] active:bg-[#F2F4F6]",
                     )}
                   >
-                    <span className={clsx("text-[10px]", isSelected ? "font-semibold" : "font-normal")}>
+                    <span className={clsx("text-[11px]", isSelected ? "font-semibold" : "font-normal")}>
                       {dayName}
                     </span>
-                    <span className={clsx("text-[14px]", isSelected || isToday ? "font-bold" : "font-medium")}>
+                    <span className={clsx("text-[15px]", isSelected || isToday ? "font-bold" : "font-medium")}>
                       {dayNum}
                     </span>
-                    <span className="flex h-3 items-center">
+                    <span className="flex h-3.5 items-center">
                       {status === "complete" ? (
-                        <CheckCircle2 size={10} className={isSelected ? "text-white" : "text-[#30D158]"} />
+                        <CheckCircle2 size={12} className={isSelected ? "text-white" : "text-[#30D158]"} />
                       ) : status === "partial" ? (
-                        <Circle size={10} className={isSelected ? "text-white/60" : "text-[#D1D6DB]"} />
+                        <Circle size={12} className={isSelected ? "text-white/60" : "text-[#D1D6DB]"} />
                       ) : null}
                     </span>
                   </button>
@@ -194,7 +194,7 @@ export default function RoutineTimeline() {
               onClick={handleNext}
               disabled={currentDate >= todayStr}
               className={clsx(
-                "flex h-11 w-11 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
+                "flex h-11 w-9 shrink-0 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
                 currentDate >= todayStr ? "text-[#D1D6DB]" : "text-[#8B95A1]",
               )}
             >

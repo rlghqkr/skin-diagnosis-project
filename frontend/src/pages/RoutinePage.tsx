@@ -36,7 +36,7 @@ export default function RoutinePage() {
             <button
               type="button"
               onClick={() => setAuthOpen(true)}
-              className="flex h-11 items-center gap-1.5 rounded-xl bg-[#5B8CFF] px-4 text-[13px] font-semibold text-white transition-all active:scale-[0.97]"
+              className="flex h-11 items-center gap-1.5 rounded-xl border border-[#E5E8EB] bg-white px-4 text-[13px] font-medium text-[#6B7684] transition-all active:scale-[0.97] active:bg-[#F2F4F6]"
             >
               <LogIn size={15} />
               로그인
