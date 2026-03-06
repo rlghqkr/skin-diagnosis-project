@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { NavLink } from "react-router-dom";
-import { Home, BarChart3, ShoppingBag, User, Camera } from "lucide-react";
+import { Home, Droplets, User, Camera, TrendingUp } from "lucide-react";
 import clsx from "clsx";
 
 interface Props {
@@ -9,11 +9,11 @@ interface Props {
 
 const LEFT_TABS = [
   { to: "/", icon: Home, label: "홈" },
-  { to: "/results/dashboard", icon: BarChart3, label: "결과" },
+  { to: "/routine", icon: Droplets, label: "루틴" },
 ] as const;
 
 const RIGHT_TABS = [
-  { to: "/recommendations", icon: ShoppingBag, label: "추천" },
+  { to: "/tracking", icon: TrendingUp, label: "트렌드" },
   { to: "/profile", icon: User, label: "프로필" },
 ] as const;
 

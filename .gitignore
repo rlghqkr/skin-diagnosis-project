@@ -44,3 +44,7 @@ wandb
 NIA.tar
 checkpoint.zip
 node_modules/
+
+# Backend
+*.db
+backend/__pycache__/

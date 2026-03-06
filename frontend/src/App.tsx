@@ -12,6 +12,9 @@ import ResultsPage from "./pages/ResultsPage";
 import ResultsDashboardPage from "./pages/ResultsDashboardPage";
 import RecommendationsPage from "./pages/RecommendationsPage";
 import ProfilePage from "./pages/ProfilePage";
+import RoutinePage from "./pages/RoutinePage";
+import TrackingPage from "./pages/TrackingPage";
+import ProductEffectPage from "./pages/ProductEffectPage";
 import OnboardingPage, { isOnboardingDone } from "./pages/OnboardingPage";
 
 export default function App() {
@@ -60,6 +63,9 @@ function AppShell() {
           <Route path="/results" element={<ResultsPage />} />
           <Route path="/results/dashboard" element={<ResultsDashboardPage />} />
           <Route path="/recommendations" element={<RecommendationsPage />} />
+          <Route path="/routine" element={<RoutinePage />} />
+          <Route path="/tracking" element={<TrackingPage />} />
+          <Route path="/product-effect" element={<ProductEffectPage />} />
           <Route path="/profile" element={<ProfilePage />} />
         </Routes>
       </main>
