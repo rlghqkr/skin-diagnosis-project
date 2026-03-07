@@ -116,7 +116,7 @@ export default function ProfilePage() {
                       className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-[14px] font-bold text-white"
                       style={{ backgroundColor: getScoreColor(record.score) }}
                     >
-                      {record.score}
+                      {Math.round(record.score)}
                     </div>
                     <div className="flex-1 min-w-0">
                       <p className="text-[14px] font-semibold text-[#191F28]">

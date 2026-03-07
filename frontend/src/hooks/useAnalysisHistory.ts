@@ -64,7 +64,7 @@ export function useAnalysisHistory() {
     const record: AnalysisRecord = {
       id: `${Date.now()}-${Math.random().toString(36).slice(2, 8)}`,
       timestamp: Date.now(),
-      score: result.score.overall,
+      score: Math.round(result.score.overall * 100) / 100,
       categories: result.score.categories,
       skinType: result.recommendation?.skin_type ?? null,
       fullResult: result,
@@ -85,7 +85,7 @@ export function useAnalysisHistory() {
   const latestRecord = records[0] ?? null;
   const previousRecord = records[1] ?? null;
   const scoreDelta = latestRecord && previousRecord
-    ? latestRecord.score - previousRecord.score
+    ? Math.round((latestRecord.score - previousRecord.score) * 100) / 100
     : null;
 
   return {

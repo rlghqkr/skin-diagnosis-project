@@ -62,14 +62,14 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
               <div className="flex-1 min-w-0">
                 <p className="text-[11px] font-medium text-[#8B95A1]">최근 피부 점수</p>
                 <div className="mt-1 flex items-baseline gap-2">
-                  <span className="text-2xl font-bold text-[#191F28]">{latestRecord.score}</span>
+                  <span className="text-2xl font-bold text-[#191F28]">{Math.round(latestRecord.score)}</span>
                   <span className="text-xs text-[#B0B8C1]">/ 100</span>
                 </div>
                 {scoreDelta !== null && (
                   <div className="mt-1 flex items-center gap-1">
                     <TrendingUp size={12} className={scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"} />
                     <span className={`text-xs font-semibold ${scoreDelta >= 0 ? "text-[#30D158]" : "text-[#F04452]"}`}>
-                      {scoreDelta >= 0 ? `+${scoreDelta}` : scoreDelta}점
+                      {scoreDelta >= 0 ? `+${Math.round(scoreDelta)}` : Math.round(scoreDelta)}점
                     </span>
                     <span className="text-[11px] text-[#B0B8C1]">
                       · {formatRelativeDate(latestRecord.timestamp)}

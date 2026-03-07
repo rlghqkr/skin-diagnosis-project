@@ -16,7 +16,7 @@ function predictImprovement(score: number): number {
 
 export default function ImprovementPrediction({ currentScore }: Props) {
   const projected = predictImprovement(currentScore);
-  const delta = projected - currentScore;
+  const delta = Math.round((projected - currentScore) * 100) / 100;
 
   return (
     <div className="rounded-2xl bg-white p-5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
