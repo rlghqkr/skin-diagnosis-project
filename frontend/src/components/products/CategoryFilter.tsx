@@ -15,8 +15,8 @@ export default function CategoryFilter({ categories, selected, onSelect }: Props
         className={clsx(
           "min-h-[44px] whitespace-nowrap rounded-full px-4 py-3 text-xs font-medium transition-all",
           selected === null
-            ? "bg-[#5B8CFF] text-white"
-            : "bg-[#F2F4F6] text-[#8B95A1]",
+            ? "bg-primary text-white"
+            : "bg-secondary text-muted-foreground",
         )}
       >
         전체
@@ -30,8 +30,8 @@ export default function CategoryFilter({ categories, selected, onSelect }: Props
           className={clsx(
             "min-h-[44px] whitespace-nowrap rounded-full px-4 py-3 text-xs font-medium transition-all",
             cat === selected
-              ? "bg-[#5B8CFF] text-white"
-              : "bg-[#F2F4F6] text-[#8B95A1]",
+              ? "bg-primary text-white"
+              : "bg-secondary text-muted-foreground",
           )}
         >
           {cat}

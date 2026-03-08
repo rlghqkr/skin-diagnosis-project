@@ -1,21 +1,35 @@
 import { Link } from "react-router-dom";
+import { useHealth } from "../../hooks/useHealth";
 
 export default function Header() {
+  const { isHealthy } = useHealth();
+
   return (
-    <header className="safe-top sticky top-0 relative z-20 border-b border-[#E5E8EB] bg-white/95 backdrop-blur-sm">
-      <div className="flex items-center px-5 py-3">
-        <Link
-          to="/"
-          className="flex items-center gap-2.5 transition-opacity active:opacity-70"
+    <header className="safe-top sticky top-0 z-50 flex items-center justify-between px-5 py-3 bg-card border-b border-border">
+      <Link
+        to="/"
+        className="transition-opacity active:opacity-70"
+      >
+        <span className="text-[18px] font-semibold text-foreground tracking-tight">
+          SkinNerd
+        </span>
+      </Link>
+      <span className="flex items-center gap-1.5 rounded-full px-3 py-1"
+        style={{
+          backgroundColor: isHealthy ? "#E8F5E9" : "#FFEBEE",
+        }}
+      >
+        <span
+          className="h-2 w-2 rounded-full"
+          style={{ backgroundColor: isHealthy ? "#4CAF50" : "#EF5350" }}
+        />
+        <span
+          className="text-[12px] font-medium"
+          style={{ color: isHealthy ? "#2E7D32" : "#C62828" }}
         >
-          <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EBF1FF]">
-            <div className="h-2.5 w-2.5 rounded-full bg-[#5B8CFF]" />
-          </div>
-          <h1 className="font-brand text-[17px] text-[#191F28]">
-            SkinNerd AI
-          </h1>
-        </Link>
-      </div>
+          {isHealthy ? "서버 연결됨" : "연결 안됨"}
+        </span>
+      </span>
     </header>
   );
 }

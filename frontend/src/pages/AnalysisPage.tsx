@@ -47,11 +47,11 @@ export default function AnalysisPage() {
   if (!previewUrl) {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-5">
-        <p className="mb-4 text-sm text-[#8B95A1]">분석할 이미지를 선택해주세요</p>
+        <p className="mb-4 text-sm text-muted-foreground">분석할 이미지를 선택해주세요</p>
         <button
           type="button"
           onClick={handleGoHome}
-          className="rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white"
+          className="rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white"
         >
           홈으로 돌아가기
         </button>
@@ -79,7 +79,7 @@ export default function AnalysisPage() {
           type="button"
           onClick={handleAnalyze}
           disabled={!selectedFile || loading}
-          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-[#5B8CFF] py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] disabled:opacity-50 transition-all active:brightness-95"
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary py-4 text-base font-semibold text-white disabled:opacity-50 transition-all active:brightness-95"
         >
           {loading ? "분석 중..." : "AI 피부 분석 시작"}
         </button>
@@ -97,7 +97,7 @@ export default function AnalysisPage() {
         <button
           type="button"
           onClick={handleGoHome}
-          className="flex items-center gap-2.5 rounded-2xl bg-[#F2F4F6] px-8 py-3.5 text-sm font-medium text-[#4E5968] transition-all active:brightness-95"
+          className="flex items-center gap-2.5 rounded-2xl bg-secondary px-8 py-3.5 text-sm font-medium text-secondary-foreground transition-all active:brightness-95"
         >
           <RotateCcw size={15} />
           홈으로 돌아가기

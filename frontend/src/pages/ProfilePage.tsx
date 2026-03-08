@@ -13,7 +13,7 @@ import { formatDate, formatRelativeDate } from "../utils/formatDate";
 
 function getScoreColor(score: number): string {
   if (score >= 80) return "#34C759";
-  if (score >= 60) return "#5B8CFF";
+  if (score >= 60) return "#3182F6";
   if (score >= 40) return "#FF9F0A";
   return "#F04452";
 }
@@ -38,28 +38,25 @@ export default function ProfilePage() {
   return (
     <div className="flex min-h-[calc(100dvh-120px)] flex-col pb-24">
       {/* Profile Header */}
-      <div className="bg-white px-5 pt-6 pb-6">
+      <div className="bg-card px-5 pt-6 pb-6">
         <div className="flex items-center gap-4">
-          <div
-            className="flex h-16 w-16 items-center justify-center rounded-full"
-            style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
-          >
+          <div className="flex h-16 w-16 items-center justify-center rounded-full bg-primary">
             <User size={28} className="text-white" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-[#191F28]">피부 관리 기록</h1>
-            <p className="mt-0.5 text-[13px] text-[#8B95A1]">총 {records.length}회 분석 완료</p>
+            <h1 className="text-lg font-bold text-foreground">피부 관리 기록</h1>
+            <p className="mt-0.5 text-[13px] text-muted-foreground">총 {records.length}회 분석 완료</p>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-[#F7F9FC] px-5 pt-5">
+      <div className="flex-1 bg-background px-5 pt-5">
         <div className="mx-auto w-full max-w-lg space-y-5">
           {/* Score Trend Chart */}
           {chartData.length >= 2 && (
-            <div className="rounded-2xl bg-white p-5 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-              <h3 className="mb-4 text-[13px] font-bold text-[#8B95A1] tracking-wide">점수 변화 추이</h3>
+            <div className="rounded-2xl bg-card p-5 border border-border">
+              <h3 className="mb-4 text-[13px] font-bold text-muted-foreground tracking-wide">점수 변화 추이</h3>
               <ResponsiveContainer width="100%" height={160}>
                 <LineChart data={chartData}>
                   <XAxis
@@ -86,10 +83,10 @@ export default function ProfilePage() {
                   <Line
                     type="monotone"
                     dataKey="score"
-                    stroke="#5B8CFF"
+                    stroke="#3182F6"
                     strokeWidth={2}
-                    dot={{ fill: "#5B8CFF", r: 3 }}
-                    activeDot={{ r: 5, fill: "#5B8CFF" }}
+                    dot={{ fill: "#3182F6", r: 3 }}
+                    activeDot={{ r: 5, fill: "#3182F6" }}
                   />
                 </LineChart>
               </ResponsiveContainer>
@@ -99,7 +96,7 @@ export default function ProfilePage() {
           {/* Analysis History */}
           {records.length > 0 ? (
             <div>
-              <h3 className="mb-3 text-[13px] font-bold text-[#8B95A1] tracking-wide">분석 기록</h3>
+              <h3 className="mb-3 text-[13px] font-bold text-muted-foreground tracking-wide">분석 기록</h3>
               <div className="space-y-2">
                 {records.map((record) => (
                   <button
@@ -110,7 +107,7 @@ export default function ProfilePage() {
                         state: { analyzeResult: record.fullResult, viewOnly: true },
                       })
                     }
-                    className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)] active:scale-[0.99] transition-all text-left"
+                    className="flex w-full items-center gap-3 rounded-2xl bg-card px-4 py-4 border border-border active:scale-[0.99] transition-all text-left"
                   >
                     <div
                       className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full text-[14px] font-bold text-white"
@@ -119,32 +116,32 @@ export default function ProfilePage() {
                       {Math.round(record.score)}
                     </div>
                     <div className="flex-1 min-w-0">
-                      <p className="text-[14px] font-semibold text-[#191F28]">
+                      <p className="text-[14px] font-semibold text-foreground">
                         {formatDate(record.timestamp)}
                       </p>
-                      <p className="mt-0.5 text-[12px] text-[#8B95A1]">
+                      <p className="mt-0.5 text-[12px] text-muted-foreground">
                         {record.skinType
                           ? `${record.skinType === "dry" ? "건성" : record.skinType === "oily" ? "지성" : record.skinType === "combination" ? "복합성" : "민감성"} · `
                           : ""}
                         {formatRelativeDate(record.timestamp)}
                       </p>
                     </div>
-                    <ChevronRight size={16} className="text-[#D1D6DB]" />
+                    <ChevronRight size={16} className="text-muted-foreground" />
                   </button>
                 ))}
               </div>
             </div>
           ) : (
-            <div className="rounded-2xl bg-white p-8 text-center shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-[#F2F4F6]">
-                <User size={20} className="text-[#8B95A1]" />
+            <div className="rounded-2xl bg-card p-8 text-center border border-border">
+              <div className="mx-auto mb-3 flex h-12 w-12 items-center justify-center rounded-full bg-secondary">
+                <User size={20} className="text-muted-foreground" />
               </div>
-              <p className="text-[14px] font-medium text-[#4E5968]">아직 분석 기록이 없습니다</p>
-              <p className="mt-1 text-[12px] text-[#8B95A1]">첫 분석을 시작해보세요</p>
+              <p className="text-[14px] font-medium text-secondary-foreground">아직 분석 기록이 없습니다</p>
+              <p className="mt-1 text-[12px] text-muted-foreground">첫 분석을 시작해보세요</p>
               <button
                 type="button"
                 onClick={() => navigate("/")}
-                className="mt-4 inline-flex h-11 items-center justify-center rounded-xl bg-[#5B8CFF] px-6 text-[14px] font-semibold text-white transition-all active:scale-[0.97]"
+                className="mt-4 inline-flex h-11 items-center justify-center rounded-xl bg-primary px-6 text-[14px] font-semibold text-white transition-all active:scale-[0.97]"
               >
                 분석 시작하기
               </button>
@@ -153,25 +150,25 @@ export default function ProfilePage() {
 
           {/* Settings */}
           <div>
-            <h3 className="mb-3 text-[13px] font-bold text-[#8B95A1] tracking-wide">설정</h3>
+            <h3 className="mb-3 text-[13px] font-bold text-muted-foreground tracking-wide">설정</h3>
             <div className="space-y-2">
               <button
                 type="button"
                 onClick={handleClear}
-                className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)] active:scale-[0.99] transition-all text-left"
+                className="flex w-full items-center gap-3 rounded-2xl bg-card px-4 py-4 border border-border active:scale-[0.99] transition-all text-left"
               >
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#FEF2F2]">
                   <Trash2 size={16} className="text-[#F04452]" />
                 </div>
-                <span className="flex-1 text-[14px] text-[#191F28]">데이터 초기화</span>
-                <ChevronRight size={16} className="text-[#D1D6DB]" />
+                <span className="flex-1 text-[14px] text-foreground">데이터 초기화</span>
+                <ChevronRight size={16} className="text-muted-foreground" />
               </button>
-              <div className="flex w-full items-center gap-3 rounded-2xl bg-white px-4 py-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-[#F2F4F6]">
-                  <Info size={16} className="text-[#8B95A1]" />
+              <div className="flex w-full items-center gap-3 rounded-2xl bg-card px-4 py-4 border border-border">
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-secondary">
+                  <Info size={16} className="text-muted-foreground" />
                 </div>
-                <span className="flex-1 text-[14px] text-[#191F28]">앱 정보</span>
-                <span className="text-[12px] text-[#8B95A1]">v1.0</span>
+                <span className="flex-1 text-[14px] text-foreground">앱 정보</span>
+                <span className="text-[12px] text-muted-foreground">v1.0</span>
               </div>
             </div>
           </div>

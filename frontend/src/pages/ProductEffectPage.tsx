@@ -41,11 +41,11 @@ export default function ProductEffectPage() {
       <div className="mb-4 flex items-center gap-3">
         <button
           onClick={handleBack}
-          className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-[#F3F4F6]"
+          className="flex h-11 w-11 items-center justify-center rounded-full transition-colors hover:bg-secondary"
         >
-          <ArrowLeft size={20} className="text-[#191F28]" />
+          <ArrowLeft size={20} className="text-foreground" />
         </button>
-        <h1 className="text-lg font-bold text-[#191F28]">
+        <h1 className="text-lg font-bold text-foreground">
           {selectedEffect ? "제품 효과 분석" : "제품 효과"}
         </h1>
       </div>
@@ -53,13 +53,13 @@ export default function ProductEffectPage() {
       {/* Loading */}
       {isLoading && (
         <div className="mt-8 flex justify-center">
-          <Loader2 size={24} className="animate-spin text-[#3B82F6]" />
+          <Loader2 size={24} className="animate-spin text-primary" />
         </div>
       )}
 
       {/* Error */}
       {error && (
-        <div className="mt-4 rounded-xl bg-[#FEF2F2] px-4 py-3 text-xs text-[#EF4444]">
+        <div className="mt-4 rounded-xl bg-[#FEF2F2] px-4 py-3 text-xs text-destructive">
           {error}
           <button
             onClick={clearError}

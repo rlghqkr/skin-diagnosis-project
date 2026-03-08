@@ -2,7 +2,7 @@ const PLATFORM_COLORS: Record<string, string> = {
   oliveyoung: "#2DB400",
   hwahae: "#FF6B9D",
   daiso: "#0064FF",
-  internal: "#5B8CFF",
+  internal: "#3182F6",
 };
 
 interface Props {

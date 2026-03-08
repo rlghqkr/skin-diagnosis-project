@@ -55,17 +55,17 @@ export default function AuthModal({ open, onClose }: Props) {
       {/* Sheet */}
       <div className="animate-slide-up relative w-full max-w-lg rounded-t-3xl bg-white px-6 pt-4 pb-8 safe-bottom">
         {/* Drag handle */}
-        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-[#D1D6DB]" />
+        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-muted-foreground/30" />
 
         {/* Header */}
         <div className="mb-6 flex items-center justify-between">
-          <h2 className="text-lg font-bold text-[#191F28]">
+          <h2 className="text-lg font-bold text-foreground">
             {mode === "login" ? "로그인" : "회원가입"}
           </h2>
           <button
             type="button"
             onClick={onClose}
-            className="flex h-11 w-11 items-center justify-center rounded-full text-[#8B95A1] active:bg-[#F2F4F6]"
+            className="flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground active:bg-secondary"
           >
             <X size={22} />
           </button>
@@ -73,33 +73,33 @@ export default function AuthModal({ open, onClose }: Props) {
 
         <form onSubmit={handleSubmit} className="space-y-3">
           {mode === "register" && (
-            <div className="flex items-center gap-2 rounded-xl bg-[#F2F4F6] px-3 py-3">
-              <User size={18} className="text-[#8B95A1]" />
+            <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-3">
+              <User size={18} className="text-muted-foreground" />
               <input
                 type="text"
                 value={nickname}
                 onChange={(e) => setNickname(e.target.value)}
                 placeholder="닉네임"
                 required
-                className="flex-1 bg-transparent text-sm text-[#191F28] placeholder-[#B0B8C1] outline-none"
+                className="flex-1 bg-transparent text-sm text-foreground placeholder-[#B0B8C1] outline-none"
               />
             </div>
           )}
 
-          <div className="flex items-center gap-2 rounded-xl bg-[#F2F4F6] px-3 py-3">
-            <Mail size={18} className="text-[#8B95A1]" />
+          <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-3">
+            <Mail size={18} className="text-muted-foreground" />
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="이메일"
               required
-              className="flex-1 bg-transparent text-sm text-[#191F28] placeholder-[#B0B8C1] outline-none"
+              className="flex-1 bg-transparent text-sm text-foreground placeholder-[#B0B8C1] outline-none"
             />
           </div>
 
-          <div className="flex items-center gap-2 rounded-xl bg-[#F2F4F6] px-3 py-3">
-            <Lock size={18} className="text-[#8B95A1]" />
+          <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-3">
+            <Lock size={18} className="text-muted-foreground" />
             <input
               type="password"
               value={password}
@@ -107,7 +107,7 @@ export default function AuthModal({ open, onClose }: Props) {
               placeholder="비밀번호 (8자 이상)"
               required
               minLength={8}
-              className="flex-1 bg-transparent text-sm text-[#191F28] placeholder-[#B0B8C1] outline-none"
+              className="flex-1 bg-transparent text-sm text-foreground placeholder-[#B0B8C1] outline-none"
             />
           </div>
 
@@ -118,8 +118,7 @@ export default function AuthModal({ open, onClose }: Props) {
           <button
             type="submit"
             disabled={isLoading}
-            className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-[14px] font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.25)] active:brightness-95 transition-all"
-            style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
+            className="flex w-full items-center justify-center gap-2 rounded-2xl py-3.5 text-[14px] font-semibold text-white bg-primary active:brightness-95 transition-all"
           >
             {isLoading ? (
               <Loader2 size={18} className="animate-spin" />
@@ -134,17 +133,17 @@ export default function AuthModal({ open, onClose }: Props) {
         <button
           type="button"
           onClick={switchMode}
-          className="mt-4 w-full text-center text-[13px] text-[#8B95A1]"
+          className="mt-4 w-full text-center text-[13px] text-muted-foreground"
         >
           {mode === "login" ? (
             <>
               계정이 없으신가요?{" "}
-              <span className={clsx("font-semibold text-[#5B8CFF]")}>회원가입</span>
+              <span className={clsx("font-semibold text-primary")}>회원가입</span>
             </>
           ) : (
             <>
               이미 계정이 있으신가요?{" "}
-              <span className={clsx("font-semibold text-[#5B8CFF]")}>로그인</span>
+              <span className={clsx("font-semibold text-primary")}>로그인</span>
             </>
           )}
         </button>

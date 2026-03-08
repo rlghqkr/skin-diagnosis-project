@@ -52,7 +52,7 @@ function AppShell() {
   const [photoSheetOpen, setPhotoSheetOpen] = useState(false);
 
   return (
-    <div className="relative flex min-h-[100dvh] flex-col bg-[#F7F9FC]">
+    <div className="relative mx-auto flex min-h-[100dvh] max-w-[420px] flex-col bg-background">
       <Header />
 
       <main className="relative z-10 w-full flex-1">

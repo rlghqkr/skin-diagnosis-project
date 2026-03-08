@@ -24,7 +24,7 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
       <div
         className={clsx(
           "group relative flex w-full min-h-[48px] cursor-pointer items-center justify-center gap-3 rounded-2xl bg-white px-6 py-4 shadow-[0_4px_16px_rgba(0,0,0,0.06)] transition-all",
-          dragging && "!bg-[#EBF1FF]",
+          dragging && "!bg-accent",
         )}
         onClick={() => inputRef.current?.click()}
         onDragOver={(e) => {
@@ -45,8 +45,8 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
           className="hidden"
           onChange={(e) => handleFile(e.target.files?.[0])}
         />
-        <Upload size={16} className="text-[#8B95A1] transition-colors group-hover:text-[#5B8CFF]" />
-        <span className="text-xs font-medium text-[#8B95A1] transition-colors group-hover:text-[#4E5968]">
+        <Upload size={16} className="text-muted-foreground transition-colors group-hover:text-primary" />
+        <span className="text-xs font-medium text-muted-foreground transition-colors group-hover:text-[#4E5968]">
           다른 이미지로 교체
         </span>
       </div>
@@ -57,10 +57,10 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
   return (
     <div
       className={clsx(
-        "group relative flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-[#E5E8EB] bg-[#F2F4F6] p-8 transition-all duration-300",
+        "group relative flex w-full cursor-pointer flex-col items-center justify-center rounded-2xl border-2 border-dashed border-border bg-secondary p-8 transition-all duration-300",
         dragging
-          ? "!border-[#5B8CFF] !bg-[#EBF1FF] scale-[1.01]"
-          : "hover:!border-[#5B8CFF] hover:!bg-[#EBF1FF]/50",
+          ? "!border-primary !bg-accent scale-[1.01]"
+          : "hover:!border-primary hover:!bg-accent/50",
       )}
       onClick={() => inputRef.current?.click()}
       onDragOver={(e) => {
@@ -83,18 +83,18 @@ export default function ImageUploader({ onSelect, previewUrl }: Props) {
       />
 
       <div className="relative mb-6">
-        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
+        <div className="relative flex h-16 w-16 items-center justify-center rounded-2xl bg-accent">
           <ImagePlus
             size={28}
-            className="text-[#5B8CFF]/50 transition-colors duration-300 group-hover:text-[#5B8CFF]"
+            className="text-primary/50 transition-colors duration-300 group-hover:text-primary"
           />
         </div>
       </div>
 
-      <p className="mb-1.5 text-sm font-semibold text-[#4E5968] transition-colors group-hover:text-[#191F28]">
+      <p className="mb-1.5 text-sm font-semibold text-[#4E5968] transition-colors group-hover:text-foreground">
         사진을 업로드하세요
       </p>
-      <p className="text-xs text-[#8B95A1]">
+      <p className="text-xs text-muted-foreground">
         클릭 또는 드래그 &middot; 정면 얼굴 사진 권장
       </p>
     </div>

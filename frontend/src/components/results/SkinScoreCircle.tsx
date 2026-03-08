@@ -9,7 +9,7 @@ interface Props {
 
 function getScoreColor(score: number): string {
   if (score >= 80) return "#34C759";
-  if (score >= 60) return "#5B8CFF";
+  if (score >= 60) return "#3182F6";
   if (score >= 40) return "#FF9F0A";
   return "#F04452";
 }
@@ -69,7 +69,7 @@ export default function SkinScoreCircle({ score, label, variant = "solid", size 
             cy={cfg.cy}
             r={cfg.r}
             fill="none"
-            stroke="#F2F4F6"
+            stroke="var(--secondary)"
             strokeWidth={cfg.stroke}
           />
           <circle
@@ -93,7 +93,7 @@ export default function SkinScoreCircle({ score, label, variant = "solid", size 
           >
             {animatedScore}
           </span>
-          <span className={`mt-0.5 text-[#8B95A1] ${cfg.unitCls}`}>/ 100</span>
+          <span className={`mt-0.5 text-muted-foreground ${cfg.unitCls}`}>/ 100</span>
         </div>
       </div>
       {size === "md" && (

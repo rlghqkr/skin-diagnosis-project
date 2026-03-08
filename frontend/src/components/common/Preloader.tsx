@@ -35,7 +35,7 @@ export default function Preloader({ onComplete }: Props) {
 
   return (
     <div
-      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-white transition-opacity duration-500 ${
+      className={`fixed inset-0 z-[100] flex flex-col items-center justify-center bg-card transition-opacity duration-500 ${
         phase === "exit" ? "pointer-events-none opacity-0" : "opacity-100"
       }`}
     >
@@ -67,16 +67,16 @@ export default function Preloader({ onComplete }: Props) {
       {(phase === "text" || phase === "exit") && (
         <>
           <h1
-            className="mt-8 font-brand text-4xl text-[#191F28] sm:text-5xl"
+            className="mt-8 font-brand text-4xl text-foreground sm:text-5xl"
             style={{
               animation:
                 "preloader-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards",
             }}
           >
-            SkinNerd AI
+            SkinNerd
           </h1>
           <p
-            className="mt-3 text-sm font-medium tracking-[0.1em] text-[#8B95A1]"
+            className="mt-3 text-sm font-medium tracking-[0.1em] text-muted-foreground"
             style={{
               animation:
                 "preloader-fade-up 0.5s cubic-bezier(0.16, 1, 0.3, 1) 0.15s forwards",

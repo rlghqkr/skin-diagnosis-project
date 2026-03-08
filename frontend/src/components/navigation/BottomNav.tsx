@@ -32,9 +32,9 @@ export default function BottomNav({ onOpenPhotoSheet }: Props) {
       const delta = y - lastY.current;
 
       if (delta > SCROLL_THRESHOLD) {
-        setVisible(false);       // scrolling down → hide
+        setVisible(false);
       } else if (delta < -SCROLL_THRESHOLD) {
-        setVisible(true);        // scrolling up → show
+        setVisible(true);
       }
 
       lastY.current = y;
@@ -47,7 +47,7 @@ export default function BottomNav({ onOpenPhotoSheet }: Props) {
   return (
     <nav
       className={clsx(
-        "safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-[#E5E8EB] bg-white transition-transform duration-300",
+        "safe-bottom fixed bottom-0 left-0 right-0 z-40 border-t border-border bg-card transition-transform duration-300",
         visible && !hasOverlay ? "translate-y-0" : "translate-y-full",
       )}
     >
@@ -56,17 +56,16 @@ export default function BottomNav({ onOpenPhotoSheet }: Props) {
           <TabLink key={to} to={to} icon={Icon} label={label} />
         ))}
 
-        {/* Center analyze button — 64px, lifted */}
+        {/* Center analyze button */}
         <div className="relative flex flex-col items-center justify-center">
           <button
             type="button"
             onClick={onOpenPhotoSheet}
-            className="relative -mt-7 flex h-16 w-16 items-center justify-center rounded-full shadow-[0_4px_16px_rgba(91,140,255,0.35)]"
-            style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
+            className="relative -mt-7 flex h-16 w-16 items-center justify-center rounded-full bg-primary shadow-[0_4px_16px_rgba(49,130,246,0.35)]"
           >
             <Camera size={28} className="text-white" />
           </button>
-          <span className="mt-0.5 text-[10px] font-medium text-[#5B8CFF]">분석</span>
+          <span className="mt-0.5 text-[10px] font-medium text-primary">분석</span>
         </div>
 
         {RIGHT_TABS.map(({ to, icon: Icon, label }) => (
@@ -94,8 +93,8 @@ function TabLink({
         clsx(
           "flex min-h-[48px] min-w-[48px] flex-col items-center justify-center gap-1 rounded-xl px-3 py-2 transition-colors duration-200",
           isActive
-            ? "text-[#5B8CFF]"
-            : "text-[#8B95A1] active:text-[#4E5968]",
+            ? "text-primary"
+            : "text-muted-foreground active:text-secondary-foreground",
         )
       }
     >

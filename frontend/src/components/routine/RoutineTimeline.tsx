@@ -122,14 +122,14 @@ export default function RoutineTimeline() {
           onClick={handleToggleCalendar}
           className="flex w-full items-center justify-center gap-2 px-4 min-h-[48px] transition-colors active:bg-[#F9FAFB]"
         >
-          <CalendarDays size={16} className="text-[#5B8CFF]" />
-          <span className="text-[14px] font-bold text-[#191F28]">
+          <CalendarDays size={16} className="text-primary" />
+          <span className="text-[14px] font-bold text-foreground">
             {current.getFullYear()}년 {current.getMonth() + 1}월
           </span>
           <ChevronRight
             size={14}
             className={clsx(
-              "text-[#8B95A1] transition-transform duration-200",
+              "text-muted-foreground transition-transform duration-200",
               calendarOpen && "rotate-90",
             )}
           />
@@ -141,7 +141,7 @@ export default function RoutineTimeline() {
             <button
               type="button"
               onClick={handlePrev}
-              className="flex h-11 w-9 shrink-0 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
+              className="flex h-11 w-9 shrink-0 items-center justify-center rounded-lg text-muted-foreground active:bg-secondary"
             >
               <ChevronLeft size={18} />
             </button>
@@ -165,10 +165,10 @@ export default function RoutineTimeline() {
                     className={clsx(
                       "flex min-w-[44px] flex-1 flex-col items-center gap-0.5 rounded-2xl py-2 transition-all active:scale-[0.95]",
                       isSelected
-                        ? "bg-[#5B8CFF] text-white shadow-sm"
+                        ? "bg-primary text-white shadow-sm"
                         : isFuture
-                          ? "text-[#D1D6DB]"
-                          : "text-[#6B7684] active:bg-[#F2F4F6]",
+                          ? "text-muted-foreground"
+                          : "text-[#6B7684] active:bg-secondary",
                     )}
                   >
                     <span className={clsx("text-[11px]", isSelected ? "font-semibold" : "font-normal")}>
@@ -181,7 +181,7 @@ export default function RoutineTimeline() {
                       {status === "complete" ? (
                         <CheckCircle2 size={12} className={isSelected ? "text-white" : "text-[#30D158]"} />
                       ) : status === "partial" ? (
-                        <Circle size={12} className={isSelected ? "text-white/60" : "text-[#D1D6DB]"} />
+                        <Circle size={12} className={isSelected ? "text-white/60" : "text-muted-foreground"} />
                       ) : null}
                     </span>
                   </button>
@@ -194,8 +194,8 @@ export default function RoutineTimeline() {
               onClick={handleNext}
               disabled={currentDate >= todayStr}
               className={clsx(
-                "flex h-11 w-9 shrink-0 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
-                currentDate >= todayStr ? "text-[#D1D6DB]" : "text-[#8B95A1]",
+                "flex h-11 w-9 shrink-0 items-center justify-center rounded-lg active:bg-secondary",
+                currentDate >= todayStr ? "text-muted-foreground" : "text-muted-foreground",
               )}
             >
               <ChevronRight size={18} />
@@ -211,11 +211,11 @@ export default function RoutineTimeline() {
               <button
                 type="button"
                 onClick={handleMonthPrev}
-                className="flex h-11 w-11 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]"
+                className="flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground active:bg-secondary"
               >
                 <ChevronLeft size={18} />
               </button>
-              <span className="text-sm font-bold text-[#191F28]">
+              <span className="text-sm font-bold text-foreground">
                 {viewYear}년 {viewMonth + 1}월
               </span>
               <button
@@ -223,8 +223,8 @@ export default function RoutineTimeline() {
                 onClick={handleMonthNext}
                 disabled={isNextMonthDisabled}
                 className={clsx(
-                  "flex h-11 w-11 items-center justify-center rounded-lg active:bg-[#F2F4F6]",
-                  isNextMonthDisabled ? "text-[#D1D6DB]" : "text-[#8B95A1]",
+                  "flex h-11 w-11 items-center justify-center rounded-lg active:bg-secondary",
+                  isNextMonthDisabled ? "text-muted-foreground" : "text-muted-foreground",
                 )}
               >
                 <ChevronRight size={18} />
@@ -238,7 +238,7 @@ export default function RoutineTimeline() {
                   key={name}
                   className={clsx(
                     "py-1 text-[11px] font-medium",
-                    i === 0 ? "text-[#F04452]" : i === 6 ? "text-[#3B82F6]" : "text-[#8B95A1]",
+                    i === 0 ? "text-[#F04452]" : i === 6 ? "text-[#3B82F6]" : "text-muted-foreground",
                   )}
                 >
                   {name}
@@ -270,10 +270,10 @@ export default function RoutineTimeline() {
                     className={clsx(
                       "relative flex h-11 flex-col items-center justify-center rounded-xl transition-all",
                       isSelected
-                        ? "bg-[#5B8CFF] text-white"
+                        ? "bg-primary text-white"
                         : isFuture
-                          ? "text-[#D1D6DB]"
-                          : "active:bg-[#F2F4F6]",
+                          ? "text-muted-foreground"
+                          : "active:bg-secondary",
                       !isSelected && !isFuture && dayOfWeek === 0 && "text-[#F04452]",
                       !isSelected && !isFuture && dayOfWeek === 6 && "text-[#3B82F6]",
                       !isSelected && !isFuture && dayOfWeek !== 0 && dayOfWeek !== 6 && "text-[#4E5968]",
@@ -283,7 +283,7 @@ export default function RoutineTimeline() {
                       className={clsx(
                         "text-[13px]",
                         isSelected || isToday ? "font-bold" : "font-medium",
-                        isToday && !isSelected && "underline underline-offset-2 decoration-[#5B8CFF]",
+                        isToday && !isSelected && "underline underline-offset-2 decoration-primary",
                       )}
                     >
                       {dayNum}
@@ -294,7 +294,7 @@ export default function RoutineTimeline() {
                           "absolute bottom-1 h-1 w-1 rounded-full",
                           status === "complete"
                             ? isSelected ? "bg-white" : "bg-[#30D158]"
-                            : isSelected ? "bg-white/50" : "bg-[#D1D6DB]",
+                            : isSelected ? "bg-white/50" : "bg-muted-foreground",
                         )}
                       />
                     )}

@@ -8,6 +8,8 @@ import ImprovementPrediction from "../components/results/ImprovementPrediction";
 import ClassificationResults from "../components/results/ClassificationResults";
 import RegressionResults from "../components/results/RegressionResults";
 import WarningBanner from "../components/results/WarningBanner";
+import SegmentedTabs from "../components/common/SegmentedTabs";
+import SectionCard from "../components/common/SectionCard";
 import { useAnalysisHistory, getLatestAnalysis } from "../hooks/useAnalysisHistory";
 
 type DetailTab = "classification" | "regression";
@@ -37,20 +39,19 @@ export default function ResultsDashboardPage() {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
-            <BarChart3 size={28} className="text-[#5B8CFF]" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent">
+            <BarChart3 size={28} className="text-primary" />
           </div>
-          <h2 className="mb-2 text-xl font-bold text-[#191F28]">
+          <h2 className="mb-2 text-xl font-bold text-foreground">
             분석 결과
           </h2>
-          <p className="mb-8 max-w-xs text-sm text-[#8B95A1]">
+          <p className="mb-8 max-w-xs text-sm text-muted-foreground">
             사진을 촬영하거나 업로드하여 피부 분석을 시작하세요.
           </p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="flex items-center gap-2.5 rounded-2xl px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
-            style={{ background: "linear-gradient(135deg, #5B8CFF, #4A75E0)" }}
+            className="flex items-center gap-2.5 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white active:scale-[0.98] transition-all"
           >
             <RotateCcw size={16} />
             분석 시작하기
@@ -66,8 +67,8 @@ export default function ResultsDashboardPage() {
     <div className="animate-float-in px-4 py-6 pb-24">
       {/* Header */}
       <div className="mb-6 text-center">
-        <h2 className="text-[20px] font-bold text-[#191F28]">피부 분석 결과</h2>
-        <p className="mt-1.5 text-[13px] text-[#8B95A1]">AI가 분석한 종합 피부 진단 리포트</p>
+        <h2 className="text-[20px] font-bold text-foreground">피부 분석 결과</h2>
+        <p className="mt-1.5 text-[13px] text-muted-foreground">AI가 분석한 종합 피부 진단 리포트</p>
       </div>
 
       {/* Warnings */}
@@ -78,16 +79,16 @@ export default function ResultsDashboardPage() {
       )}
 
       {/* Overall score */}
-      <div className="mb-6 flex flex-col items-center rounded-2xl bg-white py-8 shadow-[0_2px_12px_rgba(0,0,0,0.05)]">
-        <p className="mb-4 text-[13px] font-bold tracking-wide text-[#8B95A1]">종합 피부 점수</p>
+      <SectionCard className="mb-6 flex flex-col items-center py-8">
+        <p className="mb-4 text-[13px] font-bold tracking-wide text-muted-foreground">종합 피부 점수</p>
         <SkinScoreCircle score={score.overall} />
-      </div>
+      </SectionCard>
 
       {/* Radar chart */}
       {score.categories.length > 0 && (
-        <div className="mb-6">
+        <SectionCard className="mb-6">
           <SkinRadarChart categories={score.categories} />
-        </div>
+        </SectionCard>
       )}
 
       {/* Improvement prediction */}
@@ -97,15 +98,12 @@ export default function ResultsDashboardPage() {
 
       {/* Detailed results tabs */}
       <div className="mb-4">
-        <h3 className="mb-3 text-[13px] font-bold tracking-wide text-[#8B95A1]">상세 분석</h3>
-        <div className="flex gap-1 rounded-2xl bg-[#F2F4F6] p-1">
-          <TabButton active={detailTab === "classification"} onClick={() => setDetailTab("classification")}>
-            등급 진단
-          </TabButton>
-          <TabButton active={detailTab === "regression"} onClick={() => setDetailTab("regression")}>
-            수치 측정
-          </TabButton>
-        </div>
+        <h3 className="mb-3 text-[13px] font-bold tracking-wide text-muted-foreground">상세 분석</h3>
+        <SegmentedTabs
+          options={["등급 진단", "수치 측정"]}
+          value={detailTab === "classification" ? "등급 진단" : "수치 측정"}
+          onChange={(v) => setDetailTab(v === "등급 진단" ? "classification" : "regression")}
+        />
       </div>
 
       <div className="stagger-children">
@@ -121,37 +119,12 @@ export default function ResultsDashboardPage() {
         <button
           type="button"
           onClick={() => navigate("/")}
-          className="flex w-full items-center justify-center gap-2.5 rounded-2xl h-[56px] text-[15px] font-semibold text-white shadow-[0_4px_20px_rgba(91,140,255,0.3)] active:scale-[0.98] transition-all"
-          style={{ background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }}
+          className="flex w-full items-center justify-center gap-2.5 rounded-2xl bg-primary h-[56px] text-[15px] font-semibold text-white active:scale-[0.98] transition-all"
         >
           <RotateCcw size={18} />
           새로 분석하기
         </button>
       </div>
     </div>
-  );
-}
-
-function TabButton({
-  active,
-  onClick,
-  children,
-}: {
-  active: boolean;
-  onClick: () => void;
-  children: React.ReactNode;
-}) {
-  return (
-    <button
-      type="button"
-      className={`flex-1 min-h-[44px] rounded-xl px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
-        active
-          ? "bg-white text-[#191F28] shadow-[0_1px_4px_rgba(0,0,0,0.08)]"
-          : "text-[#8B95A1] hover:text-[#4E5968]"
-      }`}
-      onClick={onClick}
-    >
-      {children}
-    </button>
   );
 }

@@ -21,7 +21,7 @@ const SEVERITY_LABELS: Record<string, string> = {
 };
 
 const SEVERITY_COLORS: Record<string, string> = {
-  low: "text-[#5B8CFF] bg-[#EBF1FF]",
+  low: "text-primary bg-accent",
   moderate: "text-[#FF9F0A] bg-[#FFF8E1]",
   high: "text-[#F04452] bg-[#FFF0F0]",
 };
@@ -55,20 +55,20 @@ export default function RecommendationsPage() {
     return (
       <div className="flex min-h-[60vh] flex-col items-center justify-center px-5 py-8">
         <div className="animate-float-in flex flex-col items-center text-center">
-          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-[#EBF1FF]">
-            <ShoppingBag size={28} className="text-[#5B8CFF]" />
+          <div className="mb-6 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent">
+            <ShoppingBag size={28} className="text-primary" />
           </div>
-          <h2 className="mb-2 text-xl font-bold text-[#191F28]">
+          <h2 className="mb-2 text-xl font-bold text-foreground">
             맞춤 추천
           </h2>
-          <p className="mb-8 max-w-xs text-sm text-[#8B95A1]">
+          <p className="mb-8 max-w-xs text-sm text-muted-foreground">
             피부 분석을 완료하면 분석 결과에 맞는
             화장품을 추천해드립니다.
           </p>
           <button
             type="button"
             onClick={() => navigate("/")}
-            className="flex items-center gap-2.5 rounded-2xl bg-[#5B8CFF] px-6 py-3.5 text-sm font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)]"
+            className="flex items-center gap-2.5 rounded-2xl bg-primary px-6 py-3.5 text-sm font-semibold text-white"
           >
             <Sparkles size={16} />
             분석 시작하기
@@ -84,20 +84,20 @@ export default function RecommendationsPage() {
     <div className="animate-float-in px-5 py-6 pb-24">
       {/* Header */}
       <div className="mb-6">
-        <h2 className="text-xl font-bold text-[#191F28]">맞춤 화장품 추천</h2>
-        <p className="mt-1 text-xs text-[#8B95A1]">
+        <h2 className="text-xl font-bold text-foreground">맞춤 화장품 추천</h2>
+        <p className="mt-1 text-xs text-muted-foreground">
           분석 결과를 바탕으로 추천하는 제품입니다
         </p>
       </div>
 
       {/* Skin type badge */}
-      <div className="mb-6 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
-        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#EBF1FF]">
-          <Sparkles size={14} className="text-[#5B8CFF]" />
+      <div className="mb-6 flex items-center gap-3 rounded-2xl bg-card px-4 py-3 border border-border">
+        <div className="flex h-8 w-8 items-center justify-center rounded-full bg-accent">
+          <Sparkles size={14} className="text-primary" />
         </div>
         <div>
-          <p className="text-xs text-[#8B95A1]">피부 타입</p>
-          <p className="text-sm font-semibold text-[#191F28]">
+          <p className="text-xs text-muted-foreground">피부 타입</p>
+          <p className="text-sm font-semibold text-foreground">
             {SKIN_TYPE_LABELS[recommendation.skin_type] ?? recommendation.skin_type}
           </p>
         </div>
@@ -127,7 +127,7 @@ export default function RecommendationsPage() {
             <div key={concern.concern}>
               {/* Concern header */}
               <div className="mb-3 flex items-center gap-2">
-                <h3 className="text-sm font-bold text-[#191F28]">
+                <h3 className="text-sm font-bold text-foreground">
                   {CONCERN_LABELS[concern.concern] ?? concern.concern}
                 </h3>
                 <span
@@ -145,7 +145,7 @@ export default function RecommendationsPage() {
                   {concern.recommended_ingredients.map((ing) => (
                     <span
                       key={ing.name_ko}
-                      className="rounded-full bg-[#EBF1FF] px-2.5 py-1 text-[10px] font-medium text-[#5B8CFF]"
+                      className="rounded-full bg-accent px-2.5 py-1 text-[10px] font-medium text-primary"
                       title={ing.benefit}
                     >
                       {ing.name_ko}

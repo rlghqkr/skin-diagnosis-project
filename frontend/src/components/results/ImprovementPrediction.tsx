@@ -21,28 +21,28 @@ export default function ImprovementPrediction({ currentScore }: Props) {
   return (
     <div className="rounded-2xl bg-white p-5 shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
       <div className="mb-4 flex items-center gap-2">
-        <TrendingUp size={16} className="text-[#5B8CFF]" />
-        <h3 className="text-sm font-bold text-[#191F28]">4주 개선 예측</h3>
+        <TrendingUp size={16} className="text-primary" />
+        <h3 className="text-sm font-bold text-foreground">4주 개선 예측</h3>
       </div>
 
       <div className="flex items-center justify-center gap-4">
         <div className="flex flex-col items-center">
           <SkinScoreCircle score={currentScore} size="sm" />
-          <p className="mt-1 text-[10px] text-[#8B95A1]">현재</p>
+          <p className="mt-1 text-[10px] text-muted-foreground">현재</p>
         </div>
 
         <ArrowRight size={20} className="text-[#D1D6DB]" />
 
         <div className="flex flex-col items-center">
           <SkinScoreCircle score={projected} variant="projected" size="sm" />
-          <p className="mt-1 text-[10px] text-[#8B95A1]">4주 후</p>
+          <p className="mt-1 text-[10px] text-muted-foreground">4주 후</p>
         </div>
       </div>
 
       <p className="mt-4 text-center text-sm font-semibold text-[#30D158]">
         +{delta}점 개선 가능
       </p>
-      <p className="mt-1 text-center text-[10px] text-[#8B95A1]">
+      <p className="mt-1 text-center text-[10px] text-muted-foreground">
         맞춤 스킨케어 루틴을 꾸준히 따르면 도달 가능한 예측 점수입니다
       </p>
     </div>

@@ -34,8 +34,8 @@ export default function RoutineStepCard({ step, onToggle, onRemove }: Props) {
         className={clsx(
           "flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-full border-2 transition-colors",
           step.completed
-            ? "border-[#5B8CFF] bg-[#5B8CFF]"
-            : "border-[#D1D6DB] bg-white",
+            ? "border-primary bg-primary"
+            : "border-muted-foreground/30 bg-white",
         )}
       >
         {step.completed && <Check size={14} className="text-white" />}
@@ -44,14 +44,14 @@ export default function RoutineStepCard({ step, onToggle, onRemove }: Props) {
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-1.5">
           <span className="text-sm">{icon}</span>
-          <span className="text-[11px] font-medium text-[#8B95A1]">
+          <span className="text-[11px] font-medium text-muted-foreground">
             {step.product.category}
           </span>
         </div>
         <p
           className={clsx(
             "mt-0.5 text-[14px] font-medium leading-[1.4] truncate",
-            step.completed ? "text-[#8B95A1] line-through" : "text-[#191F28]",
+            step.completed ? "text-muted-foreground line-through" : "text-foreground",
           )}
         >
           {step.product.brand} {step.product.name}
@@ -64,7 +64,7 @@ export default function RoutineStepCard({ step, onToggle, onRemove }: Props) {
       <button
         type="button"
         onClick={onRemove}
-        className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-[#D1D6DB] transition-colors hover:text-[#F04452]"
+        className="flex h-11 w-11 flex-shrink-0 items-center justify-center rounded-lg text-muted-foreground transition-colors hover:text-[#F04452]"
       >
         <Trash2 size={16} />
       </button>

@@ -116,29 +116,29 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
   return (
     <div className="fixed inset-0 z-50 flex flex-col bg-white">
       {/* Header */}
-      <div className="flex items-center gap-3 border-b border-[#E5E8EB] px-4 py-3">
-        <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-lg text-[#8B95A1] active:bg-[#F2F4F6]">
+      <div className="flex items-center gap-3 border-b border-border px-4 py-3">
+        <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-lg text-muted-foreground active:bg-secondary">
           <X size={22} />
         </button>
-        <h2 className="flex-1 text-base font-bold text-[#191F28]">
+        <h2 className="flex-1 text-base font-bold text-foreground">
           제품 검색
         </h2>
       </div>
 
       {/* Search bar */}
       <div className="px-4 py-3">
-        <div className="flex items-center gap-2 rounded-xl bg-[#F2F4F6] px-3 py-2.5">
+        <div className="flex items-center gap-2 rounded-xl bg-secondary px-3 py-2.5">
           {apiLoading ? (
-            <Loader2 size={18} className="animate-spin text-[#5B8CFF]" />
+            <Loader2 size={18} className="animate-spin text-primary" />
           ) : (
-            <Search size={18} className="text-[#8B95A1]" />
+            <Search size={18} className="text-muted-foreground" />
           )}
           <input
             type="text"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="브랜드명 또는 제품명"
-            className="flex-1 bg-transparent text-sm text-[#191F28] placeholder-[#B0B8C1] outline-none"
+            className="flex-1 bg-transparent text-sm text-foreground placeholder-[#B0B8C1] outline-none"
             autoFocus
           />
           {query && (
@@ -160,8 +160,8 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
               className={clsx(
                 "flex-shrink-0 rounded-full px-4 py-2.5 text-[12px] font-medium transition-colors",
                 selectedCategory === cat
-                  ? "bg-[#5B8CFF] text-white"
-                  : "bg-[#F2F4F6] text-[#6B7684]",
+                  ? "bg-primary text-white"
+                  : "bg-secondary text-[#6B7684]",
               )}
             >
               {cat}
@@ -174,8 +174,8 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
       <div className="flex-1 overflow-y-auto px-4 pb-4">
         {displayItems.length === 0 && !apiLoading ? (
           <div className="flex flex-col items-center justify-center py-12 text-center">
-            <Search size={40} className="mb-3 text-[#D1D6DB]" />
-            <p className="text-sm text-[#8B95A1]">
+            <Search size={40} className="mb-3 text-muted-foreground" />
+            <p className="text-sm text-muted-foreground">
               {query.trim() ? "검색 결과가 없습니다" : "제품을 검색해주세요"}
             </p>
           </div>
@@ -194,18 +194,18 @@ export default function ProductSearchInput({ open, onClose, onSelect }: Props) {
                   });
                   onClose();
                 }}
-                className="flex w-full items-center gap-3 rounded-2xl bg-[#F7F9FC] px-4 py-4 text-left transition-colors active:bg-[#EBF1FF]"
+                className="flex w-full items-center gap-3 rounded-2xl bg-[#F7F9FC] px-4 py-4 text-left transition-colors active:bg-accent"
               >
                 <div className="flex-1 min-w-0">
-                  <p className="text-[13px] font-medium text-[#191F28] truncate">
+                  <p className="text-[13px] font-medium text-foreground truncate">
                     {item.name}
                   </p>
-                  <p className="mt-0.5 text-[11px] text-[#8B95A1]">
+                  <p className="mt-0.5 text-[11px] text-muted-foreground">
                     {item.brand} · {item.category}
                     {item.rating != null && ` · ★ ${item.rating}`}
                   </p>
                 </div>
-                <Plus size={18} className="flex-shrink-0 text-[#5B8CFF]" />
+                <Plus size={18} className="flex-shrink-0 text-primary" />
               </button>
             ))}
           </div>

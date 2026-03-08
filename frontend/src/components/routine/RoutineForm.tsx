@@ -60,15 +60,15 @@ export default function RoutineForm() {
   return (
     <div>
       {/* Morning / Night tab */}
-      <div className="mx-4 flex rounded-xl bg-[#F2F4F6] p-1">
+      <div className="mx-4 flex rounded-xl bg-secondary p-1">
         <button
           type="button"
           onClick={() => setActiveTab("morning")}
           className={clsx(
             "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-[13px] font-semibold transition-all",
             activeTab === "morning"
-              ? "bg-white text-[#191F28] shadow-sm"
-              : "text-[#8B95A1]",
+              ? "bg-white text-foreground shadow-sm"
+              : "text-muted-foreground",
           )}
         >
           <Sun size={16} />
@@ -80,8 +80,8 @@ export default function RoutineForm() {
           className={clsx(
             "flex flex-1 items-center justify-center gap-1.5 rounded-lg py-3.5 text-[13px] font-semibold transition-all",
             activeTab === "night"
-              ? "bg-white text-[#191F28] shadow-sm"
-              : "text-[#8B95A1]",
+              ? "bg-white text-foreground shadow-sm"
+              : "text-muted-foreground",
           )}
         >
           <Moon size={16} />
@@ -93,7 +93,7 @@ export default function RoutineForm() {
       <div className="mt-5 px-4">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-[13px] text-[#8B95A1]">
+            <p className="text-[13px] text-muted-foreground">
               {formatKoreanDate(currentDate)} {activeTab === "morning" ? "아침" : "저녁"} 루틴
             </p>
             <p className="mt-0.5 text-[12px] text-[#B0B8C1]">
@@ -111,12 +111,12 @@ export default function RoutineForm() {
         </div>
 
         {/* Progress bar */}
-        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-[#F2F4F6]">
+        <div className="mt-3 h-2 w-full overflow-hidden rounded-full bg-secondary">
           <div
             className="h-full rounded-full transition-all duration-500"
             style={{
               width: `${progress}%`,
-              background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)",
+              background: "#3182F6",
             }}
           />
         </div>
@@ -125,7 +125,7 @@ export default function RoutineForm() {
 
       {/* Steps */}
       <div className="mt-4 px-4">
-        <h3 className="mb-3 text-[13px] font-bold text-[#191F28]">
+        <h3 className="mb-3 text-[13px] font-bold text-foreground">
           나의 {activeTab === "morning" ? "아침" : "저녁"} 루틴
         </h3>
         <div className="space-y-2.5">
@@ -143,7 +143,7 @@ export default function RoutineForm() {
         <button
           type="button"
           onClick={() => setSearchOpen(true)}
-          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-[#D1D6DB] h-[52px] text-[14px] font-medium text-[#8B95A1] transition-all active:border-[#5B8CFF] active:text-[#5B8CFF] active:scale-[0.98]"
+          className="mt-3 flex w-full items-center justify-center gap-2 rounded-2xl border-2 border-dashed border-muted-foreground/30 h-[52px] text-[14px] font-medium text-muted-foreground transition-all active:border-primary active:text-primary active:scale-[0.98]"
         >
           <Plus size={18} />
           제품 추가하기
@@ -159,12 +159,12 @@ export default function RoutineForm() {
               "mt-4 flex w-full items-center justify-center gap-2 rounded-2xl h-[56px] text-[15px] font-semibold text-white transition-all active:scale-[0.98]",
               saveSuccess
                 ? "bg-[#30D158]"
-                : "shadow-[0_4px_16px_rgba(91,140,255,0.25)]",
+                : "",
             )}
             style={
               saveSuccess
                 ? undefined
-                : { background: "linear-gradient(135deg, #5B8CFF, #7ED7C1)" }
+                : { background: "#3182F6" }
             }
           >
             {isLoading ? (

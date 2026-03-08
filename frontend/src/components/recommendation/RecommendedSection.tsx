@@ -9,13 +9,13 @@ interface Props {
 
 function SkeletonCard() {
   return (
-    <div className="w-[156px] flex-shrink-0 snap-start rounded-2xl bg-white p-3 shadow-[0_2px_12px_rgba(0,0,0,0.06)]">
-      <div className="h-4 w-14 animate-pulse rounded-md bg-[#F2F4F6]" />
-      <div className="mt-2 aspect-square w-full animate-pulse rounded-xl bg-[#F2F4F6]" />
-      <div className="mt-2 h-3 w-12 animate-pulse rounded bg-[#F2F4F6]" />
-      <div className="mt-1 h-4 w-full animate-pulse rounded bg-[#F2F4F6]" />
-      <div className="mt-1 h-4 w-16 animate-pulse rounded bg-[#F2F4F6]" />
-      <div className="mt-1.5 h-3 w-full animate-pulse rounded bg-[#F2F4F6]" />
+    <div className="w-[156px] flex-shrink-0 snap-start rounded-2xl bg-white p-3 border border-border">
+      <div className="h-4 w-14 animate-pulse rounded-md bg-secondary" />
+      <div className="mt-2 aspect-square w-full animate-pulse rounded-xl bg-secondary" />
+      <div className="mt-2 h-3 w-12 animate-pulse rounded bg-secondary" />
+      <div className="mt-1 h-4 w-full animate-pulse rounded bg-secondary" />
+      <div className="mt-1 h-4 w-16 animate-pulse rounded bg-secondary" />
+      <div className="mt-1.5 h-3 w-full animate-pulse rounded bg-secondary" />
     </div>
   );
 }
@@ -35,11 +35,11 @@ export default function RecommendedSection({ categories }: Props) {
   return (
     <div>
       <div className="mb-3 flex items-center gap-2">
-        <h3 className="text-[13px] font-bold text-[#8B95A1] tracking-wide">
+        <h3 className="text-[13px] font-bold text-muted-foreground tracking-wide">
           맞춤 화장품 추천
         </h3>
         {recommendation && (
-          <span className="rounded-full bg-[#5B8CFF]/10 px-2.5 py-0.5 text-[11px] font-semibold text-[#5B8CFF]">
+          <span className="rounded-full bg-primary/10 px-2.5 py-0.5 text-[11px] font-semibold text-primary">
             {recommendation.worst_metric_label} 집중 케어
           </span>
         )}

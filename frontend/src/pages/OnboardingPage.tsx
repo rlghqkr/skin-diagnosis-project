@@ -69,13 +69,13 @@ export default function OnboardingPage() {
   const Icon = slide.icon;
 
   return (
-    <div className="flex min-h-[100dvh] flex-col bg-white">
+    <div className="flex min-h-[100dvh] flex-col bg-card">
       {/* Skip button */}
       <div className="flex justify-end px-5 py-4">
         <button
           type="button"
           onClick={handleSkip}
-          className="min-h-[44px] px-3 flex items-center text-sm text-[#8B95A1] transition-colors active:text-[#4E5968]"
+          className="min-h-[44px] px-3 flex items-center text-sm text-muted-foreground transition-colors active:text-secondary-foreground"
         >
           건너뛰기
         </button>
@@ -85,17 +85,17 @@ export default function OnboardingPage() {
       <div className="flex flex-1 flex-col items-center justify-center px-8">
         <div key={currentSlide} className="animate-float-in flex flex-col items-center text-center">
           {/* Icon */}
-          <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-[#EBF1FF]">
-            <Icon size={36} className="text-[#5B8CFF]" />
+          <div className="mb-8 flex h-20 w-20 items-center justify-center rounded-3xl bg-accent">
+            <Icon size={36} className="text-primary" />
           </div>
 
           {/* Title */}
-          <h2 className="mb-4 text-2xl font-bold tracking-tight text-[#191F28]">
+          <h2 className="mb-4 text-2xl font-bold tracking-tight text-foreground">
             {slide.title}
           </h2>
 
           {/* Description */}
-          <p className="max-w-xs whitespace-pre-line text-sm leading-relaxed text-[#8B95A1]">
+          <p className="max-w-xs whitespace-pre-line text-sm leading-relaxed text-muted-foreground">
             {slide.description}
           </p>
         </div>
@@ -111,8 +111,8 @@ export default function OnboardingPage() {
               className={clsx(
                 "h-1.5 rounded-full transition-all duration-300",
                 i === currentSlide
-                  ? "w-6 bg-[#5B8CFF]"
-                  : "w-1.5 bg-[#E5E8EB]",
+                  ? "w-6 bg-primary"
+                  : "w-1.5 bg-border",
               )}
             />
           ))}
@@ -124,7 +124,7 @@ export default function OnboardingPage() {
             <button
               type="button"
               onClick={handlePrev}
-              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-[#F2F4F6] text-[#8B95A1] active:brightness-95 transition-all"
+              className="flex h-14 w-14 flex-shrink-0 items-center justify-center rounded-2xl bg-secondary text-muted-foreground active:brightness-95 transition-all"
             >
               <ChevronLeft size={20} />
             </button>
@@ -132,7 +132,7 @@ export default function OnboardingPage() {
           <button
             type="button"
             onClick={handleNext}
-            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-[#5B8CFF] text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] active:brightness-95 transition-all"
+            className="flex h-14 flex-1 items-center justify-center gap-2 rounded-2xl bg-primary text-base font-semibold text-white active:brightness-95 transition-all"
           >
             {isLast ? (
               <>

@@ -138,10 +138,10 @@ export default function FaceGuideOverlay() {
         </svg>
 
         {/* Corner guides */}
-        <div className="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-[#5B8CFF] rounded-tl-xl" />
-        <div className="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-[#5B8CFF] rounded-tr-xl" />
-        <div className="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-[#5B8CFF] rounded-bl-xl" />
-        <div className="absolute -bottom-1 -right-1 h-6 w-6 border-b-2 border-r-2 border-[#5B8CFF] rounded-br-xl" />
+        <div className="absolute -left-1 -top-1 h-6 w-6 border-l-2 border-t-2 border-primary rounded-tl-xl" />
+        <div className="absolute -right-1 -top-1 h-6 w-6 border-r-2 border-t-2 border-primary rounded-tr-xl" />
+        <div className="absolute -bottom-1 -left-1 h-6 w-6 border-b-2 border-l-2 border-primary rounded-bl-xl" />
+        <div className="absolute -bottom-1 -right-1 h-6 w-6 border-b-2 border-r-2 border-primary rounded-br-xl" />
       </div>
 
       {/* Guide text */}

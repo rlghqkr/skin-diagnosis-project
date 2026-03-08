@@ -29,5 +29,7 @@ export function useHealth() {
     };
   }, []);
 
-  return { health, error };
+  const isHealthy = health !== null && !error;
+
+  return { health, error, isHealthy };
 }

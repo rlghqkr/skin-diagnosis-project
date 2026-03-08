@@ -35,23 +35,20 @@ export default function TrackingPage() {
   return (
     <div className="flex min-h-[calc(100dvh-120px)] flex-col pb-24">
       {/* Page header */}
-      <div className="bg-white px-5 pt-5 pb-5">
+      <div className="bg-card px-5 pt-5 pb-5">
         <div className="flex items-center gap-3">
-          <div
-            className="flex h-10 w-10 items-center justify-center rounded-xl"
-            style={{ background: "linear-gradient(135deg, #EBF1FF, #E8E0FF)" }}
-          >
-            <TrendingUp size={20} className="text-[#5B8CFF]" />
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-accent">
+            <TrendingUp size={20} className="text-primary" />
           </div>
           <div>
-            <h1 className="text-lg font-bold text-[#191F28]">피부 리포트</h1>
-            <p className="text-[12px] text-[#8B95A1]">피부 변화를 한눈에 확인하세요</p>
+            <h1 className="text-lg font-bold text-foreground">피부 리포트</h1>
+            <p className="text-[12px] text-muted-foreground">피부 변화를 한눈에 확인하세요</p>
           </div>
         </div>
       </div>
 
       {/* Content */}
-      <div className="flex-1 bg-[#F7F9FC] px-5 pt-5">
+      <div className="flex-1 bg-background px-5 pt-5">
         <div className="mx-auto w-full max-w-lg space-y-4">
           {/* Period filter */}
           <PeriodFilter selected={selectedPeriod} onChange={setPeriod} />
@@ -59,7 +56,7 @@ export default function TrackingPage() {
           {/* Loading */}
           {isLoading && (
             <div className="flex justify-center py-8">
-              <Loader2 size={24} className="animate-spin text-[#3B82F6]" />
+              <Loader2 size={24} className="animate-spin text-primary" />
             </div>
           )}
 
@@ -72,7 +69,7 @@ export default function TrackingPage() {
 
           {!isLoading && (
             <>
-              {/* Hero scores — 오늘 + 주간을 나란히 */}
+              {/* Hero scores */}
               {today && (
                 <div className="grid grid-cols-2 gap-3">
                   <DailyScoreCard today={today} yesterday={yesterday} />
@@ -86,7 +83,7 @@ export default function TrackingPage() {
               {/* Metric breakdown */}
               <MetricDetailChart data={filtered} />
 
-              {/* Signals — 변화 감지 */}
+              {/* Signals */}
               {signals.length > 0 && <SkinSignalCard signals={signals} />}
 
               {/* Product changes */}
@@ -95,16 +92,16 @@ export default function TrackingPage() {
               {/* Product effect CTA */}
               <Link
                 to="/product-effect"
-                className="flex items-center gap-4 rounded-2xl bg-gradient-to-r from-[#EEF2FF] to-white p-4 shadow-[0_2px_12px_rgba(0,0,0,0.05)] transition-all active:scale-[0.99]"
+                className="flex items-center gap-4 rounded-2xl bg-card border border-border p-4 transition-all active:scale-[0.99]"
               >
                 <div className="flex h-11 w-11 items-center justify-center rounded-full bg-[#C7D2FE]">
                   <FlaskConical size={20} className="text-[#4F46E5]" />
                 </div>
                 <div className="flex-1 min-w-0">
-                  <p className="text-[14px] font-bold text-[#191F28]">제품 효과 분석</p>
-                  <p className="text-[12px] text-[#8B95A1]">내 제품의 피부 개선 효과 확인</p>
+                  <p className="text-[14px] font-bold text-foreground">제품 효과 분석</p>
+                  <p className="text-[12px] text-muted-foreground">내 제품의 피부 개선 효과 확인</p>
                 </div>
-                <ChevronRight size={18} className="text-[#D1D6DB]" />
+                <ChevronRight size={18} className="text-muted-foreground" />
               </Link>
             </>
           )}

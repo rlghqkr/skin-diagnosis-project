@@ -77,7 +77,7 @@ function getRegionColor(result: PredictResponse, region: string): string {
     const val = firstMetric?.[region] as ClassificationResult | undefined;
     if (val) return gradeColor(val.grade);
   }
-  return "#5B8CFF";
+  return "#3182F6";
 }
 
 export default function FaceAnalysisView({ previewUrl, result, selectedRegion, onSelectRegion }: Props) {
@@ -91,7 +91,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
     <div className="flex justify-center">
       <div className="relative w-full">
           {/* Image with frame */}
-          <div className="overflow-hidden rounded-2xl border border-[#E5E8EB] shadow-[0_4px_16px_rgba(0,0,0,0.06)]">
+          <div className="overflow-hidden rounded-2xl border border-border shadow-sm">
             <img
               src={previewUrl}
               alt="얼굴 분석"
@@ -105,7 +105,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
             const isSelected = selectedRegion === region;
             const isActive = isHovered || isSelected;
             const hasResult = result !== null;
-            const color = hasResult ? getRegionColor(result, region) : "#5B8CFF";
+            const color = hasResult ? getRegionColor(result, region) : "#3182F6";
             const summary = hasResult ? getSummary(result, region) : [];
             const dots = hasResult ? getMetricDots(result, region) : [];
 
@@ -148,7 +148,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                       backgroundColor: isActive
                         ? "rgba(255, 255, 255, 0.98)"
                         : "rgba(255, 255, 255, 0.9)",
-                      border: `1px solid ${isActive ? `${color}50` : "#E5E8EB"}`,
+                      border: `1px solid ${isActive ? `${color}50` : "hsl(var(--border))"}`,
                       boxShadow: isActive
                         ? `0 4px 20px rgba(0,0,0,0.1), 0 0 15px ${color}15`
                         : "0 2px 8px rgba(0,0,0,0.06)",
@@ -157,7 +157,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                     <div className="flex items-center gap-2">
                       <span
                         className="font-semibold"
-                        style={{ color: isActive ? color : "#191F28" }}
+                        style={{ color: isActive ? color : "hsl(var(--foreground))" }}
                       >
                         {FACEPART_LABELS[region] ?? region}
                       </span>
@@ -178,7 +178,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                       )}
                     </div>
                     {hasResult && isActive && summary.length > 0 && (
-                      <div className="mt-1.5 space-y-0.5 border-t border-[#E5E8EB] pt-1.5">
+                      <div className="mt-1.5 space-y-0.5 border-t border-border pt-1.5">
                         {summary.map((line, i) => (
                           <div key={i} className="text-[11px] text-[#4E5968]">
                             {line}
@@ -191,7 +191,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                   <div
                     className="absolute top-1/2 h-px w-4 transition-colors duration-300"
                     style={{
-                      backgroundColor: isActive ? `${color}60` : "#E5E8EB",
+                      backgroundColor: isActive ? `${color}60` : "hsl(var(--border))",
                       ...(pos.labelSide === "left"
                         ? { right: "-16px" }
                         : { left: "-16px" }),
@@ -207,7 +207,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
             {Object.entries(FACE_REGION_POSITIONS).map(([region]) => {
               const isSelected = selectedRegion === region;
               const hasResult = result !== null;
-              const color = hasResult ? getRegionColor(result, region) : "#5B8CFF";
+              const color = hasResult ? getRegionColor(result, region) : "#3182F6";
               const dots = hasResult ? getMetricDots(result, region) : [];
 
               return (
@@ -216,12 +216,12 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
                   type="button"
                   className="flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 text-xs transition-all"
                   style={{
-                    backgroundColor: isSelected ? `${color}15` : "#F2F4F6",
-                    border: `1px solid ${isSelected ? `${color}50` : "#E5E8EB"}`,
+                    backgroundColor: isSelected ? `${color}15` : "hsl(var(--secondary))",
+                    border: `1px solid ${isSelected ? `${color}50` : "hsl(var(--border))"}`,
                   }}
                   onClick={() => handleRegionClick(region)}
                 >
-                  <span style={{ color: isSelected ? color : "#191F28" }} className="font-medium">
+                  <span style={{ color: isSelected ? color : "hsl(var(--foreground))" }} className="font-medium">
                     {FACEPART_LABELS[region] ?? region}
                   </span>
                   {hasResult && dots.length > 0 && (
@@ -241,7 +241,7 @@ export default function FaceAnalysisView({ previewUrl, result, selectedRegion, o
           </div>
           {/* Mobile selected region detail */}
           {selectedRegion && result && (
-            <div className="mt-2 rounded-xl border border-[#E5E8EB] bg-white p-3 shadow-[0_4px_16px_rgba(0,0,0,0.06)] sm:hidden">
+            <div className="mt-2 rounded-xl border border-border bg-white p-3 shadow-sm sm:hidden">
               {getSummary(result, selectedRegion).map((line, i) => (
                 <div key={i} className="text-[11px] text-[#4E5968]">
                   {line}

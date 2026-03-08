@@ -32,13 +32,13 @@ export default function PhotoCaptureSheet({ open, onClose }: Props) {
       />
 
       {/* Sheet */}
-      <div className="animate-slide-up relative w-full max-w-lg rounded-t-3xl bg-white px-5 pb-8 pt-3 safe-bottom">
+      <div className="animate-slide-up relative w-full max-w-lg rounded-t-3xl bg-card px-5 pb-8 pt-3 safe-bottom">
         {/* Drag handle */}
-        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-[#D1D6DB]" />
+        <div className="mx-auto mb-4 h-1 w-10 rounded-full bg-muted-foreground/30" />
 
         <div className="mb-5 flex items-center justify-between">
-          <h3 className="text-lg font-bold text-[#191F28]">사진 선택</h3>
-          <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-full text-[#8B95A1] active:bg-[#F2F4F6]">
+          <h3 className="text-lg font-bold text-foreground">사진 선택</h3>
+          <button type="button" onClick={onClose} className="flex h-11 w-11 items-center justify-center rounded-full text-muted-foreground active:bg-secondary">
             <X size={20} />
           </button>
         </div>
@@ -47,8 +47,7 @@ export default function PhotoCaptureSheet({ open, onClose }: Props) {
           <button
             type="button"
             onClick={() => { onClose(); navigate("/camera"); }}
-            className="flex w-full items-center gap-3 rounded-2xl px-5 py-4 text-base font-semibold text-white shadow-[0_4px_16px_rgba(91,140,255,0.3)] active:brightness-95 transition-all"
-            style={{ background: "linear-gradient(135deg, #5B8CFF, #4A75E0)" }}
+            className="flex w-full items-center gap-3 rounded-2xl bg-primary px-5 py-4 text-base font-semibold text-white active:brightness-95 transition-all"
           >
             <Camera size={20} />
             카메라로 촬영하기
@@ -57,9 +56,9 @@ export default function PhotoCaptureSheet({ open, onClose }: Props) {
           <button
             type="button"
             onClick={() => inputRef.current?.click()}
-            className="flex w-full items-center gap-3 rounded-2xl bg-[#F2F4F6] px-5 py-4 text-sm font-medium text-[#4E5968] transition-all active:brightness-95"
+            className="flex w-full items-center gap-3 rounded-2xl bg-secondary px-5 py-4 text-sm font-medium text-secondary-foreground transition-all active:brightness-95"
           >
-            <ImagePlus size={18} className="text-[#8B95A1]" />
+            <ImagePlus size={18} className="text-muted-foreground" />
             갤러리에서 사진 선택
           </button>
 
@@ -74,7 +73,7 @@ export default function PhotoCaptureSheet({ open, onClose }: Props) {
           <button
             type="button"
             onClick={onClose}
-            className="mt-1 w-full rounded-2xl py-3.5 text-sm font-medium text-[#8B95A1] active:bg-[#F2F4F6] transition-all"
+            className="mt-1 w-full rounded-2xl py-3.5 text-sm font-medium text-muted-foreground active:bg-secondary transition-all"
           >
             취소
           </button>
