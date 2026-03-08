@@ -26,114 +26,114 @@ export default function FaceGuideOverlay() {
           fill="none"
           preserveAspectRatio="xMidYMid meet"
         >
-          {/* ── 3D WIREFRAME FACE MESH ── */}
+          {/* ── 3D WIREFRAME FACE MESH (Feminine V-line) ── */}
           <g stroke="white" strokeOpacity="0.18" strokeWidth="0.6" fill="none">
-            {/* Face outline */}
-            <path d="M100,12 C60,12 35,45 28,80 C22,110 18,130 20,150 C22,170 30,190 45,208 C60,226 80,238 100,242 C120,238 140,226 155,208 C170,190 178,170 180,150 C182,130 178,110 172,80 C165,45 140,12 100,12Z" />
+            {/* Face outline — feminine V-line shape: narrower jaw, pointed chin */}
+            <path d="M100,14 C62,14 38,42 30,76 C24,104 21,124 22,144 C24,162 32,178 50,196 C66,210 84,228 100,238 C116,228 134,210 150,196 C168,178 176,162 178,144 C179,124 176,104 170,76 C162,42 138,14 100,14Z" />
 
             {/* Horizontal contour lines — forehead */}
-            <path d="M52,32 C65,26 80,23 100,22 C120,23 135,26 148,32" />
-            <path d="M42,48 C60,38 78,34 100,33 C122,34 140,38 158,48" />
-            <path d="M35,65 C55,52 76,47 100,46 C124,47 145,52 165,65" />
-            <path d="M30,82 C52,68 75,62 100,61 C125,62 148,68 170,82" />
+            <path d="M54,32 C66,26 82,23 100,22 C118,23 134,26 146,32" />
+            <path d="M44,48 C62,38 80,34 100,33 C120,34 138,38 156,48" />
+            <path d="M36,64 C56,52 77,47 100,46 C123,47 144,52 164,64" />
+            <path d="M31,80 C53,67 76,62 100,61 C124,62 147,67 169,80" />
 
             {/* Horizontal contour — eye level */}
-            <path d="M25,100 C50,90 74,86 100,85 C126,86 150,90 175,100" />
+            <path d="M26,98 C50,89 74,85 100,84 C126,85 150,89 174,98" />
 
             {/* Horizontal contour — below eyes / cheeks */}
-            <path d="M24,118 C48,107 73,102 100,101 C127,102 152,107 176,118" />
-            <path d="M26,136 C50,124 74,119 100,118 C126,119 150,124 174,136" />
+            <path d="M24,116 C48,106 73,101 100,100 C127,101 152,106 176,116" />
+            <path d="M26,134 C50,123 74,118 100,117 C126,118 150,123 174,134" />
 
-            {/* Horizontal contour — nose / mouth area */}
-            <path d="M32,154 C54,142 76,137 100,136 C124,137 146,142 168,154" />
-            <path d="M40,170 C58,160 78,155 100,154 C122,155 142,160 160,170" />
-            <path d="M48,186 C64,177 80,173 100,172 C120,173 136,177 152,186" />
+            {/* Horizontal contour — nose / mouth area (narrower for feminine) */}
+            <path d="M36,152 C56,141 77,136 100,135 C123,136 144,141 164,152" />
+            <path d="M46,168 C62,159 80,154 100,153 C120,154 138,159 154,168" />
+            <path d="M56,184 C68,176 83,172 100,171 C117,172 132,176 144,184" />
 
-            {/* Horizontal contour — chin */}
-            <path d="M58,200 C72,193 85,190 100,189 C115,190 128,193 142,200" />
-            <path d="M70,214 C80,208 90,205 100,204 C110,205 120,208 130,214" />
-            <path d="M82,228 C88,224 94,222 100,221 C106,222 112,224 118,228" />
+            {/* Horizontal contour — chin (narrower V-line) */}
+            <path d="M66,198 C76,192 88,189 100,188 C112,189 124,192 134,198" />
+            <path d="M76,212 C84,207 92,204 100,203 C108,204 116,207 124,212" />
+            <path d="M86,226 C90,222 95,220 100,219 C105,220 110,222 114,226" />
 
-            {/* Vertical contour lines — following face shape */}
-            <path d="M100,22 L100,242" />
-            <path d="M80,24 C78,60 76,100 78,140 C80,180 85,220 92,240" />
-            <path d="M120,24 C122,60 124,100 122,140 C120,180 115,220 108,240" />
-            <path d="M62,36 C56,65 52,100 54,140 C56,175 62,205 78,230" />
-            <path d="M138,36 C144,65 148,100 146,140 C144,175 138,205 122,230" />
-            <path d="M45,55 C38,80 34,110 35,145 C37,175 48,200 62,218" />
-            <path d="M155,55 C162,80 166,110 165,145 C163,175 152,200 138,218" />
+            {/* Vertical contour lines — following feminine face shape */}
+            <path d="M100,22 L100,238" />
+            <path d="M82,24 C80,60 78,100 80,138 C82,174 88,214 96,236" />
+            <path d="M118,24 C120,60 122,100 120,138 C118,174 112,214 104,236" />
+            <path d="M64,36 C58,64 54,98 55,136 C57,168 66,200 82,224" />
+            <path d="M136,36 C142,64 146,98 145,136 C143,168 134,200 118,224" />
+            <path d="M46,54 C39,78 36,108 37,142 C38,168 50,194 66,214" />
+            <path d="M154,54 C161,78 164,108 163,142 C162,168 150,194 134,214" />
 
-            {/* ── Eye sockets ── */}
+            {/* ── Eye sockets (slightly larger, rounder for feminine) ── */}
             {/* Left eye */}
-            <ellipse cx="68" cy="98" rx="18" ry="10" />
-            <ellipse cx="68" cy="98" rx="13" ry="7" />
+            <ellipse cx="68" cy="96" rx="19" ry="11" />
+            <ellipse cx="68" cy="96" rx="14" ry="8" />
             {/* Right eye */}
-            <ellipse cx="132" cy="98" rx="18" ry="10" />
-            <ellipse cx="132" cy="98" rx="13" ry="7" />
+            <ellipse cx="132" cy="96" rx="19" ry="11" />
+            <ellipse cx="132" cy="96" rx="14" ry="8" />
 
-            {/* Eyebrow ridges */}
-            <path d="M46,84 C52,78 60,76 70,77 C78,78 84,80 88,84" />
-            <path d="M112,84 C116,80 122,78 132,77 C140,76 148,78 154,84" />
+            {/* Eyebrow ridges (higher arch for feminine) */}
+            <path d="M46,82 C52,74 62,72 70,73 C78,74 84,77 88,82" />
+            <path d="M112,82 C116,77 122,74 132,73 C140,72 148,74 154,82" />
 
-            {/* ── Nose ── */}
-            <path d="M96,86 C94,100 92,115 90,130 C88,138 85,144 82,148" />
-            <path d="M104,86 C106,100 108,115 110,130 C112,138 115,144 118,148" />
+            {/* ── Nose (slightly narrower for feminine) ── */}
+            <path d="M96,84 C95,98 93,113 91,128 C89,136 87,142 85,146" />
+            <path d="M104,84 C105,98 107,113 109,128 C111,136 113,142 115,146" />
             {/* Nose bridge lines */}
-            <path d="M92,100 L92,135" />
-            <path d="M108,100 L108,135" />
+            <path d="M93,98 L93,133" />
+            <path d="M107,98 L107,133" />
             {/* Nostrils */}
-            <path d="M82,148 C86,152 92,154 100,154 C108,154 114,152 118,148" />
-            <path d="M86,148 C90,145 96,144 100,144 C104,144 110,145 114,148" />
+            <path d="M85,146 C89,150 94,152 100,152 C106,152 111,150 115,146" />
+            <path d="M88,146 C92,143 96,142 100,142 C104,142 108,143 112,146" />
             {/* Nose tip contour */}
-            <path d="M88,140 C92,143 96,144 100,144 C104,144 108,143 112,140" />
+            <path d="M90,138 C94,141 97,142 100,142 C103,142 106,141 110,138" />
 
-            {/* ── Mouth ── */}
-            <path d="M76,170 C82,165 90,163 100,163 C110,163 118,165 124,170" />
-            <path d="M78,170 C86,175 92,177 100,177 C108,177 114,175 122,170" />
+            {/* ── Mouth (slightly fuller lips for feminine) ── */}
+            <path d="M78,168 C84,163 92,161 100,161 C108,161 116,163 122,168" />
+            <path d="M80,168 C88,174 93,176 100,176 C107,176 112,174 120,168" />
             {/* Inner lips */}
-            <path d="M82,170 C88,167 94,166 100,166 C106,166 112,167 118,170" />
-            <path d="M84,170 C90,173 95,174 100,174 C105,174 110,173 116,170" />
+            <path d="M84,168 C89,165 95,164 100,164 C105,164 111,165 116,168" />
+            <path d="M85,168 C91,172 96,173 100,173 C104,173 109,172 115,168" />
 
-            {/* ── Ears (wireframe) ── */}
+            {/* ── Ears (slightly smaller for feminine) ── */}
             {/* Left ear */}
-            <path d="M22,90 C14,92 10,100 10,112 C10,124 14,132 20,136 C22,130 22,120 22,110" />
-            <path d="M22,95 C17,97 14,104 14,112 C14,120 16,128 20,132" />
+            <path d="M24,88 C17,90 13,98 13,108 C13,118 16,126 22,130 C23,124 24,116 24,106" />
+            <path d="M24,92 C19,94 16,100 16,108 C16,116 18,122 22,126" />
             {/* Right ear */}
-            <path d="M178,90 C186,92 190,100 190,112 C190,124 186,132 180,136 C178,130 178,120 178,110" />
-            <path d="M178,95 C183,97 186,104 186,112 C186,120 184,128 180,132" />
+            <path d="M176,88 C183,90 187,98 187,108 C187,118 184,126 178,130 C177,124 176,116 176,106" />
+            <path d="M176,92 C181,94 184,100 184,108 C184,116 182,122 178,126" />
 
-            {/* ── Jaw mesh detail ── */}
-            <path d="M35,160 C40,172 48,184 58,196" />
-            <path d="M165,160 C160,172 152,184 142,196" />
-            <path d="M42,175 C50,188 60,200 72,210" />
-            <path d="M158,175 C150,188 140,200 128,210" />
+            {/* ── Jaw mesh detail (softer, narrower for feminine V-line) ── */}
+            <path d="M40,158 C46,170 54,182 66,194" />
+            <path d="M160,158 C154,170 146,182 134,194" />
+            <path d="M50,174 C58,186 68,198 78,208" />
+            <path d="M150,174 C142,186 132,198 122,208" />
           </g>
 
           {/* ── ANALYSIS GUIDE LINES ── */}
 
           {/* V-line: ears to chin (Vi) */}
-          <line x1="18" y1="115" x2="100" y2="236" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
-          <line x1="182" y1="115" x2="100" y2="236" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
+          <line x1="20" y1="112" x2="100" y2="234" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
+          <line x1="180" y1="112" x2="100" y2="234" stroke="#FF6B5A" strokeOpacity="0.5" strokeWidth="1" />
 
-          {/* Jaw V-line (Va) */}
-          <line x1="30" y1="175" x2="100" y2="252" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
-          <line x1="170" y1="175" x2="100" y2="252" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
+          {/* Jaw V-line (Va) — narrower for feminine */}
+          <line x1="38" y1="172" x2="100" y2="248" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
+          <line x1="162" y1="172" x2="100" y2="248" stroke="#FF6B5A" strokeOpacity="0.35" strokeWidth="0.8" />
 
           {/* Landmark dots — eyes outer corners */}
-          <circle cx="48" cy="98" r="3" fill="#FF6B5A" fillOpacity="0.85" />
-          <circle cx="152" cy="98" r="3" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="48" cy="96" r="3" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="152" cy="96" r="3" fill="#FF6B5A" fillOpacity="0.85" />
 
           {/* Landmark dots — ear points */}
-          <circle cx="18" cy="115" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
-          <circle cx="182" cy="115" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="20" cy="112" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="180" cy="112" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
 
-          {/* Landmark dots — jaw points */}
-          <circle cx="30" cy="175" r="3" fill="#FF6B5A" fillOpacity="0.85" />
-          <circle cx="170" cy="175" r="3" fill="#FF6B5A" fillOpacity="0.85" />
+          {/* Landmark dots — jaw points (narrower) */}
+          <circle cx="38" cy="172" r="3" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="162" cy="172" r="3" fill="#FF6B5A" fillOpacity="0.85" />
 
           {/* Landmark dot — chin */}
-          <circle cx="100" cy="236" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
-          <circle cx="100" cy="252" r="3" fill="#FF6B5A" fillOpacity="0.65" />
+          <circle cx="100" cy="234" r="3.5" fill="#FF6B5A" fillOpacity="0.85" />
+          <circle cx="100" cy="248" r="3" fill="#FF6B5A" fillOpacity="0.65" />
 
         </svg>
 
