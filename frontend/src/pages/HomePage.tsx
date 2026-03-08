@@ -20,9 +20,9 @@ export default function HomePage({ onOpenPhotoSheet }: Props) {
         <div className="mx-auto w-full max-w-md">
           {/* Headline — 1초 안에 핵심 가치 전달 */}
           <h2 className="text-[26px] font-bold leading-[1.35] tracking-tight text-[#191F28]">
-            사진 한 장으로
+            집에서 찍고,
             <br />
-            <span className="gradient-text">피부를 읽다</span>
+            <span className="gradient-text">피부를 바꾸다</span>
           </h2>
           <p className="mt-3 text-[15px] leading-[1.5] text-[#6B7684]">
             AI가 5개 지표 · 9개 부위를 정밀 분석하고
